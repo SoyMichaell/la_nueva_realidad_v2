@@ -33,7 +33,9 @@
                                     <tr class="bg-white text-dark">
                                         <td>{{ $empresa->id }}</td>
                                         <td>{{ $empresa->nit }}</td>
-                                        <td class="text-primary">{{ Str::ucfirst($empresa->razon_social) }}</td>
+                                        <td class="text-primary"><a
+                                                href="{{ route('empresa.edit', $empresa->id) }}">{{ Str::ucfirst($empresa->razon_social) }}</a>
+                                        </td>
                                         <td>{{ $empresa->correo }}</td>
                                         <td>{{ $empresa->telefono1 }}</td>
                                         <td style="width: 10%">{{ $empresa->direccion }}</td>

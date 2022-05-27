@@ -268,8 +268,7 @@ class DiagnosticoController extends Controller
 
     public function asignacion(){
         $personas = DB::table('users')
-            ->join('diagnostico_individual','users.id','=','diagnostico_individual.id_persona')
-            ->join('empresas','diagnostico_individual.nit_empresa','=','empresas.nit')
+            ->where('rol',7)
             ->get();
         return view('diagnostico/faseII.asignacion', compact('personas'));
     }

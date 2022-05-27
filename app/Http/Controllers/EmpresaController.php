@@ -11,12 +11,11 @@ use RealRashid\SweetAlert\Facades\Alert;
 class EmpresaController extends Controller
 {
 
-    public function index(Request $request)
+    public function index()
     {
-        $busqueda = trim($request->get('buscar'));
         $empresas = DB::table('empresas')->select('empresas.id','nit','razon_social','correo','telefono1','direccion','municipio','estado')->get();
-        $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
-        return view('empresas.index', compact('empresas', 'busqueda','permisos'));
+        $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->limit(13800)->get();
+        return view('empresas.index', compact('empresas','permisos'));
     }
 
 

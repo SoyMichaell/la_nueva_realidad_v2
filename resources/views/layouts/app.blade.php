@@ -17,14 +17,15 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
 
     <!-- Styles -->
-    <link href="{{asset('css/styles.css')}}" rel="stylesheet" />
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!--Datatables-->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css" />
 </head>
 
 <body class="sb-nav-fixed">
+    @include('sweetalert::alert')
     @if (Auth::check())
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
@@ -76,7 +77,7 @@
                             <div class="collapse" id="collapseSettings" aria-labelledby="headingOne"
                                 data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{url('rol')}}">Roles y permisos</a>
+                                    <a class="nav-link" href="{{ url('rol') }}">Roles y permisos</a>
                                 </nav>
                             </div>
                             <!--Menu registros-->
@@ -90,8 +91,8 @@
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                                 data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{url('usuario')}}">Usuarios</a>
-                                    <a class="nav-link" href="{{url('empresa')}}">Empresas</a>
+                                    <a class="nav-link" href="{{ url('usuario') }}">Usuarios</a>
+                                    <a class="nav-link" href="{{ url('empresa') }}">Empresas</a>
                                 </nav>
                             </div>
                             <!--Funcionalidades-->
@@ -105,10 +106,15 @@
                             <div class="collapse" id="collapseFormats" aria-labelledby="headingOne"
                                 data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{url('diagnostico/fase1')}}">Diagnostico Fase I</a>
-                                    <a class="nav-link" href="{{url('diagnostico/individual')}}">Análisis microempresa</a>
-                                    <a class="nav-link" href="{{url('diagnostico/mdofa')}}">Matriz DOFA microempresa</a>
-                                    <a class="nav-link" href="{{url('diagnostico/planaccion')}}">Plan de acción microempresa</a>
+                                    <a class="nav-link" href="{{ url('diagnostico/fase1') }}">Diagnostico Fase
+                                        I</a>
+                                    <a class="nav-link" href="{{ url('diagnostico/individual') }}">Análisis
+                                        microempresa</a>
+                                    <a class="nav-link" href="{{ url('diagnostico/mdofa') }}">Matriz DOFA
+                                        microempresa</a>
+                                    <a class="nav-link" href="{{ url('diagnostico/planaccion') }}">Plan de
+                                        acción
+                                        microempresa</a>
                                 </nav>
                             </div>
                             <div class="sb-sidenav-menu-heading">Addons</div>
@@ -134,8 +140,8 @@
         @yield('content')
     </div>
     </div>
-    
-    <script src="{{asset('js/jquery-1.12.0.min.js')}}"></script>
+
+    <script src="{{ asset('js/jquery-1.12.0.min.js') }}"></script>
 
     <script>
         $(document).ready(function() {
@@ -143,10 +149,10 @@
         });
     </script>
 
-    <script src="{{asset('js/scripts.js')}}"></script>
+    <script src="{{ asset('js/scripts.js') }}"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.js"></script>
 
-   
+
 
 </body>
 
