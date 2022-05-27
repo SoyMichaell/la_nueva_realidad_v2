@@ -18,7 +18,7 @@ class DiagnosticoController extends Controller
     public function index(Request $request)
     {
         $empresas = DB::table('resultados')
-            ->select('empresas.id', 'nit', 'razon_social', 'ciiu_1', 'municipio', 'fecha_registro_resultado', 'total')
+            ->select('resultados.id', 'nit', 'razon_social', 'ciiu_1', 'municipio', 'fecha_registro_resultado', 'total')
             ->join('empresas', 'resultados.nit_empresa', '=', 'empresas.nit')
             ->get();
         return view('diagnostico/faseI.index', compact('empresas'));
@@ -264,6 +264,7 @@ class DiagnosticoController extends Controller
     public function asignacion(){
         $personas = DB::table('users')
             ->where('rol',7)
+            ->orderBy('nombre','asc')
             ->get();
         return view('diagnostico/faseII.asignacion', compact('personas'));
     }

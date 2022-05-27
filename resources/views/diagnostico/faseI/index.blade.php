@@ -28,7 +28,7 @@
                                 <?php $i = 1; ?>
                                 <tr>
                                     @foreach ($empresas as $empresa)
-                                        <td>{{ $i++ }}</td>
+                                        <td>{{ $empresa->id}}</td>
                                         <td>{{ $empresa->nit }}</td>
                                         <td>{{ $empresa->razon_social }}</td>
                                         <td>{{ $empresa->ciiu_1 }}</td>

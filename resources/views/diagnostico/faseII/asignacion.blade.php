@@ -16,13 +16,14 @@
                     ?>
                     <div class="col-md-4 col-sm-6 card p-3 mb-3" style="width:425px; margin-left: 10px">
                         <h5 class="bg-light text-center p-3">{{ $persona->nombre . ' ' . $persona->apellido }}</h5>
-                        <span class="badge bg-info">{{count($empresas)}}</span>
+                        <span class="badge bg-info">{{ count($empresas) }}</span>
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th>Nit</th>
                                     <th>Razón social</th>
                                     <th>Municipio</th>
+                                    <th>--</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -32,6 +33,9 @@
                                         <td>{{ $empresa->nit }}</td>
                                         <td>{{ $empresa->razon_social }}</td>
                                         <td>{{ $empresa->municipio }}</td>
+                                        <td><a class="btn btn-light"
+                                                href="{{ url("diagnostico/{$empresa->nit}/analisis") }}"><i
+                                                    class="fas fa-eye"></i></a></td>
                                     </tr>
                                 @endforeach
                             </tbody>
