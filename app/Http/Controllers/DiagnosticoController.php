@@ -59,12 +59,7 @@ class DiagnosticoController extends Controller
             ->leftJoin('diagnostico_individual', 'resultados.nit_empresa', '=', 'diagnostico_individual.nit_empresa')
             ->leftJoin('users', 'diagnostico_individual.id_persona', '=', 'users.id')
             ->where('estado_35', '=', 'seleccionado')
-            ->where('empresas.nit', 'LIKE', '%' . $busqueda . '%')
-            ->orWhere('estado_35', '=', 'seleccionado')
-            ->where('razon_social', 'LIKE', '%' . $busqueda . '%')
-            ->orWhere('estado_35', '=', 'seleccionado')
-            ->where('ciiu', 'LIKE', '%' . $busqueda . '%')
-            ->paginate(20);
+            ->get();
         $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
         return view('diagnostico/faseII.index', compact('empresas', 'busqueda', 'permisos'));
     }
