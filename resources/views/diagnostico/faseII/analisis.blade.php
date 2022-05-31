@@ -8,7 +8,8 @@
                 La Nueva Realidad.</p>
             <hr>
             <!--Información empresa-->
-            <div class="card mb-3">
+            <a class="btn btn-warning btn-sm" href="#" title="Descargar información microempresario"><i class="fas fa-file-pdf"></i> Generar reporte</a>
+            <div class="card mb-3 mt-3">
                 <div class="card-header">
                     <div class="row">
                         <div class="col-md-8">

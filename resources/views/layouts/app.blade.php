@@ -24,12 +24,12 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css" />
 </head>
 
-<body class="sb-nav-fixed">
+<body class="sb-nav-fixed" style="background-color: #fff;">
     @include('sweetalert::alert')
     @if (Auth::check())
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="{{url('/home')}}">Start Bootstrap</a>
+            <a class="navbar-brand ps-3" href="{{url('/home')}}">La Nueva Realidad</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                     class="fas fa-bars"></i></button>
@@ -129,8 +129,8 @@
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        Start Bootstrap
+                        <div class="small">Inicio de sesión en:</div>
+                        La Nueva Realidad
                     </div>
                 </nav>
             </div>

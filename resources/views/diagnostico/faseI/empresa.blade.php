@@ -3,9 +3,12 @@
 @section('content')
     <main>
         <div class="container">
-            <h1 class="mt-4">Muestra 374 microempresas</h1>
-            <p>Listado de empresas seleccionadas para aplicación del instrumento de recolección de la información para el
-                diagnostico</p>
+            <div class="alert alert-info">
+                <h1 class="mt-4">Muestra 374 microempresas</h1>
+                <p>Listado de empresas seleccionadas para aplicación del instrumento de recolección de la información para
+                    el
+                    diagnostico</p>
+            </div>
             <hr>
             <div class="card mb-3">
                 <div class="card-header"><i class="fas fa-info-circle"></i> Información empresa</div>

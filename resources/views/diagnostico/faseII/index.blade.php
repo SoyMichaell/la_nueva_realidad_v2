@@ -3,11 +3,14 @@
 @section('content')
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Muestra 35 microempresas</h1>
-            <p>Listado de empresas seleccionadas para la implementación del diseño metodologico</p>
+            <div class="alert alert-info">
+                <h1 class="mt-4">Muestra 35 microempresas</h1>
+                <p>Listado de empresas seleccionadas para la implementación del diseño metodologico</p>
+            </div>
             <hr>
             <div class="d-flex justify-content-end mb-3">
-                <a class="btn btn-primary btn-sm" href="{{url('diagnostico/asignacion')}}"><i class="fas fa-eye"></i> Ver asignación</a>
+                <a class="btn btn-primary btn-sm" href="{{ url('diagnostico/asignacion') }}"><i class="fas fa-eye"></i>
+                    Ver asignación</a>
             </div>
             <div class="card">
                 <div class="card-header"><i class="fas fa-table"></i> Tabla microempresarios</div>
@@ -44,7 +47,8 @@
                                                 {{ $empresa->total }}</p>
                                         </td>
                                         <td style="width: 10%">
-                                            <a class="btn btn-secondary btn-sm" href="/diagnostico/{{ $empresa->nit }}/analisis"
+                                            <a class="btn btn-secondary btn-sm"
+                                                href="/diagnostico/{{ $empresa->nit }}/analisis"
                                                 title="Análisis individual"><i class="fas fa-edit"></i> Completar</a>
                                         </td>
                                     </tr>

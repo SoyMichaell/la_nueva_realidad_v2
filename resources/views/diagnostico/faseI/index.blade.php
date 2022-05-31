@@ -3,9 +3,12 @@
 @section('content')
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Muestra 374 microempresas</h1>
-            <p>Listado de empresas seleccionadas para aplicación del instrumento de recolección de la información para el
-                diagnostico</p>
+            <div class="alert alert-info">
+                <h1 class="mt-4">Muestra 374 microempresas</h1>
+                <p>Listado de empresas seleccionadas para aplicación del instrumento de recolección de la información para
+                    el
+                    diagnostico</p>
+            </div>
             <hr>
             <div class="card">
                 <div class="card-header"><i class="fas fa-table"></i> Listado empresas</div>
@@ -28,7 +31,7 @@
                                 <?php $i = 1; ?>
                                 <tr>
                                     @foreach ($empresas as $empresa)
-                                        <td>{{ $empresa->id}}</td>
+                                        <td>{{ $empresa->id }}</td>
                                         <td>{{ $empresa->nit }}</td>
                                         <td>{{ $empresa->razon_social }}</td>
                                         <td>{{ $empresa->ciiu_1 }}</td>
@@ -40,7 +43,9 @@
                                                 {{ $empresa->total }}</p>
                                         </td>
                                         <td style="width: 10%">
-                                            <a class="btn btn-info btn-sm text-white" href="/diagnostico/{{ $empresa->nit }}"><i class="fas fa-info-circle"></i> Detalle</a>
+                                            <a class="btn btn-info btn-sm text-white"
+                                                href="/diagnostico/{{ $empresa->nit }}"><i class="fas fa-info-circle"></i>
+                                                Detalle</a>
                                             <!--<a class="btn btn-primary" href="/diagnostico/{{ $empresa->nit }}/analisis" title="Análisis individual"><i class="fas fa-bezier-curve"></i></a>-->
                                         </td>
                                 </tr>
