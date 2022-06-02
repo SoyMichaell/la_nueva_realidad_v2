@@ -2,6 +2,11 @@
 
 @section('content')
 <style>
+    body{
+        background-image: url('image/fondo.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
     .card-login{
         width: 350px;
         margin: auto;
@@ -14,8 +19,8 @@
             <div class="card card-login">
                 <!--<div class="card-header">{{ __('Inicio de sesión') }}</div>-->
                 <div class="card-body">
-                    <h5 class="text-center fw-bold">Login Form</h5>
-                    <p class="text-center">Login to access your dashboard</p>
+                    <h5 class="text-center fw-bold">Formulario de inicio</h5>
+                    <p class="text-center">Ingrese las credenciales para tener acceso a la plataforma</p>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="row mb-3">

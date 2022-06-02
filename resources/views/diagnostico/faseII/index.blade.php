@@ -9,8 +9,13 @@
             </div>
             <hr>
             <div class="d-flex justify-content-end mb-3">
-                <a class="btn btn-primary btn-sm" href="{{ url('diagnostico/asignacion') }}"><i class="fas fa-eye"></i>
-                    Ver asignación</a>
+                @foreach ($permisos as $permiso)
+                    @if ($permiso->permiso == 'ver-asignacion')
+                        <a class="btn btn-primary btn-sm" href="{{ url('diagnostico/asignacion') }}"><i
+                                class="fas fa-eye"></i>
+                            Ver asignación</a>
+                    @endif
+                @endforeach
             </div>
             <div class="card">
                 <div class="card-header"><i class="fas fa-table"></i> Tabla microempresarios</div>
@@ -25,7 +30,11 @@
                                     <th>Municipio</th>
                                     <th>Instructor asignado</th>
                                     <th>Puntaje</th>
-                                    <th>----</th>
+                                    @foreach ($permisos as $permiso)
+                                        @if ($permiso->permiso == 'completar-analisis')
+                                            <th>----</th>
+                                        @endif
+                                    @endforeach
                                 </tr>
                             </thead>
                             <tbody> <?php $i = 1; ?>
@@ -46,11 +55,16 @@
                                                 class="@if ($empresa->total >= 0 and $empresa->total <= 40) badge bg-danger text-white @elseif($empresa->total > 40 and $empresa->total <= 70) badge bg-warning text-white @elseif($empresa->total > 70 and $empresa->total <= 100) badge bg-success text-white @endif">
                                                 {{ $empresa->total }}</p>
                                         </td>
-                                        <td style="width: 10%">
-                                            <a class="btn btn-secondary btn-sm"
-                                                href="/diagnostico/{{ $empresa->nit }}/analisis"
-                                                title="Análisis individual"><i class="fas fa-edit"></i> Completar</a>
-                                        </td>
+                                        @foreach ($permisos as $permiso)
+                                            @if ($permiso->permiso == 'completar-analisis')
+                                                <td style="width: 10%">
+                                                    <a class="btn btn-secondary btn-sm"
+                                                        href="/diagnostico/{{ $empresa->nit }}/analisis"
+                                                        title="Análisis individual"><i class="fas fa-edit"></i>
+                                                        Completar</a>
+                                                </td>
+                                            @endif
+                                        @endforeach
                                     </tr>
                                 @endforeach
                             </tbody>

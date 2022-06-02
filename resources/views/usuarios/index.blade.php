@@ -8,9 +8,14 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
-                        <div class="card-header"><i class="fas fa-table"></i> Tabla de usuarios en plataforma <a
-                                class="btn btn-primary btn-sm" href="{{ url('usuario/create') }}"><i
-                                    class="fas fa-plus-circle"></i> Nuevo</a></div>
+                        <div class="card-header"><i class="fas fa-table"></i> Tabla de usuarios en plataforma
+                            @foreach ($permisos as $permiso)
+                                @if ($permiso->permiso == 'crear-usuario')
+                                    <a class="btn btn-primary btn-sm" href="{{ url('usuario/create') }}"><i
+                                            class="fas fa-plus-circle"></i> Nuevo</a>
+                                @endif
+                            @endforeach
+                        </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped" id="SimpleTable">
@@ -52,26 +57,30 @@
                                                         class="badge {{ $usuario->estado == 'Activo' ? 'bg-success' : 'bg-danger' }} text-white">
                                                         {{ $usuario->estado }}</p>
                                                 </td>
-                                                <td>
-                                                    <form action="{{ url("usuario/{$usuario->idUser}") }}" method="POST">
-                                                        <a class="btn btn-info btn-sm text-white"
-                                                            href="{{ route('usuario.edit', Str::lower($usuario->slug)) }}"><i
-                                                                class="fas fa-edit"></i> Editar</a>
+                                                @foreach ($permisos as $permiso)
+                                                    @if ($permiso->permiso == 'editar-usuario')
+                                                        <td>
+                                                            <form action="{{ url("usuario/{$usuario->idUser}") }}"
+                                                                method="POST">
+
+                                                                <a class="btn btn-info btn-sm text-white"
+                                                                    href="{{ route('usuario.edit', Str::lower($usuario->slug)) }}"><i
+                                                                        class="fas fa-edit"></i> Editar</a>
+                                                    @endif
+                                                    @if ($permiso->permiso == 'eliminar-usuario')
                                                         @csrf
                                                         @method('DELETE')
                                                         <button class="btn btn-danger btn-sm" type="submit">
                                                             <i class="fas fa-trash"></i> Borrar
                                                         </button>
-                                                        <!--<a class="edit-user btn btn-info" data-id="{{ $usuario->idUser }}"><i class="fas fa-edit"></i></a>-->
-                                                    </form>
-                                                </td>
+                                                        </form>
+                                                        </td>
+                                                    @endif
+                                                @endforeach
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <div class="d-flex justify-content-end">
-                                    {{ $usuarios->links() }}
-                                </div>
                             </div>
                         </div>
                     </div>

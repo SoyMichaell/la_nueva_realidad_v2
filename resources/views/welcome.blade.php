@@ -3,7 +3,7 @@
 @section('content')
     <style>
         .sectionone {
-            margin-top: 12%;
+            margin-top: 10%;
         }
 
         li {
@@ -44,23 +44,29 @@
     <section class="sectionone" id="sectionone">
         <div class="container">
             <div class="row">
-                <h1 class="text-center fw-bold">Consulta el diagnostico de tu empresa</h1>
-                <form action="" method="post">
-                    <input class="form-control" type="search" name="" id="" placeholder="Buscar empresa por nit">
-                    <div class="alert alert-warning mt-2" role="alert">
-                        <h5 class="alert-heading"><i class="fas fa-info-circle"></i> Información</h5>
-                        <p>La información recopilada de las microempresas del
-                            departamento de Casanare,
-                            inicialmente fue sumistrado por
-                            la camara de comercion en el año <strong>2021</strong> como muestra fundamental del estudio, posteriormente se
-                            calculo una
-                            muestra significativa de microempresarios interesados en participar de este proceso el cual se
-                            determino un
-                            total de <strong>374</strong> microempresas distribuidas por todo el departamento de Casanare.</p>
-                    </div>
-                </form>
+                <div class="col-md-6">
+                    <h1 class="fw-bold">Consulta el diagnostico de tu empresa</h1>
+                    <form action="" method="post">
+                        <input class="form-control" type="search" name="" id="" placeholder="Buscar empresa por nit">
+                        <div class="alert alert-warning mt-2" role="alert">
+                            <h5 class="alert-heading"><i class="fas fa-info-circle"></i> Información</h5>
+                            <p>La información recopilada de las microempresas del
+                                departamento de Casanare,
+                                inicialmente fue sumistrado por
+                                la camara de comercion en el año <strong>2021</strong> como muestra fundamental del estudio,
+                                posteriormente se
+                                calculo una
+                                muestra significativa de microempresarios interesados en participar de este proceso el cual
+                                se
+                                determino un
+                                total de <strong>374</strong> microempresas distribuidas por todo el departamento de
+                                Casanare.</p>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
+        <!--
         <div class="container mx-auto d-block footer ml-2">
             <div class="row">
                 <div class="col-md-6">
@@ -84,6 +90,7 @@
                 </div>
             </div>
         </div>
+        -->
     </section>
     <script type="text/javascript">
         $(document).ready(function() {

@@ -13,15 +13,16 @@ class EmpresaController extends Controller
 
     public function index()
     {
-        $empresas = DB::table('empresas')->select('empresas.id','nit','razon_social','correo','telefono1','direccion','municipio','estado')->get();
-        $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->limit(13800)->get();
+        $empresas = DB::table('empresas')->select('empresas.id','nit','razon_social','correo','telefono1','direccion','municipio','estado')->limit(13800)->get();
+        $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
         return view('empresas.index', compact('empresas','permisos'));
     }
 
 
     public function create()
     {
-        return view('empresas.crear');
+        $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
+        return view('empresas.crear',compact('permisos'));
     }
 
 
@@ -92,7 +93,8 @@ class EmpresaController extends Controller
     public function edit($id)
     {
         $empresa = Empresa::find($id);
-        return view('empresas.editar', compact('empresa'));
+        $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
+        return view('empresas.editar', compact('empresa','permisos'));
     }
 
 

@@ -13,14 +13,15 @@ class RolController extends Controller
     public function index()
     {
         $roles = Rol::all();
-        //$permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
-        return view('roles.index', compact('roles'));
+        $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
+        return view('roles.index', compact('roles','permisos'));
     }
 
     public function create()
     {
-        $permisos = DB::table('permisos')->get();
-        return view('roles.crear', compact('permisos'));
+        $permisosbd = DB::table('permisos')->get();
+        $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
+        return view('roles.crear', compact('permisosbd','permisos'));
     }
 
     public function store(Request $request)
@@ -53,9 +54,10 @@ class RolController extends Controller
     public function edit($id)
     {
         $rol = Rol::find($id);
-        $permisos = DB::table('permisos')->get();
+        $permisosbd = DB::table('permisos')->get();
+        $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
         $has_rol_permiso = DB::table('roles_permisos')->where('id_rol', $id)->get();
-        return view('roles.editar', compact('rol', 'permisos', 'has_rol_permiso'));
+        return view('roles.editar', compact('rol', 'permisosbd', 'has_rol_permiso','permisos'));
     }
 
     public function update(Request $request, $id)
@@ -63,19 +65,28 @@ class RolController extends Controller
 
         $permisos = DB::table('roles_permisos')->where('id_rol', $id)->get();
 
-        $contador = count($permisos);
-
-        foreach ($request->get('permisos_rol') as $rol) {
-            echo 'Roles en form: ' . $rol.'<br>';
-            DB::table('roles_permisos')->where('id_rol', $id)->update([
-                'permiso' => $rol
-            ]);
+        if (count($permisos) > 0) {
+            DB::table('roles_permisos')->where('id_rol', $id)->delete();
+            foreach ($request->get('permisos_rol') as $rol) {
+                DB::table('roles_permisos')
+                    ->where('id_rol', $id)
+                    ->update([
+                        'id_rol' => $id,
+                        'permiso' => $rol
+                    ]);
+            }
+        } else {
+            foreach ($request->get('permisos_rol') as $rol) {
+                DB::table('roles_permisos')
+                    ->insert([
+                        'id_rol' => $id,
+                        'permiso' => $rol
+                    ]);
+            }
         }
 
-
-
-        //Alert::success('Exitoso', 'El rol se ha actualizado');
-        //return redirect('/rol');
+        Alert::success('Exitoso', 'El rol se ha actualizado');
+        return redirect('/rol');
     }
 
     public function destroy($id)

@@ -8,25 +8,31 @@
                 La Nueva Realidad.</p>
             <hr>
             <!--Información empresa-->
-            <a class="btn btn-warning btn-sm" href="#" title="Descargar información microempresario"><i class="fas fa-file-pdf"></i> Generar reporte</a>
+            <a class="btn btn-warning btn-sm" href="#" title="Descargar información microempresario"><i
+                    class="fas fa-file-pdf"></i> Generar reporte</a>
             <div class="card mb-3 mt-3">
                 <div class="card-header">
                     <div class="row">
                         <div class="col-md-8">
                             <i class="fas fa-info-circle"></i> Información empresa
                         </div>
-                        <div class="col-md-4">
-                            @if ($exist_diagnostico_empresa)
-                                <div class="d-flex justify-content-end">
-                                    <form action="{{ url("diagnostico/{$empresa->nit}") }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-eraser"></i>
-                                            Borrar</button>
-                                    </form>
+                        @foreach ($permisos as $permiso)
+                            @if ($permiso->permiso == 'eliminar-asignacion')
+                                <div class="col-md-4">
+                                    @if ($exist_diagnostico_empresa)
+                                        <div class="d-flex justify-content-end">
+                                            <form action="{{ url("diagnostico/{$empresa->nit}") }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger btn-sm" type="submit"><i
+                                                        class="fas fa-eraser"></i>
+                                                    Borrar</button>
+                                            </form>
+                                        </div>
+                                    @endif
                                 </div>
                             @endif
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="card-body">
@@ -90,7 +96,11 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <button class="btn btn-primary btn-sm mt-2" type="submit">Asignar</button>
+                                @foreach ($permisos as $permiso)
+                                    @if ($permiso->permiso == 'crear-asignacion')
+                                        <button class="btn btn-primary btn-sm mt-2" type="submit">Asignar</button>
+                                    @endif
+                                @endforeach
                             </div>
                         </div>
                     </form>
@@ -106,7 +116,11 @@
                             @csrf
                             @method('PUT')
                             <textarea class="form-control" name="mision" id="mision">{{ $exist_diagnostico_empresa->mision }}</textarea>
-                            <button class="btn btn-primary btn-sm mt-2 mb-2" type="submit">Guardar</button>
+                            @foreach ($permisos as $permiso)
+                                @if ($permiso->permiso == 'guardar-analisis')
+                                    <button class="btn btn-primary btn-sm mt-2 mb-2" type="submit">Guardar</button>
+                                @endif
+                            @endforeach
                         </form>
                     </div>
                 </div>
@@ -118,7 +132,11 @@
                             @csrf
                             @method('PUT')
                             <textarea class="form-control" name="vision" id="vision">{{ $exist_diagnostico_empresa->vision }}</textarea>
-                            <button class="btn btn-primary btn-sm mt-2 mb-2" type="submit">Guardar</button>
+                            @foreach ($permisos as $permiso)
+                                @if ($permiso->permiso == 'guardar-analisis')
+                                    <button class="btn btn-primary btn-sm mt-2 mb-2" type="submit">Guardar</button>
+                                @endif
+                            @endforeach
                         </form>
                     </div>
                 </div>
@@ -131,7 +149,11 @@
                             @method('PUT')
                             <textarea class="form-control" name="objestrategico"
                                 id="objestrategico">{{ $exist_diagnostico_empresa->objetivo_estrategio }}</textarea>
-                            <button class="btn btn-primary btn-sm mt-2 mb-2" type="submit">Guardar</button>
+                            @foreach ($permisos as $permiso)
+                                @if ($permiso->permiso == 'guardar-analisis')
+                                    <button class="btn btn-primary btn-sm mt-2 mb-2" type="submit">Guardar</button>
+                                @endif
+                            @endforeach
                         </form>
                     </div>
                 </div>
@@ -520,7 +542,11 @@
                                 <textarea class="form-control" name="preguntacd17_1"
                                     id="preguntacd17_1">{{ $exist_diagnostico_empresa->preguntacd17_1 }}</textarea>
                             </div>
-                            <button class="btn btn-primary mt-2 mb-3 ml-4" type="submit">Guardar</button>
+                            @foreach ($permisos as $permiso)
+                                @if ($permiso->permiso == 'guardar-analisis')
+                                    <button class="btn btn-primary btn-sm mt-2 mb-2" type="submit">Guardar</button>
+                                @endif
+                            @endforeach
                         </form>
                         <hr>
                         <!--Fin-->
@@ -665,7 +691,11 @@
                                 <textarea class="form-control" name="preguntac9"
                                     id="preguntac9">{{ $exist_diagnostico_empresa->preguntac9 }}</textarea>
                             </div>
-                            <button class="btn btn-primary mt-2" type="submit">Guardar</button>
+                            @foreach ($permisos as $permiso)
+                                @if ($permiso->permiso == 'guardar-analisis')
+                                    <button class="btn btn-primary btn-sm mt-2 mb-2" type="submit">Guardar</button>
+                                @endif
+                            @endforeach
                         </form>
                         <hr>
                         <!--Fin-->
@@ -797,7 +827,11 @@
                                 <textarea class="form-control" name="preguntapi6_1"
                                     id="preguntapi8">{{ $exist_diagnostico_empresa->preguntapi8 }}</textarea>
                             </div>
-                            <button class="btn btn-primary mt-2 mb-3" type="submit">Guardar</button>
+                            @foreach ($permisos as $permiso)
+                                @if ($permiso->permiso == 'guardar-analisis')
+                                    <button class="btn btn-primary btn-sm mt-2 mb-2" type="submit">Guardar</button>
+                                @endif
+                            @endforeach
                         </form>
                         <hr>
                         <!--Fin-->
@@ -964,7 +998,11 @@
                                 <textarea class="form-control" name="preguntapf15"
                                     id="preguntapf15">{{ $exist_diagnostico_empresa->preguntapf15 }}</textarea>
                             </div>
-                            <button class="btn btn-primary mt-2" type="submit">Guardar</button>
+                            @foreach ($permisos as $permiso)
+                                @if ($permiso->permiso == 'guardar-analisis')
+                                    <button class="btn btn-primary btn-sm mt-2 mb-2" type="submit">Guardar</button>
+                                @endif
+                            @endforeach
                         </form>
                     </div>
                 </div>

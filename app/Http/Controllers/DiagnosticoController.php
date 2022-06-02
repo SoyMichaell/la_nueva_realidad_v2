@@ -17,11 +17,22 @@ class DiagnosticoController extends Controller
     /*Rutas fase I*/
     public function index(Request $request)
     {
-        $empresas = DB::table('resultados')
-            ->select('resultados.id', 'nit', 'razon_social', 'ciiu_1', 'municipio', 'fecha_registro_resultado', 'total')
-            ->join('empresas', 'resultados.nit_empresa', '=', 'empresas.nit')
-            ->get();
-        return view('diagnostico/faseI.index', compact('empresas'));
+        $idPersona = Auth::user()->rol;
+        if ($idPersona == 7) {
+            $empresas = DB::table('resultados')
+                ->select('resultados.id', 'nit', 'razon_social', 'ciiu_1', 'municipio', 'fecha_registro_resultado', 'total')
+                ->join('empresas', 'resultados.nit_empresa', '=', 'empresas.nit')
+                ->join('diagnostico_individual', 'empresas.nit', '=', 'diagnostico_individual.nit_empresa')
+                ->where('diagnostico_individual.id_persona', Auth::user()->id)
+                ->get();
+        } else if ($idPersona == 1) {
+            $empresas = DB::table('resultados')
+                ->select('resultados.id', 'nit', 'razon_social', 'ciiu_1', 'municipio', 'fecha_registro_resultado', 'total')
+                ->join('empresas', 'resultados.nit_empresa', '=', 'empresas.nit')
+                ->get();
+        }
+        $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
+        return view('diagnostico/faseI.index', compact('empresas', 'permisos'));
     }
 
     //Vista diagnostico fase I
@@ -32,7 +43,8 @@ class DiagnosticoController extends Controller
             ->join('resultados', 'empresas.nit', '=', 'resultados.nit_empresa')
             ->where('empresas.nit', $id)
             ->first();
-        return view('diagnostico/faseI.empresa', compact('empresa'));
+        $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
+        return view('diagnostico/faseI.empresa', compact('empresa', 'permisos'));
     }
     /*Fin rutas fase I*/
 
@@ -51,17 +63,28 @@ class DiagnosticoController extends Controller
         return view('diagnostico/faseII.analisis', compact('empresa', 'usuarios', 'exist_diagnostico_empresa', 'permisos'));
     }
 
-    public function analisis_individual(Request $request)
+    public function analisis_individual()
     {
-        $busqueda = trim($request->get('buscar'));
-        $empresas = DB::table('resultados')
-            ->join('empresas', 'resultados.nit_empresa', '=', 'empresas.nit')
-            ->leftJoin('diagnostico_individual', 'resultados.nit_empresa', '=', 'diagnostico_individual.nit_empresa')
-            ->leftJoin('users', 'diagnostico_individual.id_persona', '=', 'users.id')
-            ->where('estado_35', '=', 'seleccionado')
-            ->get();
+        $idPersona = Auth::user()->rol;
+        if ($idPersona == 7) {
+            $empresas = DB::table('resultados')
+                ->join('empresas', 'resultados.nit_empresa', '=', 'empresas.nit')
+                ->join('diagnostico_individual', 'resultados.nit_empresa', '=', 'diagnostico_individual.nit_empresa')
+                ->join('users', 'diagnostico_individual.id_persona', '=', 'users.id')
+                ->where('estado_35', '=', 'seleccionado')
+                ->where('users.id', Auth::user()->id)
+                ->get();
+        } else if ($idPersona == 1) {
+            $empresas = DB::table('resultados')
+                ->join('empresas', 'resultados.nit_empresa', '=', 'empresas.nit')
+                ->leftJoin('diagnostico_individual', 'resultados.nit_empresa', '=', 'diagnostico_individual.nit_empresa')
+                ->leftJoin('users', 'diagnostico_individual.id_persona', '=', 'users.id')
+                ->where('estado_35', '=', 'seleccionado')
+                ->get();
+        }
+
         $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
-        return view('diagnostico/faseII.index', compact('empresas', 'busqueda', 'permisos'));
+        return view('diagnostico/faseII.index', compact('empresas', 'permisos'));
     }
 
     public function store(Request $request)
@@ -261,12 +284,14 @@ class DiagnosticoController extends Controller
         }
     }
 
-    public function asignacion(){
+    public function asignacion()
+    {
         $personas = DB::table('users')
-            ->where('rol',7)
-            ->orderBy('nombre','asc')
+            ->where('rol', 7)
+            ->orderBy('nombre', 'asc')
             ->get();
-        return view('diagnostico/faseII.asignacion', compact('personas'));
+        $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
+        return view('diagnostico/faseII.asignacion', compact('personas', 'permisos'));
     }
 
     /*Fin rutas fase II*/
@@ -277,7 +302,8 @@ class DiagnosticoController extends Controller
         $empresas = DB::table('diagnostico_individual')
             ->join('empresas', 'diagnostico_individual.nit_empresa', '=', 'empresas.nit')
             ->get();
-        return view('diagnostico/dofa.index', compact('empresas'));
+        $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
+        return view('diagnostico/dofa.index', compact('empresas', 'permisos'));
     }
 
     public function mcrear($id)

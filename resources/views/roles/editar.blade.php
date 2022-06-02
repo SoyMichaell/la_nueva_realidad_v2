@@ -27,7 +27,7 @@
                             </div>
                             <div class="col-md-12 mt-3">
                                 <label for="">Permisos para este rol:</label>
-                                @foreach ($permisos as $permiso)
+                                @foreach ($permisosbd as $permiso)
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" name="permisos_rol[]"
                                             id="flexCheckDefault"

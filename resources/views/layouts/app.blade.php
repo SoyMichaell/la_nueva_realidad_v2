@@ -29,7 +29,7 @@
     @if (Auth::check())
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="{{url('/home')}}">La Nueva Realidad</a>
+            <a class="navbar-brand ps-3" href="{{ url('/home') }}">La Nueva Realidad</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                     class="fas fa-bars"></i></button>
@@ -40,13 +40,16 @@
                         data-bs-toggle="dropdown" aria-expanded="false"><i
                             class="fas fa-user fa-fw"></i>{{ Auth::user()->nombre }}</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Perfil</a></li>
+                        <li><a class="dropdown-item"
+                                href="{{ url('usuario/' . Str::lower(Auth::user()->slug) . '/perfil') }}">Perfil</a>
+                        </li>
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
                         <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">Cerrar sesión</a>
-                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" class="d-none">
+                            <form id="logout-form" action="{{ url('/logout') }}" method="POST"
+                                class="d-none">
                                 {{ csrf_field() }}
                             </form>
                         </li>
@@ -61,40 +64,49 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Principal</div>
-                            <a class="nav-link" href="{{url('/home')}}">
+                            <a class="nav-link" href="{{ url('/home') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Principal
                             </a>
                             <!--Menu configuración-->
-                            <div class="sb-sidenav-menu-heading">Configuración</div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                                data-bs-target="#collapseSettings" aria-expanded="false"
-                                aria-controls="collapseSettings">
-                                <div class="sb-nav-link-icon"><i class="fas fa-cogs"></i></div>
-                                Configuración
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseSettings" aria-labelledby="headingOne"
-                                data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{ url('rol') }}">Roles y permisos</a>
-                                </nav>
-                            </div>
+                            @foreach ($permisos as $permiso)
+                                @if ($permiso->permiso == 'configuracion')
+                                    <div class="sb-sidenav-menu-heading">Configuración</div>
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseSettings" aria-expanded="false"
+                                        aria-controls="collapseSettings">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-cogs"></i></div>
+                                        Configuración
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="collapseSettings" aria-labelledby="headingOne"
+                                        data-bs-parent="#sidenavAccordion">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="{{ url('rol') }}">Roles y permisos</a>
+                                        </nav>
+                                    </div>
+                                @endif
+                            @endforeach
                             <!--Menu registros-->
-                            <div class="sb-sidenav-menu-heading">Registros</div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                                data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Módulo de registros
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
-                                data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{ url('usuario') }}">Usuarios</a>
-                                    <a class="nav-link" href="{{ url('empresa') }}">Empresas</a>
-                                </nav>
-                            </div>
+                            @foreach ($permisos as $permiso)
+                                @if ($permiso->permiso == 'usuario')
+                                    <div class="sb-sidenav-menu-heading">Registros</div>
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseLayouts" aria-expanded="false"
+                                        aria-controls="collapseLayouts">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                        Módulo de registros
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                                        data-bs-parent="#sidenavAccordion">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="{{ url('usuario') }}">Usuarios</a>
+                                            <a class="nav-link" href="{{ url('empresa') }}">Empresas</a>
+                                        </nav>
+                                    </div>
+                                @endif
+                            @endforeach
                             <!--Funcionalidades-->
                             <div class="sb-sidenav-menu-heading">Funciones</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
@@ -117,15 +129,6 @@
                                         microempresa</a>
                                 </nav>
                             </div>
-                            <div class="sb-sidenav-menu-heading">Addons</div>
-                            <a class="nav-link" href="charts.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Charts
-                            </a>
-                            <a class="nav-link" href="tables.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Tables
-                            </a>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">

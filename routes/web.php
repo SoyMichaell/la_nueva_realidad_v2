@@ -41,6 +41,8 @@ Route::put('diagnostico/{nit}/perspectivafinanciera', [DiagnosticoController::cl
 
 Route::get('diagnostico/asignacion', [DiagnosticoController::class, 'asignacion']);
 
+Route::get('usuario/{slug}/pefil', [UsuarioController::class, 'perfil']);
+
 Route::resource('rol', RolController::class);
 Route::resource('usuario', UsuarioController::class);
 Route::resource('empresa', EmpresaController::class);

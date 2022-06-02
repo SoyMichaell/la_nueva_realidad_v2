@@ -14,8 +14,6 @@ class UsuarioController extends Controller
 
     public function index(Request $request)
     {
-
-        $busqueda = trim($request->get('buscar'));
         $usuarios = DB::table('users')
             ->select(
                 'users.id as idUser',
@@ -35,24 +33,17 @@ class UsuarioController extends Controller
                 'roles.id as idRol'
             )
             ->join('roles', 'users.rol', '=', 'roles.id')
-            ->where('tipo_documento', 'LIKE', '%' . $busqueda . '%')
-            ->orWhere('numero_documento', 'LIKE', '%' . $busqueda . '%')
-            ->orWhere('nombre', 'LIKE', '%' . $busqueda . '%')
-            ->orWhere('apellido', 'LIKE', '%' . $busqueda . '%')
-            ->orWhere('correo_institucional', 'LIKE', '%' . $busqueda . '%')
-            ->orWhere('telefono', 'LIKE', '%' . $busqueda . '%')
-            ->orWhere('nombre_rol', 'LIKE', '%' . $busqueda . '%')
-            ->orWhere('estado', 'LIKE', '%' . $busqueda . '%')
             ->orderBy('nombre', 'asc')
-            ->paginate(20);
+            ->get();
         $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
-        return view('usuarios.index', compact('usuarios', 'busqueda', 'permisos'));
+        return view('usuarios.index', compact('usuarios','permisos'));
     }
 
     public function create()
     {
         $roles = DB::table('roles')->get();
-        return view('usuarios.crear', compact('roles'));
+        $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
+        return view('usuarios.crear', compact('roles','permisos'));
     }
 
     public function store(Request $request)
@@ -144,7 +135,8 @@ class UsuarioController extends Controller
             ->where('users.slug', $slug)
             ->first();
         $roles = DB::table('roles')->get();
-        return view('usuarios.editar', compact('usuario', 'roles'));
+        $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
+        return view('usuarios.editar', compact('usuario', 'roles','permisos'));
     }
 
     public function update(Request $request, $slug)
@@ -213,5 +205,11 @@ class UsuarioController extends Controller
         $usuario->delete();
         //Alert::success('Exitoso', 'El registro se ha eliminado');
         return redirect('/usuario');
+    }
+
+    //Perfil
+    public function perfil($slug){
+        $usuario = DB::table('users')->where('slug', $slug);
+        return view('usuarios.perfil', compact('usuario'));
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -25,7 +26,8 @@ class HomeController extends Controller
     public function index()
     {
         if(Auth::check()){
-            return view('home');
+            $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
+            return view('home', compact('permisos'));
         }else{
             return view('/');
         }
