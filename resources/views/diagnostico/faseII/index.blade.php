@@ -17,11 +17,11 @@
                     @endif
                 @endforeach
             </div>
-            <div class="card">
-                <div class="card-header"><i class="fas fa-table"></i> Tabla microempresarios</div>
+            <div class="">
+                <!--<div class="card-header"><i class="fas fa-table"></i> Tabla microempresarios</div>-->
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table" id="SimpleTable">
+                        <table class="p-1" id="SimpleTable">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -46,7 +46,7 @@
                                         <td>{{ $empresa->municipio }}</td>
                                         <td>
                                             <p
-                                                class="{{ $empresa->nombre == '' ? 'badge bg-warning' : 'badge bg-primary' }}">
+                                                class="{{ $empresa->nombre == '' ? 'badge bg-warning' : 'badge bg-info' }}">
                                                 {{ $empresa->nombre == '' ? 'Sin asignar' : $empresa->nombre . ' ' . $empresa->apellido }}
                                             </p>
                                         </td>
@@ -58,7 +58,7 @@
                                         @foreach ($permisos as $permiso)
                                             @if ($permiso->permiso == 'completar-analisis')
                                                 <td style="width: 10%">
-                                                    <a class="btn btn-secondary btn-sm"
+                                                    <a class="btn btn-primary btn-sm"
                                                         href="/diagnostico/{{ $empresa->nit }}/analisis"
                                                         title="Análisis individual"><i class="fas fa-edit"></i>
                                                         Completar</a>

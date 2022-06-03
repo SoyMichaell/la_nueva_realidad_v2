@@ -40,6 +40,7 @@ class RolController extends Controller
                     'permiso' => $rol
                 ]);
             }
+            Alert::sucess('Exitoso','Rol creado con exito');
             return redirect('/rol');
         } else {
             return redirect('/rol');

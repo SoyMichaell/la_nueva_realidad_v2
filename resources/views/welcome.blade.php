@@ -2,6 +2,11 @@
 
 @section('content')
     <style>
+        body{
+            background-image: url('image/fondo_principal.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
         .sectionone {
             margin-top: 10%;
         }
@@ -20,7 +25,7 @@
         }
 
         .nav-link:hover {
-            color: #fc7323;
+            color: #6777EF;
         }
 
         .navbar-brand {
@@ -28,12 +33,12 @@
         }
 
         .navbar-brand:hover {
-            color: #fc7323;
+            color: #6777EF;
         }
 
     </style>
-    <nav class="container navbar">
-        <div class="container-fluid">
+    <nav class="container-fluid navbar navbar-light bg-light">
+        <div class="container">
             <a class="navbar-brand">La Nueva Realidad</a>
             <div class="d-flex justify-content-end">
                 <a class="nav-link btn btn-primario" href="">Dashboard</a>

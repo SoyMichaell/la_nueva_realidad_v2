@@ -27,7 +27,7 @@
 <body class="sb-nav-fixed" style="background-color: #fff;">
     @include('sweetalert::alert')
     @if (Auth::check())
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <nav class="sb-topnav navbar navbar-expand navbar-light bg-light shadow-sm">
             <!-- Navbar Brand-->
             <a class="navbar-brand ps-3" href="{{ url('/home') }}">La Nueva Realidad</a>
             <!-- Sidebar Toggle-->
@@ -37,17 +37,16 @@
             <ul class="navbar-nav d-flex justify-content-end w-100 ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false"><i
-                            class="fas fa-user fa-fw"></i>{{ Auth::user()->nombre }}</a>
+                        data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user-circle"></i> {{ Auth::user()->nombre }}</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item"
-                                href="{{ url('usuario/' . Str::lower(Auth::user()->slug) . '/perfil') }}">Perfil</a>
+                                href="{{ url('usuario/' . Str::lower(Auth::user()->slug) . '/perfil') }}"><i class="fas fa-id-badge"></i> Perfil</a>
                         </li>
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
                         <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">Cerrar sesión</a>
+                        document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
                             <form id="logout-form" action="{{ url('/logout') }}" method="POST"
                                 class="d-none">
                                 {{ csrf_field() }}
@@ -60,7 +59,7 @@
 
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <nav class="sb-sidenav accordion sb-sidenav-light shadow-sm" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Principal</div>
@@ -122,11 +121,11 @@
                                         I</a>
                                     <a class="nav-link" href="{{ url('diagnostico/individual') }}">Análisis
                                         microempresa</a>
-                                    <a class="nav-link" href="{{ url('diagnostico/mdofa') }}">Matriz DOFA
+                                    <!--<a class="nav-link" href="{{ url('diagnostico/mdofa') }}">Matriz DOFA
                                         microempresa</a>
                                     <a class="nav-link" href="{{ url('diagnostico/planaccion') }}">Plan de
                                         acción
-                                        microempresa</a>
+                                        microempresa</a>-->
                                 </nav>
                             </div>
                         </div>
@@ -148,7 +147,28 @@
 
     <script>
         $(document).ready(function() {
-            $('#SimpleTable').DataTable();
+            $('#SimpleTable').DataTable({
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+            });
         });
     </script>
 

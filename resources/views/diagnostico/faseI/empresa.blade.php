@@ -3,6 +3,7 @@
 @section('content')
     <main>
         <div class="container">
+            <a class="btn btn-primary btn-sm" href="{{url("diagnostico/{$empresa->nit}/pdf")}}">Generar pdf</a>
             <div class="alert alert-info">
                 <h1 class="mt-4">Muestra 374 microempresas</h1>
                 <p>Listado de empresas seleccionadas para aplicación del instrumento de recolección de la información para

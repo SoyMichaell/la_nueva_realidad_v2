@@ -19,11 +19,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
 
+Route::get('diagnostico/{nit}/pdf', [DiagnosticoController::class, 'pdfDiagnostico']);
 Route::get('diagnostico/fase1', [DiagnosticoController::class, 'index']);
 Route::get('diagnostico/mdofa', [DiagnosticoController::class, 'mdofa']);
 Route::get('diagnostico/{nit}/crear-dofa', [DiagnosticoController::class, 'mcrear']);

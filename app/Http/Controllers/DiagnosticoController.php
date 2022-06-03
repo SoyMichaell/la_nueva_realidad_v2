@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\App;
 use App\Models\Empresa;
-use App\Models\ResultadoEncuesta;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Laravel\Ui\Presets\React;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class DiagnosticoController extends Controller
@@ -46,6 +45,15 @@ class DiagnosticoController extends Controller
         $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
         return view('diagnostico/faseI.empresa', compact('empresa', 'permisos'));
     }
+
+    public function pdfDiagnostico($id)
+    {
+        $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
+        $view = view('diagnostico/faseI.pdf', compact('permisos'))->render();
+        $pdf = App::make("dompdf.wrapper");
+        $pdf->loadHTML($view);
+        return $pdf->stream();
+    }
     /*Fin rutas fase I*/
 
     /*Rutas fase II*/
@@ -66,7 +74,7 @@ class DiagnosticoController extends Controller
     public function analisis_individual()
     {
         $idPersona = Auth::user()->rol;
-        if ($idPersona == 7) {
+        if ($idPersona == 7 || $idPersona == 8) {
             $empresas = DB::table('resultados')
                 ->join('empresas', 'resultados.nit_empresa', '=', 'empresas.nit')
                 ->join('diagnostico_individual', 'resultados.nit_empresa', '=', 'diagnostico_individual.nit_empresa')

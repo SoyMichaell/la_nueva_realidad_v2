@@ -10,17 +10,17 @@
                     diagnostico</p>
             </div>
             <hr>
-            <div class="card">
-                <div class="card-header"><i class="fas fa-table"></i> Listado empresas</div>
+            <div class="">
+                <!--<div class="card-header"><i class="fas fa-table"></i> Listado empresas</div>-->
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table" id="SimpleTable">
+                        <table class="p-1" id="SimpleTable">
                             <thead>
-                                <tr>
+                                <tr class="bg-light">
                                     <th>#</th>
                                     <th>Nit</th>
-                                    <th style="width: ">Razón social</th>
-                                    <th>CIIU</th>
+                                    <th style="width: 25%">Razón social</th>
+                                    <th style="width: 20%">CIIU</th>
                                     <th>Municipio</th>
                                     <th>Fecha registro encuesta</th>
                                     <th>Resultado</th>
@@ -43,7 +43,7 @@
                                                 {{ $empresa->total }}</p>
                                         </td>
                                         <td style="width: 10%">
-                                            <a class="btn btn-info btn-sm text-white"
+                                            <a class="btn btn-primary btn-sm text-white"
                                                 href="/diagnostico/{{ $empresa->nit }}"><i class="fas fa-info-circle"></i>
                                                 Detalle</a>
                                             <!--<a class="btn btn-primary" href="/diagnostico/{{ $empresa->nit }}/analisis" title="Análisis individual"><i class="fas fa-bezier-curve"></i></a>-->

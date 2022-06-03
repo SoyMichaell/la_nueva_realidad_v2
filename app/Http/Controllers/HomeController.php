@@ -26,8 +26,10 @@ class HomeController extends Controller
     public function index()
     {
         if(Auth::check()){
+            $users = DB::table('users')->get();
+            $empresas = DB::table('empresas')->get();
             $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
-            return view('home', compact('permisos'));
+            return view('home', compact('permisos','users','empresas'));
         }else{
             return view('/');
         }
