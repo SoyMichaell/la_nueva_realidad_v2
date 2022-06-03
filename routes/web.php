@@ -39,6 +39,7 @@ Route::put('diagnostico/{nit}/perspectivacrecimientodesarrollo', [DiagnosticoCon
 Route::put('diagnostico/{nit}/perspectivacliente', [DiagnosticoController::class, 'perspectivacliente']);
 Route::put('diagnostico/{nit}/perspectivaprocesosinternos', [DiagnosticoController::class, 'perspectivaprocesosinternos']);
 Route::put('diagnostico/{nit}/perspectivafinanciera', [DiagnosticoController::class, 'perspectivafinanciera']);
+Route::get('diagnostico/{nit}/pdfAnalisis', [DiagnosticoController::class, 'pdfAnalisis']);
 
 Route::get('diagnostico/asignacion', [DiagnosticoController::class, 'asignacion']);
 

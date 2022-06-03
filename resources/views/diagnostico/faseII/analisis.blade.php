@@ -3,13 +3,17 @@
 @section('content')
     <main>
         <div class="container">
-            <h1 class="mt-4">Formato de diagnostico empresarial</h1>
-            <p>Realizar el diagnostico de la empresa analizando cada una de las perspectivas desarrolladas desde el proyecto
+            <h1 class="mt-4">Formato de Diagnóstico Empresarial</h1>
+            <p>Realizar el diagnóstico de la empresa analizando cada una de las perspectivas desarrolladas desde el proyecto
                 La Nueva Realidad.</p>
             <hr>
+            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="fas fa-info-circle"></i> Información de interes
+            </button>
+            <a class="btn btn-warning btn-sm" href="{{url("diagnostico/{$empresa->nit}/pdfAnalisis")}}" target="_blank">Generar reporte</a>
             <!--Información empresa-->
-            <a class="btn btn-warning btn-sm" href="#" title="Descargar información microempresario"><i
-                    class="fas fa-file-pdf"></i> Generar reporte</a>
+            <!--<a class="btn btn-warning btn-sm" href="#" title="Descargar información microempresario"><i
+                                            class="fas fa-file-pdf"></i> Generar reporte</a>-->
             <div class="card mb-3 mt-3">
                 <div class="card-header">
                     <div class="row">
@@ -1011,4 +1015,32 @@
             @endif
         </div>
     </main>
-@endsection
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-info-circle"></i> Información</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="font-size: 15px">
+                    <h5>Cordial saludo estimados instructores investigadores,</h5>
+                    De acuerdo a la planeación y asignación de microempresas realizada el día 27 de mayo del año 2022 se
+                    plantean las siguientes actividades : <br>
+                    <ul>
+                        <li>Ánalisis del diagnostico individual a cada una de las microempresas correspondientes</li>
+                        <li>Desarrollo de la herramienta por perspectiva:
+                            <ul>
+                                <li>Identificación de los hallazgos y problemática más relevante enfrentada por las
+                                    microempresas</li>
+                                <li>Planteamiento de posibles procesos formativos que se puedan desarrolloar en la fase de
+                                    ejecución del proyecto acorde a las problemáticas identificadas.</li>
+                                <li>Planteamiento de posibles herramientas a desarrollar por parte del equipo de
+                                    instructores a cargo del proeycto.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    @endsection

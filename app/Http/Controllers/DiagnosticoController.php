@@ -48,11 +48,15 @@ class DiagnosticoController extends Controller
 
     public function pdfDiagnostico($id)
     {
-        $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
-        $view = view('diagnostico/faseI.pdf', compact('permisos'))->render();
-        $pdf = App::make("dompdf.wrapper");
+        $empresa = DB::table('empresas')
+            ->join('respuestas', 'empresas.nit', '=', 'respuestas.nit_empresa')
+            ->join('resultados', 'empresas.nit', '=', 'resultados.nit_empresa')
+            ->where('empresas.nit', $id)
+            ->first();
+        $view = \view('diagnostico/faseI.pdf', compact('empresa'))->render();
+        $pdf = \App::make("dompdf.wrapper");
         $pdf->loadHTML($view);
-        return $pdf->stream();
+        return $pdf->stream('diagnostico.pdf');
     }
     /*Fin rutas fase I*/
 
@@ -300,6 +304,20 @@ class DiagnosticoController extends Controller
             ->get();
         $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
         return view('diagnostico/faseII.asignacion', compact('personas', 'permisos'));
+    }
+
+    public function pdfAnalisis($id)
+    {
+        $empresa = DB::table('empresas')
+            ->join('respuestas', 'empresas.nit', '=', 'respuestas.nit_empresa')
+            ->where('nit', $id)
+            ->first();
+        $exist_diagnostico_empresa = DB::table('diagnostico_individual')->where('nit_empresa', $id)->first();
+        $usuarios = User::all();
+        $view = \view('diagnostico/faseII.pdf', compact('empresa','exist_diagnostico_empresa','usuarios'))->render();
+        $pdf = \App::make("dompdf.wrapper");
+        $pdf->loadHTML($view);
+        return $pdf->stream('diagnostico.pdf');
     }
 
     /*Fin rutas fase II*/

@@ -1,0 +1,15 @@
+bd: la_nueva_realidad_2
+user: admin
+pass: 6*p[|GZWNmlI0~6A
+
+
+app/providers/appserviceproviders
+
+public function register(){
+	$this->app->bind('path.public', function({
+	return base:path('public_html);	
+	}));
+}
+
+
+video guia: https://www.youtube.com/watch?v=_0ixeeACvZE
