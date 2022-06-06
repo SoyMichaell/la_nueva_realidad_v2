@@ -10,7 +10,10 @@
                     diagnostico</p>
             </div>
             <hr>
-            <div class="">
+            <div class="d-flex justify-content-start">
+                <a class="btn btn-success btn-sm" href="{{url('diagnostico/excel')}}" target="_blank"><i class="fas fa-file-excel"></i> Excel</a>
+            </div>
+            <div class="card mt-2">
                 <!--<div class="card-header"><i class="fas fa-table"></i> Listado empresas</div>-->
                 <div class="card-body">
                     <div class="table-responsive">

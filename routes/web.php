@@ -5,6 +5,7 @@ use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
 use App\Models\Rol;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +20,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    if (Auth::check()) {
+        return redirect('/home');
+    } else {
+        return view('auth.login');
+    }
 });
 
 Auth::routes();

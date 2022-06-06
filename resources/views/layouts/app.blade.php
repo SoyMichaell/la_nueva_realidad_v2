@@ -173,6 +173,10 @@
     </script>
 
     <script src="{{ asset('js/scripts.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    @yield('js')
+    <script src="{{asset('js/charts.js')}}"></script>
+    
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.js"></script>
 
 

@@ -210,6 +210,7 @@ class UsuarioController extends Controller
     //Perfil
     public function perfil($slug){
         $usuario = DB::table('users')->where('slug', $slug);
-        return view('usuarios.perfil', compact('usuario'));
+        $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
+        return view('usuarios.perfil', compact('usuario','permisos'));
     }
 }

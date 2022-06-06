@@ -335,6 +335,7 @@ class DiagnosticoController extends Controller
     public function mcrear($id)
     {
         $empresa = Empresa::find($id);
-        return view('diagnostico/dofa.crear', compact('empresa'));
+        $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
+        return view('diagnostico/dofa.crear', compact('empresa','permisos'));
     }
 }

@@ -1,7 +1,7 @@
 <head>
     <style>
         body{
-            font-family: 'Times New Roman'  ;
+            font-family: Arial, Helvetica, sans-serif;
         }
         table{
             width: 100%;

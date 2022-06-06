@@ -10,7 +10,7 @@
                     diagnostico</p>
             </div>
             <hr>
-            <a class="btn btn-primary btn-sm mt-2 mb-2" href="{{url("diagnostico/{$empresa->nit}/pdf")}}">Generar pdf</a>
+            <a class="btn btn-primary btn-sm mt-2 mb-2" href="{{url("diagnostico/{$empresa->nit}/pdf")}}" target="_blank">Generar pdf</a>
             <div class="card mb-3">
                 <div class="card-header"><i class="fas fa-info-circle"></i> Información empresa</div>
                 <div class="card-body">
