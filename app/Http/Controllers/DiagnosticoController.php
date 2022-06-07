@@ -327,6 +327,8 @@ class DiagnosticoController extends Controller
     {
         $empresas = DB::table('diagnostico_individual')
             ->join('empresas', 'diagnostico_individual.nit_empresa', '=', 'empresas.nit')
+            ->join('users','diagnostico_individual.id_persona','=','users.id')
+            ->orderBy('municipio')
             ->get();
         $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
         return view('diagnostico/dofa.index', compact('empresas', 'permisos'));
@@ -334,8 +336,109 @@ class DiagnosticoController extends Controller
 
     public function mcrear($id)
     {
-        $empresa = Empresa::find($id);
+        $empresa = DB::table('empresas')
+            ->where('nit',$id)
+            ->first();
         $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
         return view('diagnostico/dofa.crear', compact('empresa','permisos'));
     }
+
+    public function storedofa(Request $request){
+
+
+        $rules = [
+            'fortaleza1' => 'required', 'fortaleza2' => 'required', 'fortaleza3' => 'required',
+            'debilidad1' => 'required', 'debilidad2' => 'required', 'debilidad3' => 'required',
+            'oportunidad1' => 'required', 'oportunidad2' => 'required', 'oportunidad3' => 'required',
+            'estrategiafo1' => 'required', 'estrategiafo2' => 'required', 'estrategiafo3' => 'required',
+            'estrategiado1' => 'required', 'estrategiado2' => 'required', 'estrategiado3' => 'required',
+            'amenaza1' => 'required', 'amenaza2' => 'required', 'amenaza3' => 'required',
+            'estrategiafa1' => 'required', 'estrategiafa2' => 'required', 'estrategiafa3' => 'required',
+            'estrategiada1' => 'required', 'estrategiada2' => 'required', 'estrategiada3' => 'required',
+        ];
+
+        $message = [
+            'fortaleza1.required' => 'El campo es requerido','fortaleza2.required' => 'El campo es requerido','fortaleza3.required' => 'El campo es requerido',
+            'debilidad1.required' => 'El campo es requerido','debilidad2.required' => 'El campo es requerido','debilidad3.required' => 'El campo es requerido',
+            'oportunidad1.required' => 'El campo es requerido','oportunidad2.required' => 'El campo es requerido','oportunidad3.required' => 'El campo es requerido',
+            'estrategiafo1.required' => 'El campo es requerido','estrategiafo2.required' => 'El campo es requerido','estrategiafo3.required' => 'El campo es requerido',
+            'estrategiado1.required' => 'El campo es requerido','estrategiado2.required' => 'El campo es requerido','estrategiado3.required' => 'El campo es requerido',
+            'amenaza1.required' => 'El campo es requerido','amenaza2.required' => 'El campo es requerido','amenaza3.required' => 'El campo es requerido',
+            'estrategiafa1.required' => 'El campo es requerido','estrategiafa2.required' => 'El campo es requerido','estrategiafa3.required' => 'El campo es requerido',
+            'estrategiada1.required' => 'El campo es requerido','estrategiada2.required' => 'El campo es requerido','estrategiada3.required' => 'El campo es requerido',
+        ];
+
+        $this->validate($request,$rules,$message);
+
+        $matriz_dofa = DB::table('matriz_dofa')
+            ->insert([
+                'nit' => $request->get('nit'),
+                //fortalezas
+                'fortaleza1' => $request->get('fortaleza1'),
+                'fortaleza2' => $request->get('fortaleza2'),
+                'fortaleza3' => $request->get('fortaleza3'),
+                'fortaleza4' => $request->get('fortaleza4'),
+                'fortaleza5' => $request->get('fortaleza5'),
+                //debilidades
+                'debilidad1' => $request->get('debilidad1'),
+                'debilidad2' => $request->get('debilidad2'),
+                'debilidad3' => $request->get('debilidad3'),
+                'debilidad4' => $request->get('debilidad4'),
+                'debilidad5' => $request->get('debilidad5'),
+                //oportunidades
+                'oportunidad1' => $request->get('oportunidad1'),
+                'oportunidad2' => $request->get('oportunidad2'),
+                'oportunidad3' => $request->get('oportunidad3'),
+                'oportunidad4' => $request->get('oportunidad4'),
+                'oportunidad5' => $request->get('oportunidad5'),
+                //estrategiasfo
+                'estrategiafo1' => $request->get('estrategiafo1'),
+                'estrategiafo2' => $request->get('estrategiafo2'),
+                'estrategiafo3' => $request->get('estrategiafo3'),
+                'estrategiafo4' => $request->get('estrategiafo4'),
+                'estrategiafo5' => $request->get('estrategiafo5'),
+                //estrategiasdo
+                'estrategiado1' => $request->get('estrategiado1'),
+                'estrategiado2' => $request->get('estrategiado2'),
+                'estrategiado3' => $request->get('estrategiado3'),
+                'estrategiado4' => $request->get('estrategiado4'),
+                'estrategiado5' => $request->get('estrategiado5'),
+                //estrategiasdo
+                'estrategiado1' => $request->get('estrategiado1'),
+                'estrategiado2' => $request->get('estrategiado2'),
+                'estrategiado3' => $request->get('estrategiado3'),
+                'estrategiado4' => $request->get('estrategiado4'),
+                'estrategiado5' => $request->get('estrategiado5'),
+                //amenazas
+                'amenaza1' => $request->get('amenaza1'),
+                'amenaza2' => $request->get('amenaza2'),
+                'amenaza3' => $request->get('amenaza3'),
+                'amenaza4' => $request->get('amenaza4'),
+                'amenaza5' => $request->get('amenaza5'),
+                //estrategiasfa
+                'estrategiafa1' => $request->get('estrategiafa1'),
+                'estrategiafa2' => $request->get('estrategiafa2'),
+                'estrategiafa3' => $request->get('estrategiafa3'),
+                'estrategiafa4' => $request->get('estrategiafa4'),
+                'estrategiafa5' => $request->get('estrategiafa5'),
+                //estrategiasfa
+                'estrategiada1' => $request->get('estrategiada1'),
+                'estrategiada2' => $request->get('estrategiada2'),
+                'estrategiada3' => $request->get('estrategiada3'),
+                'estrategiada4' => $request->get('estrategiada4'),
+                'estrategiada5' => $request->get('estrategiada5'),
+            ]);
+
+        if($matriz_dofa == 1){
+            Alert::success('Exitoso','Matriz guardada');
+            return back();
+        }else{
+            Alert::warning('Advertencia','Oops Vuelve a intentarlo');
+            return back();
+        }
+        
+        
+        //
+    }
+
 }

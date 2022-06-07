@@ -31,7 +31,7 @@ Auth::routes();
 
 Route::get('diagnostico/{nit}/pdf', [DiagnosticoController::class, 'pdfDiagnostico']);
 Route::get('diagnostico/fase1', [DiagnosticoController::class, 'index']);
-Route::get('diagnostico/mdofa', [DiagnosticoController::class, 'mdofa']);
+Route::get('diagnostico/dofa', [DiagnosticoController::class, 'mdofa']);
 Route::get('diagnostico/{nit}/crear-dofa', [DiagnosticoController::class, 'mcrear']);
 Route::get('diagnostico/{nit}/analisis', [DiagnosticoController::class, 'analisis']);
 Route::get('diagnostico/individual', [DiagnosticoController::class, 'analisis_individual']);
@@ -47,6 +47,8 @@ Route::put('diagnostico/{nit}/perspectivafinanciera', [DiagnosticoController::cl
 Route::get('diagnostico/{nit}/pdfAnalisis', [DiagnosticoController::class, 'pdfAnalisis']);
 
 Route::get('diagnostico/asignacion', [DiagnosticoController::class, 'asignacion']);
+Route::put('diagnostico/{nit}/storedofa', [DiagnosticoController::class, 'storedofa']);
+
 
 Route::get('usuario/{slug}/pefil', [UsuarioController::class, 'perfil']);
 

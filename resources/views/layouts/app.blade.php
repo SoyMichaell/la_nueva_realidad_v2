@@ -121,9 +121,9 @@
                                         I</a>
                                     <a class="nav-link" href="{{ url('diagnostico/individual') }}">Análisis
                                         microempresa</a>
-                                    <!--<a class="nav-link" href="{{ url('diagnostico/mdofa') }}">Matriz DOFA
+                                    <a class="nav-link" href="{{ url('diagnostico/dofa') }}">Matriz DOFA
                                         microempresa</a>
-                                    <a class="nav-link" href="{{ url('diagnostico/planaccion') }}">Plan de
+                                    <!--<a class="nav-link" href="{{ url('diagnostico/planaccion') }}">Plan de
                                         acción
                                         microempresa</a>-->
                                 </nav>

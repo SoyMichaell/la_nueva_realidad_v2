@@ -1,6 +1,6 @@
 @extends('layouts.app')
 <style>
-    #chartsperson{
+    #chartsperson {
         max-width: 600px;
     }
 </style>
@@ -49,19 +49,32 @@
                 <li class="breadcrumb-item active">Graficas</li>
             </ol>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4 mt-2">
                     <div class="card">
                         <div class="card-body">
-                            <p class="alert alert-primary">Grafica de usuarios en plataforma La Nueva Realidad 2022, vinculados al proyecto en la FASE II.</p>
+                            <p class="alert alert-primary text-center">Grafica de usuarios en plataforma La Nueva Realidad
+                                2022,
+                                vinculados al proyecto en la FASE II.</p>
                             <canvas id="chartsperson"></canvas>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-8 mt-2">
                     <div class="card">
                         <div class="card-body">
-                            <p class="alert alert-primary">Grafica de usuarios en plataforma La Nueva Realidad 2022, vinculados al proyecto en la FASE II.</p>
+                            <p class="alert alert-primary text-center">Grafica de empresas registradas en camara de comercio
+                                año 2020
+                                para selección de muesta de 374 microempresarios del Departamento de Casanare.</p>
                             <canvas id="chartsbussines"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 mt-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="alert alert-primary text-center">Grafico de empresas seleccionadas para la aplicación
+                                de la herramienta de diagnóstico a microempresarios del departamento de Casanare.</p>
+                            <canvas id="chartsbussinesx"></canvas>
                         </div>
                     </div>
                 </div>
@@ -76,11 +89,11 @@
         const myChart1 = new Chart(ctx1, {
             type: 'doughnut',
             data: {
-                
-                labels: [<?php foreach($usuarios as $usuario){?><?php echo "'".$usuario->nombre_rol."'";?>,<?php } ?>],
+
+                labels: [<?php foreach($usuarios as $usuario){?><?php echo "'" . $usuario->nombre_rol . "'"; ?>, <?php } ?>],
                 datasets: [{
                     label: 'Total',
-                    data: [<?php foreach($usuarios as $usuario){?><?php echo $usuario->total;?>,<?php } ?>],
+                    data: [<?php foreach($usuarios as $usuario){?><?php echo $usuario->total; ?>, <?php } ?>],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -95,19 +108,19 @@
                 }]
             },
             options: {
-                
+
             }
         });
         //Grafico empresas
         const ctx2 = document.getElementById('chartsbussines');
         const myChart2 = new Chart(ctx2, {
-            type: 'doughnut',
+            type: 'bar',
             data: {
-                
-                labels: [<?php foreach($empresasCharts as $empresa){?><?php echo "'".$empresa->municipio."'";?>,<?php } ?>],
+
+                labels: [<?php foreach($empresasCharts as $empresa){?><?php echo "'" . $empresa->municipio . "'"; ?>, <?php } ?>],
                 datasets: [{
                     label: 'Total',
-                    data: [<?php foreach($empresasCharts as $empresa){?><?php echo $empresa->total;?>,<?php } ?>],
+                    data: [<?php foreach($empresasCharts as $empresa){?><?php echo $empresa->total; ?>, <?php } ?>],
                     backgroundColor: [
                         'rgb(240, 248, 255)',
                         'rgb(250, 235, 215)',
@@ -116,6 +129,9 @@
                         'rgb(100, 149, 237)',
                         'rgb(255, 127, 80)',
                         'rgb(0, 139, 139)',
+                        'rgb(255, 20, 147)',
+                        'rgb(255, 215, 0)',
+                        'rgb(255, 240, 245)'
                     ],
                     borderColor: [
                         'rgb(240, 248, 255)',
@@ -124,13 +140,50 @@
                         'rgb(138, 43, 226)',
                         'rgb(100, 149, 237)',
                         'rgb(255, 127, 80)',
-                        'rgb(0, 139, 139)'
+                        'rgb(0, 139, 139)',
+                        'rgb(255, 20, 147)',
+                        'rgb(255, 215, 0)',
+                        'rgb(255, 240, 245)',
                     ],
                     borderWidth: 1
                 }]
             },
             options: {
-                
+
+            }
+        });
+        const ctx3 = document.getElementById('chartsbussinesx');
+        const myChart3 = new Chart(ctx3, {
+            type: 'bar',
+            data: {
+
+                labels: [<?php foreach($empresasCharts374 as $empresa){?><?php echo "'" . $empresa->municipio . "'"; ?>, <?php } ?>],
+                datasets: [{
+                    label: 'Total',
+                    data: [<?php foreach($empresasCharts374 as $empresa){?><?php echo $empresa->total; ?>, <?php } ?>],
+                    backgroundColor: [
+                        'rgb(0, 0, 255)',
+                        'rgb(138, 43, 226)',
+                        'rgb(127, 255, 0)',
+                        'rgb(220, 20, 60)',
+                        'rgb(255, 215, 0)',
+                        'rgb(255, 69, 0)',
+                        'rgb(255, 0, 0)'
+                    ],
+                    borderColor: [
+                        'rgb(0, 0, 255)',
+                        'rgb(138, 43, 226)',
+                        'rgb(127, 255, 0)',
+                        'rgb(220, 20, 60)',
+                        'rgb(255, 215, 0)',
+                        'rgb(255, 69, 0)',
+                        'rgb(255, 0, 0)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+
             }
         });
     </script>
