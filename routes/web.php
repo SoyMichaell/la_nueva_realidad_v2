@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DiagnosticoController;
 use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\GraficoController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
 use App\Models\Rol;
@@ -45,6 +46,7 @@ Route::put('diagnostico/{nit}/perspectivacliente', [DiagnosticoController::class
 Route::put('diagnostico/{nit}/perspectivaprocesosinternos', [DiagnosticoController::class, 'perspectivaprocesosinternos']);
 Route::put('diagnostico/{nit}/perspectivafinanciera', [DiagnosticoController::class, 'perspectivafinanciera']);
 Route::get('diagnostico/{nit}/pdfAnalisis', [DiagnosticoController::class, 'pdfAnalisis']);
+Route::get('diagnostico/{nit}/pdfDofa', [DiagnosticoController::class, 'pdfDofa']);
 
 Route::get('diagnostico/asignacion', [DiagnosticoController::class, 'asignacion']);
 Route::put('diagnostico/{nit}/storedofa', [DiagnosticoController::class, 'storedofa']);
@@ -56,4 +58,5 @@ Route::resource('rol', RolController::class);
 Route::resource('usuario', UsuarioController::class);
 Route::resource('empresa', EmpresaController::class);
 Route::resource('diagnostico', DiagnosticoController::class);
+Route::resource('grafico', GraficoController::class);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

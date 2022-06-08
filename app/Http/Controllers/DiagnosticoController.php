@@ -325,11 +325,20 @@ class DiagnosticoController extends Controller
     /*Rutas DOFA*/
     public function mdofa()
     {
-        $empresas = DB::table('diagnostico_individual')
+        if(Auth::user()->rol == 7 || Auth::user()->rol == 8){
+            $empresas = DB::table('diagnostico_individual')
+            ->join('empresas', 'diagnostico_individual.nit_empresa', '=', 'empresas.nit')
+            ->join('users', 'diagnostico_individual.id_persona', '=', 'users.id')
+            ->where('diagnostico_individual.id_persona', Auth::user()->id)
+            ->orderBy('municipio')
+            ->get();
+        }else{
+            $empresas = DB::table('diagnostico_individual')
             ->join('empresas', 'diagnostico_individual.nit_empresa', '=', 'empresas.nit')
             ->join('users', 'diagnostico_individual.id_persona', '=', 'users.id')
             ->orderBy('municipio')
             ->get();
+        }
         $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
         return view('diagnostico/dofa.index', compact('empresas', 'permisos'));
     }
@@ -502,6 +511,17 @@ class DiagnosticoController extends Controller
             Alert::warning('Advertencia', 'Oops Vuelve a intentarlo');
             return back();
         }
-        //
+    }
+    //PDF
+    public function pdfDofa($id)
+    {
+        $dofa = DB::table('matriz_dofa')
+            ->join('empresas','matriz_dofa.nit','=','empresas.nit')
+            ->where('matriz_dofa.nit', $id)->first();
+        $view = \view('diagnostico/dofa.pdf', compact('dofa'))->render();
+        $pdf = \App::make("dompdf.wrapper");
+        $pdf->setPaper('a4', 'landscape');
+        $pdf->loadHTML($view);
+        return $pdf->stream('matriz_dofa.pdf');
     }
 }

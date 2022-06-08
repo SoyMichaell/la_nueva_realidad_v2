@@ -30,6 +30,7 @@
                                     <th>Municipio</th>
                                     <th>Instructor asignado</th>
                                     <th>Puntaje</th>
+                                    <th>Modalidad</th>
                                     @foreach ($permisos as $permiso)
                                         @if ($permiso->permiso == 'completar-analisis')
                                             <th>----</th>
@@ -55,6 +56,7 @@
                                                 class="@if ($empresa->total >= 0 and $empresa->total <= 40) badge bg-danger text-white @elseif($empresa->total > 40 and $empresa->total <= 70) badge bg-warning text-white @elseif($empresa->total > 70 and $empresa->total <= 100) badge bg-success text-white @endif">
                                                 {{ $empresa->total }}</p>
                                         </td>
+                                        <td class="badge bg-light text-dark">{{Str::ucfirst($empresa->modalidad)}}</td>
                                         @foreach ($permisos as $permiso)
                                             @if ($permiso->permiso == 'completar-analisis')
                                                 <td style="width: 10%">

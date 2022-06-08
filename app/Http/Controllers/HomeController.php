@@ -32,13 +32,21 @@ class HomeController extends Controller
                 ->select('municipio', DB::raw('count(*) as total'))
                 ->groupBy('municipio')
                 ->get();
-            //Consulta grafico emresas 374 empresas
+            //Consulta grafico empresas 374 empresas
             $empresasCharts374 = DB::table('empresas')
-                ->join('resultados','empresas.nit','=','resultados.nit_empresa')
+                ->join('resultados', 'empresas.nit', '=', 'resultados.nit_empresa')
                 ->select('municipio', DB::raw('count(*) as total'))
                 ->groupBy('municipio')
                 ->get();
-            return view('home', compact('permisos', 'users', 'empresas', 'usuarios', 'empresasCharts', 'empresasCharts374'));
+            //Consulta grafico puntaje 374 empresas
+            $empresasChartsPuntaje = DB::table('resultados')
+                ->select('municipio', DB::raw('SUM(total)/COUNT(*) as promedio'))
+                ->join('empresas', 'resultados.nit_empresa', '=', 'empresas.nit')
+                ->where('empresas.estado_35', "seleccionado")
+                ->groupBy('municipio')
+                ->get();
+
+            return view('home', compact('permisos', 'users', 'empresas', 'usuarios', 'empresasCharts', 'empresasCharts374', 'empresasChartsPuntaje'));
         } else {
             $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
             return view('/', compact('permisos'));
