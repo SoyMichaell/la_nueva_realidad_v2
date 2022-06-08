@@ -22,6 +22,9 @@
 
     <!--Datatables-->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css" />
+
+    @yield('css')
+
 </head>
 
 <body class="sb-nav-fixed" style="background-color: #fff;">

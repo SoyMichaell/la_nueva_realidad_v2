@@ -2,38 +2,63 @@
 @section('content')
 @section('css')
     <style>
-        .card {
-            cursor: pointer;
+        .verde__card {
+            background: #92D14D !important;
+            color: #000;
+            font-weight: 300;
+            text-transform: uppercase;
         }
 
-        .card__amena {
-            background: #CFCCCC !important;
-            opacity: 0.95;
-            color: #fff;
+        .verde__content {
+            background: #D8E4BC !important;
         }
 
-        .card__fo {
-            background: linear-gradient(to left, #47C363, #6777EF);
-            color: #fff;
+        .naranja__card {
+            background: #E36B0A !important;
+            color: #000;
+            font-weight: 300;
+            text-transform: uppercase;
         }
 
-        .card__do {
-            background: linear-gradient(to left, #FFA426, #6777EF);
-            color: #fff;
+        .naranja__content {
+            background: #F9BF8F !important;
         }
 
-        .card__fa {
-            background: linear-gradient(to left, #47C363, #CFCCCC);
-            color: #fff;
+        .azul__card {
+            background: #96B3D6 !important;
+            color: #000;
+            font-weight: 300;
+            text-transform: uppercase;
         }
 
-        .card__da {
-            background: linear-gradient(to left, #FFA426, #CFCCCC);
-            color: #fff;
+        .azul__content {
+            background: #DCE6F0 !important;
         }
 
-        .bg__fondo {
-            background: #FFE9D3;
+        .purpura__card {
+            background: #E3DFED !important;
+            color: #000;
+            font-weight: 300;
+            text-transform: uppercase;
+        }
+
+        .purpura__content {
+            background: #E3DFED !important;
+        }
+
+        .amarillo__card {
+            background: #FFFF01 !important;
+            color: #000;
+            font-weight: 300;
+            text-transform: uppercase;
+        }
+
+        .amarillo__content {
+            background: #FFFF67 !important;
+        }
+
+        .table-bordered {
+            border: 2px solid #000 !important;
         }
     </style>
 @endsection
@@ -45,7 +70,10 @@
             Amenazas, Estrategias FA, Estrategias DA. <br> <span class="text-danger">Nota: El sistemas no le permitira
                 guardar si no cumple con el requisito de las tres (3) minimo.</span></p>
         <hr>
-
+        <div class="d-flex">
+            <a class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Dofa"><i class="fas fa-eye"></i>
+                Visualizar DOFA</a>
+        </div>
         <form action="/diagnostico/{{ $empresa->nit }}/storedofa" method="post">
             @csrf
             @method('PUT')
@@ -53,9 +81,9 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>DOFA</th>
-                            <th>Fortalezas</th>
-                            <th>Debilidades</th>
+                            <td>DOFA</td>
+                            <td>Fortalezas</td>
+                            <td>Debilidades</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -72,7 +100,8 @@
                                 <div class="form-group mb-1">
                                     <label for="">1.</label>
                                     <input class="form-control {{ $errors->has('fortaleza1') ? 'is-invalid' : '' }}"
-                                        type="text" name="fortaleza1" value="{{ old('fortaleza1') }}">
+                                        type="text" name="fortaleza1"
+                                        value="{{ ($dofa == '' ? old('fortaleza1') : $dofa->fortaleza1) == '' ?: $dofa->fortaleza1 }}">
                                     @error('fortaleza1')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -82,7 +111,8 @@
                                 <div class="form-group mb-1">
                                     <label for="">2.</label>
                                     <input class="form-control {{ $errors->has('fortaleza2') ? 'is-invalid' : '' }}"
-                                        type="text" name="fortaleza2" value="{{ old('fortaleza2') }}">
+                                        type="text" name="fortaleza2"
+                                        value="{{ ($dofa == '' ? old('fortaleza2') : $dofa->fortaleza2) == '' ?: $dofa->fortaleza2 }}">
                                     @error('fortaleza2')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -92,7 +122,8 @@
                                 <div class="form-group mb-1">
                                     <label for="">3.</label>
                                     <input class="form-control {{ $errors->has('fortaleza3') ? 'is-invalid' : '' }}"
-                                        type="text" name="fortaleza3" value="{{ old('fortaleza3') }}">
+                                        type="text" name="fortaleza3"
+                                        value="{{ ($dofa == '' ? old('fortaleza3') : $dofa->fortaleza3) == '' ?: $dofa->fortaleza3 }}">
                                     @error('fortaleza3')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -102,19 +133,20 @@
                                 <div class="form-group mb-1">
                                     <label for="">4.</label>
                                     <input class="form-control" type="text" name="fortaleza4"
-                                        value="{{ old('fortaleza4') }}">
+                                        value="{{ ($dofa == '' ? old('fortaleza4') : $dofa->fortaleza4) == '' ?: $dofa->fortaleza4 }}">
                                 </div>
                                 <div class="form-group mb-1">
                                     <label for="">5.</label>
                                     <input class="form-control" type="text" name="fortaleza5"
-                                        value="{{ old('fortaleza5') }}">
+                                        value="{{ ($dofa == '' ? old('fortaleza5') : $dofa->fortaleza5) == '' ?: $dofa->fortaleza5 }}">
                                 </div>
                             </td>
                             <td>
                                 <div class="form-group mb-1">
                                     <label for="">1.</label>
                                     <input class="form-control {{ $errors->has('debilidad1') ? 'is-invalid' : '' }}"
-                                        type="text" name="debilidad1" value="{{ old('debilidad1') }}">
+                                        type="text" name="debilidad1"
+                                        value="{{ ($dofa == '' ? old('debilidad1') : $dofa->debilidad1) == '' ?: $dofa->debilidad1 }}">
                                     @error('debilidad1')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -124,7 +156,8 @@
                                 <div class="form-group mb-1">
                                     <label for="">2.</label>
                                     <input class="form-control {{ $errors->has('debilidad2') ? 'is-invalid' : '' }}"
-                                        type="text" name="debilidad2" value="{{ old('debilidad2') }}">
+                                        type="text" name="debilidad2"
+                                        value="{{ ($dofa == '' ? old('debilidad2') : $dofa->debilidad2) == '' ?: $dofa->debilidad2 }}">
                                     @error('debilidad2')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -134,7 +167,8 @@
                                 <div class="form-group mb-1">
                                     <label for="">3.</label>
                                     <input class="form-control {{ $errors->has('debilidad3') ? 'is-invalid' : '' }}"
-                                        type="text" name="debilidad3" value="{{ old('debilidad3') }}">
+                                        type="text" name="debilidad3"
+                                        value="{{ ($dofa == '' ? old('debilidad3') : $dofa->debilidad3) == '' ?: $dofa->debilidad3 }}">
                                     @error('debilidad3')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -144,21 +178,21 @@
                                 <div class="form-group mb-1">
                                     <label for="">4.</label>
                                     <input class="form-control" type="text" name="debilidad4"
-                                        value="{{ old('debilidad4') }}">
+                                        value="{{ ($dofa == '' ? old('debilidad4') : $dofa->debilidad4) == '' ?: $dofa->debilidad4 }}">
                                 </div>
                                 <div class="form-group mb-1">
                                     <label for="">5.</label>
                                     <input class="form-control" type="text" name="debilidad5"
-                                        value="{{ old('debilidad3') }}">
+                                        value="{{ ($dofa == '' ? old('debilidad5') : $dofa->debilidad5) == '' ?: $dofa->debilidad5 }}">
                                 </div>
                             </td>
                         </tr>
                     </tbody>
                     <thead>
                         <tr>
-                            <th>Oportunidades</th>
-                            <th>Estrategias FO</th>
-                            <th>Estrategias DO</th>
+                            <td>Oportunidades</td>
+                            <td>Estrategias FO</td>
+                            <td>Estrategias DO</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -168,7 +202,8 @@
                                     <label for="">1.</label>
                                     <input
                                         class="form-control {{ $errors->has('oportunidad1') ? 'is-invalid' : '' }}"
-                                        type="text" name="oportunidad1" value="{{ old('oportunidad1') }}">
+                                        type="text" name="oportunidad1"
+                                        value="{{ ($dofa == '' ? old('oportunidad1') : $dofa->oportunidad1) == '' ?: $dofa->oportunidad1 }}">
                                     @error('oportunidad1')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -179,7 +214,8 @@
                                     <label for="">2.</label>
                                     <input
                                         class="form-control {{ $errors->has('oportunidad2') ? 'is-invalid' : '' }}"
-                                        type="text" name="oportunidad2" value="{{ old('oportunidad2') }}">
+                                        type="text" name="oportunidad2"
+                                        value="{{ ($dofa == '' ? old('oportunidad2') : $dofa->oportunidad2) == '' ?: $dofa->oportunidad2 }}">
                                     @error('oportunidad2')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -190,7 +226,8 @@
                                     <label for="">3.</label>
                                     <input
                                         class="form-control {{ $errors->has('oportunidad3') ? 'is-invalid' : '' }}"
-                                        type="text" name="oportunidad3" value="{{ old('oportunidad3') }}">
+                                        type="text" name="oportunidad3"
+                                        value="{{ ($dofa == '' ? old('oportunidad3') : $dofa->oportunidad3) == '' ?: $dofa->oportunidad3 }}">
                                     @error('oportunidad3')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -200,12 +237,12 @@
                                 <div class="form-group mb-1">
                                     <label for="">4.</label>
                                     <input class="form-control" type="text" name="oportunidad4"
-                                        value="{{ old('oportunidad4') }}">
+                                        value="{{ ($dofa == '' ? old('oportunidad4') : $dofa->oportunidad4) == '' ?: $dofa->oportunidad4 }}">
                                 </div>
                                 <div class="form-group mb-1">
                                     <label for="">5.</label>
                                     <input class="form-control" type="text" name="oportunidad5"
-                                        value="{{ old('oportunidad5') }}">
+                                        value="{{ ($dofa == '' ? old('oportunidad5') : $dofa->oportunidad5) == '' ?: $dofa->oportunidad5 }}">
                                 </div>
                             </td>
                             <td>
@@ -213,7 +250,8 @@
                                     <label for="">1.</label>
                                     <input
                                         class="form-control {{ $errors->has('estrategiafo1') ? 'is-invalid' : '' }}"
-                                        type="text" name="estrategiafo1" value="{{ old('estrategiafo1') }}">
+                                        type="text" name="estrategiafo1"
+                                        value="{{ ($dofa == '' ? old('estrategiafo1') : $dofa->estrategiafo1) == '' ?: $dofa->estrategiafo1 }}">
                                     @error('estrategiafo1')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -224,7 +262,8 @@
                                     <label for="">2.</label>
                                     <input
                                         class="form-control {{ $errors->has('estrategiafo2') ? 'is-invalid' : '' }}"
-                                        type="text" name="estrategiafo2" value="{{ old('estrategiafo2') }}">
+                                        type="text" name="estrategiafo2"
+                                        value="{{ ($dofa == '' ? old('estrategiafo2') : $dofa->estrategiafo2) == '' ?: $dofa->estrategiafo2 }}">
                                     @error('estrategiafo2')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -235,7 +274,8 @@
                                     <label for="">3.</label>
                                     <input
                                         class="form-control {{ $errors->has('estrategiafo3') ? 'is-invalid' : '' }}"
-                                        type="text" name="estrategiafo3" value="{{ old('estrategiafo3') }}">
+                                        type="text" name="estrategiafo3"
+                                        value="{{ ($dofa == '' ? old('estrategiafo3') : $dofa->estrategiafo3) == '' ?: $dofa->estrategiafo3 }}">
                                     @error('estrategiafo3')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -245,12 +285,12 @@
                                 <div class="form-group mb-1">
                                     <label for="">4.</label>
                                     <input class="form-control" type="text" name="estrategiafo4"
-                                        value="{{ old('estrategiafo4') }}">
+                                        value="{{ ($dofa == '' ? old('estrategiafo4') : $dofa->estrategiafo4) == '' ?: $dofa->estrategiafo4 }}">
                                 </div>
                                 <div class="form-group mb-1">
                                     <label for="">5.</label>
                                     <input class="form-control" type="text" name="estrategiafo5"
-                                        value="{{ old('estrategiafo5') }}">
+                                        value="{{ ($dofa == '' ? old('estrategiafo5') : $dofa->estrategiafo5) == '' ?: $dofa->estrategiafo5 }}">
                                 </div>
                             </td>
                             <td>
@@ -258,7 +298,8 @@
                                     <label for="">1.</label>
                                     <input
                                         class="form-control {{ $errors->has('estrategiado1') ? 'is-invalid' : '' }}"
-                                        type="text" name="estrategiado1" value="{{ old('estrategiado1') }}">
+                                        type="text" name="estrategiado1"
+                                        value="{{ ($dofa == '' ? old('estrategiado1') : $dofa->estrategiado1) == '' ?: $dofa->estrategiado1 }}">
                                     @error('estrategiado1')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -269,7 +310,8 @@
                                     <label for="">2.</label>
                                     <input
                                         class="form-control {{ $errors->has('estrategiado2') ? 'is-invalid' : '' }}"
-                                        type="text" name="estrategiado2" value="{{ old('estrategiado2') }}">
+                                        type="text" name="estrategiado2"
+                                        value="{{ ($dofa == '' ? old('estrategiado2') : $dofa->estrategiado2) == '' ?: $dofa->estrategiado2 }}">
                                     @error('estrategiado2')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -280,7 +322,8 @@
                                     <label for="">3.</label>
                                     <input
                                         class="form-control {{ $errors->has('estrategiado3') ? 'is-invalid' : '' }}"
-                                        type="text" name="estrategiado3" value="{{ old('estrategiado3') }}">
+                                        type="text" name="estrategiado3"
+                                        value="{{ ($dofa == '' ? old('estrategiado3') : $dofa->estrategiado3) == '' ?: $dofa->estrategiado3 }}">
                                     @error('estrategiado3')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -290,20 +333,20 @@
                                 <div class="form-group mb-1">
                                     <label for="">4.</label>
                                     <input class="form-control" type="text" name="estrategiado4"
-                                        value="{{ old('estrategiado4') }}">
+                                        value="{{ ($dofa == '' ? old('estrategiado4') : $dofa->estrategiado4) == '' ?: $dofa->estrategiado4 }}">
                                 </div>
                                 <div class="form-group mb-1">
                                     <label for="">5.</label>
                                     <input class="form-control" type="text" name="estrategiado5"
-                                        value="{{ old('estrategiado5') }}">
+                                        value="{{ ($dofa == '' ? old('estrategiado5') : $dofa->estrategiado5) == '' ?: $dofa->estrategiado5 }}">
                                 </div>
                             </td>
                         </tr>
                     </tbody>
                     <thead>
-                        <th>Amenazas</th>
-                        <th>Estrategias FA</th>
-                        <th>Estrategias DA</th>
+                        <td>Amenazas</td>
+                        <td>Estrategias FA</td>
+                        <td>Estrategias DA</td>
                     </thead>
                     <tbody>
                         <tr>
@@ -311,7 +354,8 @@
                                 <div class="form-group mb-1">
                                     <label for="">1.</label>
                                     <input class="form-control {{ $errors->has('amenaza1') ? 'is-invalid' : '' }}"
-                                        type="text" name="amenaza1" value="{{ old('amenaza1') }}">
+                                        type="text" name="amenaza1"
+                                        value="{{ ($dofa == '' ? old('amenaza1') : $dofa->amenaza1) == '' ?: $dofa->amenaza1 }}">
                                     @error('amenaza1')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -321,7 +365,8 @@
                                 <div class="form-group mb-1">
                                     <label for="">2.</label>
                                     <input class="form-control {{ $errors->has('amenaza2') ? 'is-invalid' : '' }}"
-                                        type="text" name="amenaza2" value="{{ old('amenaza2') }}">
+                                        type="text" name="amenaza2"
+                                        value="{{ ($dofa == '' ? old('amenaza2') : $dofa->amenaza2) == '' ?: $dofa->amenaza2 }}">
                                     @error('amenaza2')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -331,7 +376,8 @@
                                 <div class="form-group mb-1">
                                     <label for="">3.</label>
                                     <input class="form-control {{ $errors->has('amenaza3') ? 'is-invalid' : '' }}"
-                                        type="text" name="amenaza3" value="{{ old('amenaza3') }}">
+                                        type="text" name="amenaza3"
+                                        value="{{ ($dofa == '' ? old('amenaza3') : $dofa->amenaza3) == '' ?: $dofa->amenaza3 }}">
                                     @error('amenaza3')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -341,12 +387,12 @@
                                 <div class="form-group mb-1">
                                     <label for="">4.</label>
                                     <input class="form-control" type="text" name="amenaza4"
-                                        value="{{ old('amenaza4') }}">
+                                        value="{{ ($dofa == '' ? old('amenaza4') : $dofa->amenaza4) == '' ?: $dofa->amenaza4 }}">
                                 </div>
                                 <div class="form-group mb-1">
                                     <label for="">5.</label>
                                     <input class="form-control" type="text" name="amenaza5"
-                                        value="{{ old('amenaza5') }}">
+                                        value="{{ ($dofa == '' ? old('amenaza5') : $dofa->amenaza5) == '' ?: $dofa->amenaza5 }}">
                                 </div>
                             </td>
                             <td>
@@ -354,7 +400,8 @@
                                     <label for="">1.</label>
                                     <input
                                         class="form-control {{ $errors->has('estrategiafa1') ? 'is-invalid' : '' }}"
-                                        type="text" name="estrategiafa1" value="{{ old('estrategiafa1') }}">
+                                        type="text" name="estrategiafa1"
+                                        value="{{ ($dofa == '' ? old('estrategiafa1') : $dofa->estrategiafa1) == '' ?: $dofa->estrategiafa1 }}">
                                     @error('estrategiafa1')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -365,7 +412,8 @@
                                     <label for="">2.</label>
                                     <input
                                         class="form-control {{ $errors->has('estrategiafa2') ? 'is-invalid' : '' }}"
-                                        type="text" name="estrategiafa2" value="{{ old('estrategiafa2') }}">
+                                        type="text" name="estrategiafa2"
+                                        value="{{ ($dofa == '' ? old('estrategiafa2') : $dofa->estrategiafa2) == '' ?: $dofa->estrategiafa2 }}">
                                     @error('estrategiafa2')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -376,7 +424,8 @@
                                     <label for="">3.</label>
                                     <input
                                         class="form-control {{ $errors->has('estrategiafa3') ? 'is-invalid' : '' }}"
-                                        type="text" name="estrategiafa3" value="{{ old('estrategiafa3') }}">
+                                        type="text" name="estrategiafa3"
+                                        value="{{ ($dofa == '' ? old('estrategiafa3') : $dofa->estrategiafa3) == '' ?: $dofa->estrategiafa3 }}">
                                     @error('estrategiafa3')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -386,12 +435,12 @@
                                 <div class="form-group mb-1">
                                     <label for="">4.</label>
                                     <input class="form-control" type="text" name="estrategiafa4"
-                                        value="{{ old('estrategiafa4') }}">
+                                        value="{{ ($dofa == '' ? old('estrategiafa4') : $dofa->estrategiafa4) == '' ?: $dofa->estrategiafa4 }}">
                                 </div>
                                 <div class="form-group mb-1">
                                     <label for="">5.</label>
                                     <input class="form-control" type="text" name="estrategiafa5"
-                                        value="{{ old('estrategiafa5') }}">
+                                        value="{{ ($dofa == '' ? old('estrategiafa5') : $dofa->estrategiafa5) == '' ?: $dofa->estrategiafa5 }}">
                                 </div>
                             </td>
                             <td>
@@ -399,7 +448,8 @@
                                     <label for="">1.</label>
                                     <input
                                         class="form-control {{ $errors->has('estrategiada1') ? 'is-invalid' : '' }}"
-                                        type="text" name="estrategiada1" value="{{ old('estrategiada1') }}">
+                                        type="text" name="estrategiada1"
+                                        value="{{ ($dofa == '' ? old('estrategiada1') : $dofa->estrategiada1) == '' ?: $dofa->estrategiada1 }}">
                                     @error('estrategiada1')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -410,7 +460,8 @@
                                     <label for="">2.</label>
                                     <input
                                         class="form-control {{ $errors->has('estrategiada2') ? 'is-invalid' : '' }}"
-                                        type="text" name="estrategiada2" value="{{ old('estrategiada2') }}">
+                                        type="text" name="estrategiada2"
+                                        value="{{ ($dofa == '' ? old('estrategiada2') : $dofa->estrategiada2) == '' ?: $dofa->estrategiada2 }}">
                                     @error('estrategiada2')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -421,7 +472,8 @@
                                     <label for="">3.</label>
                                     <input
                                         class="form-control {{ $errors->has('estrategiada3') ? 'is-invalid' : '' }}"
-                                        type="text" name="estrategiada3" value="{{ old('estrategiada3') }}">
+                                        type="text" name="estrategiada3"
+                                        value="{{ ($dofa == '' ? old('estrategiada3') : $dofa->estrategiada3) == '' ?: $dofa->estrategiada3 }}">
                                     @error('estrategiada3')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -431,12 +483,12 @@
                                 <div class="form-group mb-1">
                                     <label for="">4.</label>
                                     <input class="form-control" type="text" name="estrategiada4"
-                                        value="{{ old('estrategiada4') }}">
+                                        value="{{ ($dofa == '' ? old('estrategiada4') : $dofa->estrategiada4) == '' ?: $dofa->estrategiada4 }}">
                                 </div>
                                 <div class="form-group mb-1">
                                     <label for="">5.</label>
                                     <input class="form-control" type="text" name="estrategiada5"
-                                        value="{{ old('estrategiada5') }}">
+                                        value="{{ ($dofa == '' ? old('estrategiada5') : $dofa->estrategiada5) == '' ?: $dofa->estrategiada5 }}">
                                 </div>
                             </td>
                         </tr>
@@ -452,4 +504,93 @@
     </div>
     <br>
 </main>
+
+<!-- Modal -->
+<div class="modal fade" id="Dofa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Visualización matriz DOFA O FODA</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est ab dignissimos officia nam! Pariatur
+                    facere nesciunt fuga corrupti quis similique culpa illo illum voluptatibus dolorum tempora, cumque
+                    quam eveniet consequatur!
+                    Voluptate tempore velit neque eaque animi odit autem architecto rerum eius exercitationem atque
+                    maiores iusto sit ullam, id magni? Ratione repellat expedita earum quaerat vero id. Eos provident
+                    nulla odio.
+                    Doloremque dolorum magnam praesentium! Possimus illum quod omnis exercitationem iusto aliquid
+                    inventore expedita esse asperiores reprehenderit dignissimos cupiditate vel harum dolorum
+                    consequuntur voluptatem a, molestiae distinctio sint ipsum repudiandae hic.
+                    Consectetur cumque, quibusdam ipsa consequuntur, cum nihil quis debitis, delectus nostrum rem earum
+                    iste maxime? Accusamus quis hic sunt nihil saepe nesciunt eaque. Recusandae tempore corrupti, nam
+                    ipsum sunt et.</p>
+                <table class="table-bordered" style="width: 100%">
+                    <tbody>
+                        <tr class="text-center">
+                            <th class="bg-primary text-white">--</td>
+                            <th class="verde__card">Fortalezas</td>
+                            <th class="naranja__card">Debilidades</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <h2 class="text-center">Matriz DOFA</h2>
+                            </td>
+                            <td class="verde__content">
+                                <ul>
+                                    <li>{{ $dofa == '' ? '' : $dofa->fortaleza1 }}</li>
+                                    <li>{{ $dofa == '' ? '' : $dofa->fortaleza2 }}</li>
+                                    <li>{{ $dofa == '' ? '' : $dofa->fortaleza3 }}</li>
+                                    <li>{{ $dofa == '' ? '' : $dofa->fortaleza4 }}</li>
+                                    <li>{{ $dofa == '' ? '' : $dofa->fortaleza5 }}</li>
+                                </ul>
+                            </td>
+                            <td class="naranja__content">
+                                <ul>
+                                    <li>{{ $dofa == '' ? '' : $dofa->debilidad1 }}</li>
+                                    <li>{{ $dofa == '' ? '' : $dofa->debilidad2 }}</li>
+                                    <li>{{ $dofa == '' ? '' : $dofa->debilidad3 }}</li>
+                                    <li>{{ $dofa == '' ? '' : $dofa->debilidad4 }}</li>
+                                    <li>{{ $dofa == '' ? '' : $dofa->debilidad5 }}</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr class="text-center">
+                            <th class="azul__card">Oportunidades</td>
+                            <th class="purpura__card">Estrategias FO</td>
+                            <th class="purpura__card">Estrategias DO</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td class="azul__content">Oportunidades minimo 3</td>
+                            <td class="purpura__content">Estrategias FO 3 minimo</td>
+                            <td class="purpura__content">Estrategias DO 3 minimo</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr class="text-center">
+                            <th class="amarillo__card">Amenazas</td>
+                            <th class="purpura__card">Estrategias FA</td>
+                            <th class="purpura__card">Estrategias DA</td>
+                        </tr>
+                        </thead>
+                    <tbody>
+                        <tr>
+                            <td class="amarillo__content">Amenazas minimo 3</td>
+                            <td class="purpura__content">Estrategias Fa minimo 3</td>
+                            <td class="purpura__content">Estrategias DA minimo 3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection
