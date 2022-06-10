@@ -52,7 +52,9 @@ Route::get('diagnostico/asignacion', [DiagnosticoController::class, 'asignacion'
 Route::put('diagnostico/{nit}/storedofa', [DiagnosticoController::class, 'storedofa']);
 
 
-Route::get('usuario/{slug}/pefil', [UsuarioController::class, 'perfil']);
+Route::get('grafico/encuesta', [GraficoController::class, 'graficoEncuesta']);
+
+Route::get('usuario/{slug}/perfil', [UsuarioController::class, 'actualizarDatos']);
 
 Route::resource('rol', RolController::class);
 Route::resource('usuario', UsuarioController::class);

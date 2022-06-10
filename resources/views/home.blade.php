@@ -53,7 +53,7 @@
     </main>
     <br>
 @section('js')
-    @include('charts.js')    
+    @include('charts/js.js')    
 @endsection
 
 @endsection

@@ -530,21 +530,9 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est ab dignissimos officia nam! Pariatur
-                    facere nesciunt fuga corrupti quis similique culpa illo illum voluptatibus dolorum tempora, cumque
-                    quam eveniet consequatur!
-                    Voluptate tempore velit neque eaque animi odit autem architecto rerum eius exercitationem atque
-                    maiores iusto sit ullam, id magni? Ratione repellat expedita earum quaerat vero id. Eos provident
-                    nulla odio.
-                    Doloremque dolorum magnam praesentium! Possimus illum quod omnis exercitationem iusto aliquid
-                    inventore expedita esse asperiores reprehenderit dignissimos cupiditate vel harum dolorum
-                    consequuntur voluptatem a, molestiae distinctio sint ipsum repudiandae hic.
-                    Consectetur cumque, quibusdam ipsa consequuntur, cum nihil quis debitis, delectus nostrum rem earum
-                    iste maxime? Accusamus quis hic sunt nihil saepe nesciunt eaque. Recusandae tempore corrupti, nam
-                    ipsum sunt et.</p>
                 @if ($dofa != '')
-                    <a class="btn btn-warning btn-sm" href="{{ url("diagnostico/{$empresa->nit}/pdfDofa") }}" target="_blank"><i
-                            class="fas fa-download"></i> Descargar dofa</a>
+                    <a class="btn btn-warning btn-sm" href="{{ url("diagnostico/{$empresa->nit}/pdfDofa") }}"
+                        target="_blank"><i class="fas fa-download"></i> Descargar dofa</a>
                 @endif
                 <table class="table__modal table-bordered mt-2" style="width: 100%">
                     <tbody>

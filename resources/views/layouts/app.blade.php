@@ -40,16 +40,19 @@
             <ul class="navbar-nav d-flex justify-content-end w-100 ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user-circle"></i> {{ Auth::user()->nombre }}</a>
+                        data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user-circle"></i>
+                        {{ Auth::user()->nombre }}</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item"
-                                href="{{ url('usuario/' . Str::lower(Auth::user()->slug) . '/perfil') }}"><i class="fas fa-id-badge"></i> Perfil</a>
+                                href="{{ url('usuario/' . Str::lower(Auth::user()->slug) . '/perfil') }}"><i
+                                    class="fas fa-id-badge"></i> Perfil</a>
                         </li>
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
                         <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+                        document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i> Cerrar
+                                sesión</a>
                             <form id="logout-form" action="{{ url('/logout') }}" method="POST"
                                 class="d-none">
                                 {{ csrf_field() }}
@@ -131,6 +134,21 @@
                                         microempresa</a>-->
                                 </nav>
                             </div>
+                            <!--Fin-->
+                            <!--Resultados-->
+                            <div class="sb-sidenav-menu-heading">RESULTADOS GRAFICOS</div>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                                data-bs-target="#collapseCharts" aria-expanded="false" aria-controls="collapseCharts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Resultados graficos
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseCharts" aria-labelledby="headingOne"
+                                data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{ url('grafico/encuesta') }}">Resultados encuesta</a>
+                                </nav>
+                            </div>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
@@ -178,8 +196,9 @@
     <script src="{{ asset('js/scripts.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     @yield('js')
-    <script src="{{asset('js/charts.js')}}"></script>
-    
+
+    <script src="{{ asset('js/charts.js') }}"></script>
+
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.js"></script>
 
 
