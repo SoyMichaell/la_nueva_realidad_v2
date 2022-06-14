@@ -108,8 +108,21 @@ class GraficoController extends Controller
             ->groupBy('pre5_pcd')
             ->get();
         $grafico5_1 = DB::table('respuestas')
-            ->select('pre5_pcd', DB::raw('count(*) as total'))
-            ->groupBy('pre5_pcd')
+            ->select('pre5_1_pcd', DB::raw('count(*) as total'))
+            ->where('pre5_1_pcd', '<>', "")
+            ->groupBy('pre5_1_pcd')
+            ->get();
+        
+        //grafico 6
+        $grafico6 = DB::table('respuestas')
+            ->select('pre6_pcd', DB::raw('count(*) as total'))
+            ->groupBy('pre6_pcd')
+            ->get();
+        
+        //grafico 7
+        $grafico7 = DB::table('respuestas')
+            ->select('pre7_pcd', DB::raw('count(*) as total'))
+            ->groupBy('pre7_pcd')
             ->get();
 
         $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
@@ -131,6 +144,9 @@ class GraficoController extends Controller
                 'grafico4_5',
                 'grafico4_6',
                 'grafico5',
+                'grafico5_1',
+                'grafico6',
+                'grafico7',
                 'permisos'
             )
         );

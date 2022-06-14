@@ -208,9 +208,34 @@ class UsuarioController extends Controller
     }
 
     //Perfil
-    public function actualizarDatos($slug){
+    public function perfil($slug){
         $usuario = DB::table('users')->where('slug', $slug);
         $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
         return view('auth.profile', compact('usuario','permisos'));
     }
+
+    public function actualizar(Request $request, $slug){
+        
+        $actualizarDatos = DB::table('users')->where('slug', $slug)
+            ->update([
+                'tipo_documento' => $request->get('tipo_documento'),
+                'numero_documento' => $request->get('numero_documento'),
+                'nombre' => $request->get('nombre'),
+                'apellido' => $request->get('apellido'),
+                'correo_personal' => $request->get('correo_personal'),
+                'telefono' => $request->get('telefono'),
+                'nivel_programa' => $request->get('nivel_programa'),
+                'programa' => $request->get('programa')
+            ]);
+        
+        if($actualizarDatos == 1){
+            Alert::success('Exitoso', 'La información se actualizo');
+            return redirect('usuario/'.Auth::user()->slug.'/perfil');
+        }else{
+            Alert::warning('Algo ocurrio', 'Intentelo más tarde');
+            return back();
+        }
+
+    }
+
 }

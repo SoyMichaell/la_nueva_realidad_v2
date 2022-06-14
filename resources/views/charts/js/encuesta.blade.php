@@ -10,14 +10,12 @@
                 label: 'Total',
                 data: [<?php foreach($grafico1 as $grafico){?><?php echo $grafico->total; ?>, <?php } ?>],
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
+                    'rgb(51, 102, 204)',
+                    'rgb(220, 57, 18)',
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
+                    'rgb(51, 102, 204)',
+                    'rgb(220, 57, 18)',
                 ],
                 borderWidth: 1
             }]
@@ -37,14 +35,12 @@
                 label: 'Total',
                 data: [<?php foreach($grafico2 as $grafico){?><?php echo $grafico->total; ?>, <?php } ?>],
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
+                    'rgb(51, 102, 204)',
+                    'rgb(220, 57, 18)',
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
+                    'rgb(51, 102, 204)',
+                    'rgb(220, 57, 18)',
                 ],
                 borderWidth: 1
             }]
@@ -209,7 +205,7 @@
             responsive: true
         }
     });
-    //Grafico5
+    //Grafico5 
     const ctx5 = document.getElementById('charts5');
     const myChart5 = new Chart(ctx5, {
         type: 'doughnut',
@@ -220,12 +216,12 @@
                 label: 'Total',
                 data: [<?php foreach($grafico5 as $grafico){?><?php echo $grafico->total; ?>, <?php } ?>],
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
+                    'rgb(51, 102, 204)',
+                    'rgb(220, 57, 18)',
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
+                    'rgb(51, 102, 204)',
+                    'rgb(220, 57, 18)',
                 ],
                 borderWidth: 1
             }]
@@ -234,6 +230,95 @@
             responsive: true
         }
     });
+    //Grafico5_1
+    const ctx5_1 = document.getElementById('charts5_1');
+    const myChart5_1 = new Chart(ctx5_1, {
+        type: 'doughnut',
+        data: {
+
+            labels: [<?php foreach($grafico5_1 as $grafico){?><?php echo "'" . $grafico->pre5_1_pcd . "'"; ?>, <?php } ?>],
+            datasets: [{
+                label: 'Total',
+                data: [<?php foreach($grafico5_1 as $grafico){?><?php echo $grafico->total; ?>, <?php } ?>],
+                backgroundColor: [
+                    'rgb(51, 102, 204)',
+                    'rgb(220, 57, 18)',
+                    'rgb(255, 153, 0)',
+                ],
+                borderColor: [
+                    'rgb(51, 102, 204)',
+                    'rgb(220, 57, 18)',
+                    'rgb(255, 153, 0)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+    //Grafico6
+    const ctx6 = document.getElementById('charts6');
+    const myChart6 = new Chart(ctx6, {
+        type: 'bar',
+        data: {
+            labels: [<?php foreach($grafico6 as $grafico){?><?php echo "'" . $grafico->pre6_pcd . "'"; ?>, <?php } ?>],
+            datasets: [{
+                    label: 'Datos',
+                    data: [<?php foreach($grafico6 as $grafico){?><?php echo $grafico->total; ?>, <?php } ?>],
+                    backgroundColor: [
+                        'rgb(51, 102, 204)',
+                        'rgb(220, 57, 18)',
+                        'rgb(255, 153, 0)',
+                        'rgb(16, 150, 24)',
+                        'rgb(153, 0, 153)',
+                        'rgb(0, 153, 198)'
+                    ],
+                    borderColor: [
+                        'rgb(51, 102, 204)',
+                        'rgb(220, 57, 18)',
+                        'rgb(255, 153, 0)',
+                        'rgb(16, 150, 24)',
+                        'rgb(153, 0, 153)',
+                        'rgb(0, 153, 198)'
+                    ],
+                    borderWidth: 1
+                },
+            ]
+        },
+        options: {
+            responsive: true,
+            indexAxis: 'y',
+        }
+    });
+    //Grafico7
+    const ctx7 = document.getElementById('charts7');
+    const myChart7 = new Chart(ctx7, {
+        type: 'doughnut',
+        data: {
+
+            labels: [<?php foreach($grafico7 as $grafico){?><?php echo "'" . $grafico->pre7_pcd . "'"; ?>, <?php } ?>],
+            datasets: [{
+                label: 'Total',
+                data: [<?php foreach($grafico7 as $grafico){?><?php echo $grafico->total; ?>, <?php } ?>],
+                backgroundColor: [
+                    'rgb(51, 102, 204)',
+                    'rgb(220, 57, 18)',
+                    'rgb(255, 153, 0)',
+                ],
+                borderColor: [
+                    'rgb(51, 102, 204)',
+                    'rgb(220, 57, 18)',
+                    'rgb(255, 153, 0)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+    
     //Descarga grafico
     //Download Chart Image
     document.getElementById("download1").addEventListener('click', function() {

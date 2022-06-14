@@ -54,7 +54,8 @@ Route::put('diagnostico/{nit}/storedofa', [DiagnosticoController::class, 'stored
 
 Route::get('grafico/encuesta', [GraficoController::class, 'graficoEncuesta']);
 
-Route::get('usuario/{slug}/perfil', [UsuarioController::class, 'actualizarDatos']);
+Route::get('usuario/{slug}/perfil', [UsuarioController::class, 'perfil']);
+Route::put('usuario/{slug}/actualizar', [UsuarioController::class, 'actualizar']);
 
 Route::resource('rol', RolController::class);
 Route::resource('usuario', UsuarioController::class);
