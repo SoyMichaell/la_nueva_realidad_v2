@@ -491,101 +491,101 @@
         </div>
         <br> 
         <div class="card mt-3">
-            <div class="card-header">Objetivos estrategicos</div>
+            <div class="card-header">Mapa estrategico</div>
             <div class="card-body">
                 <form action="" method="post">
                     <table class="table">
                         <tbody>
                             <tr>
                                 <th>Perspectiva</th>
-                                <th>Objetivo</th>
+                                <th>Objetivo estrategico</th>
                                 <th>Indicador</th>
                                 <th>Resulta actual</th>
                                 <th>Meta</th>
                             </tr>
                             <tr>
-                                <td><input class="form-control" type="text" placeholder="Objetivo" value="Crecimiento y desarrollo" readonly></td>
-                                <td><input class="form-control" type="text" placeholder="Objetivo"></td>
-                                <td><input class="form-control" type="text" placeholder="Indicador"></td>
-                                <td><input class="form-control" type="text" placeholder="Resultado actual"></td>
-                                <td><input class="form-control" type="text" placeholder="Meta"></td>
+                                <td><input class="form-control" type="text" placeholder="" value="Crecimiento y desarrollo" readonly></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
                             </tr>
                             <tr>
-                                <td><input class="form-control" type="text" placeholder="Objetivo" value="Crecimiento y desarrollo" readonly></td>
-                                <td><input class="form-control" type="text" placeholder="Objetivo"></td>
-                                <td><input class="form-control" type="text" placeholder="Indicador"></td>
-                                <td><input class="form-control" type="text" placeholder="Resultado actual"></td>
-                                <td><input class="form-control" type="text" placeholder="Meta"></td>
+                                <td><input class="form-control" type="text" placeholder="" value="Crecimiento y desarrollo" readonly></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
                             </tr>
                             <tr>
-                                <td><input class="form-control" type="text" placeholder="Objetivo" value="Crecimiento y desarrollo" readonly></td>
-                                <td><input class="form-control" type="text" placeholder="Objetivo"></td>
-                                <td><input class="form-control" type="text" placeholder="Indicador"></td>
-                                <td><input class="form-control" type="text" placeholder="Resultado actual"></td>
-                                <td><input class="form-control" type="text" placeholder="Meta"></td>
+                                <td><input class="form-control" type="text" placeholder="" value="Crecimiento y desarrollo" readonly></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
                             </tr>
                             <tr>
-                                <td><input class="form-control" type="text" placeholder="Objetivo" value="Clientes" readonly></td>
-                                <td><input class="form-control" type="text" placeholder="Objetivo"></td>
-                                <td><input class="form-control" type="text" placeholder="Indicador"></td>
-                                <td><input class="form-control" type="text" placeholder="Resultado actual"></td>
-                                <td><input class="form-control" type="text" placeholder="Meta"></td>
+                                <td><input class="form-control" type="text" placeholder="" value="Clientes" readonly></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
                             </tr>
                             <tr>
-                                <td><input class="form-control" type="text" placeholder="Objetivo" value="Clientes" readonly></td>
-                                <td><input class="form-control" type="text" placeholder="Objetivo"></td>
-                                <td><input class="form-control" type="text" placeholder="Indicador"></td>
-                                <td><input class="form-control" type="text" placeholder="Resultado actual"></td>
-                                <td><input class="form-control" type="text" placeholder="Meta"></td>
+                                <td><input class="form-control" type="text" placeholder="" value="Clientes" readonly></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
                             </tr>
                             <tr>
-                                <td><input class="form-control" type="text" placeholder="Objetivo" value="Clientes" readonly></td>
-                                <td><input class="form-control" type="text" placeholder="Objetivo"></td>
-                                <td><input class="form-control" type="text" placeholder="Indicador"></td>
-                                <td><input class="form-control" type="text" placeholder="Resultado actual"></td>
-                                <td><input class="form-control" type="text" placeholder="Meta"></td>
+                                <td><input class="form-control" type="text" placeholder="" value="Clientes" readonly></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
                             </tr>
                             <tr>
-                                <td><input class="form-control" type="text" placeholder="Objetivo" value="Procesos internos" readonly></td>
-                                <td><input class="form-control" type="text" placeholder="Objetivo"></td>
-                                <td><input class="form-control" type="text" placeholder="Indicador"></td>
-                                <td><input class="form-control" type="text" placeholder="Resultado actual"></td>
-                                <td><input class="form-control" type="text" placeholder="Meta"></td>
+                                <td><input class="form-control" type="text" placeholder="" value="Procesos internos" readonly></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
                             </tr>
                             <tr>
-                                <td><input class="form-control" type="text" placeholder="Objetivo" value="Procesos internos" readonly></td>
-                                <td><input class="form-control" type="text" placeholder="Objetivo"></td>
-                                <td><input class="form-control" type="text" placeholder="Indicador"></td>
-                                <td><input class="form-control" type="text" placeholder="Resultado actual"></td>
-                                <td><input class="form-control" type="text" placeholder="Meta"></td>
+                                <td><input class="form-control" type="text" placeholder="" value="Procesos internos" readonly></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
                             </tr>
                             <tr>
-                                <td><input class="form-control" type="text" placeholder="Objetivo" value="Procesos internos" readonly></td>
-                                <td><input class="form-control" type="text" placeholder="Objetivo"></td>
-                                <td><input class="form-control" type="text" placeholder="Indicador"></td>
-                                <td><input class="form-control" type="text" placeholder="Resultado actual"></td>
-                                <td><input class="form-control" type="text" placeholder="Meta"></td>
+                                <td><input class="form-control" type="text" placeholder="" value="Procesos internos" readonly></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
                             </tr>
                             <tr>
-                                <td><input class="form-control" type="text" placeholder="Objetivo" value="Financiera" readonly></td>
-                                <td><input class="form-control" type="text" placeholder="Objetivo"></td>
-                                <td><input class="form-control" type="text" placeholder="Indicador"></td>
-                                <td><input class="form-control" type="text" placeholder="Resultado actual"></td>
-                                <td><input class="form-control" type="text" placeholder="Meta"></td>
+                                <td><input class="form-control" type="text" placeholder="" value="Financiera" readonly></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
                             </tr>
                             <tr>
-                                <td><input class="form-control" type="text" placeholder="Objetivo" value="Financiera" readonly></td>
-                                <td><input class="form-control" type="text" placeholder="Objetivo"></td>
-                                <td><input class="form-control" type="text" placeholder="Indicador"></td>
-                                <td><input class="form-control" type="text" placeholder="Resultado actual"></td>
-                                <td><input class="form-control" type="text" placeholder="Meta"></td>
+                                <td><input class="form-control" type="text" placeholder="" value="Financiera" readonly></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
                             </tr>
                             <tr>
-                                <td><input class="form-control" type="text" placeholder="Objetivo" value="Financiera" readonly></td>
-                                <td><input class="form-control" type="text" placeholder="Objetivo"></td>
-                                <td><input class="form-control" type="text" placeholder="Indicador"></td>
-                                <td><input class="form-control" type="text" placeholder="Resultado actual"></td>
-                                <td><input class="form-control" type="text" placeholder="Meta"></td>
+                                <td><input class="form-control" type="text" placeholder="" value="Financiera" readonly></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
                             </tr>
                         </tbody>
                     </table>

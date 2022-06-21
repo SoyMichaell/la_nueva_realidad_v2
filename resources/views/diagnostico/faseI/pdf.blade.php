@@ -1,15 +1,20 @@
 <head>
     <style>
-        body{
-            font-family: Arial, Helvetica, sans-serif;
+        body {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 12px;
         }
-        table{
+
+        table {
             width: 100%;
         }
-        th,td{
+
+        th,
+        td {
             text-align: left;
         }
-        .card-header{
+
+        .card-header {
             width: 100%;
             padding: 3px;
             background-color: #6777EF;
@@ -17,48 +22,51 @@
             color: #fff;
             margin-bottom: 15px;
         }
-        .alert-info{
+
+        .alert-info {
             text-align: center;
         }
-        strong{
+
+        strong {
             border-bottom: 1px solid black;
         }
     </style>
 </head>
+
 <body>
     <main>
         <div class="container">
-            <div class="alert alert-info">
-                <h1 class="mt-4">Resumen diagnóstico empresarial</h1>
-            </div>
-            <hr>
             <div class="card mb-3">
-                <div class="card-header"><i class="fas fa-info-circle"></i> Información empresa</div>
+                <h3>Proyecto La Nueva Realidad Microempresarios Casanareños Frente al Primer Año de Convivencia con el
+                    Covid-19.
+                    Instrumento de Diagnóstico, Análisis de Impacto e Identificación de Estrategias Innovadoras
+                    para la Recuperación del Sector.</h3>
+                <h3>DATOS EMPRESA</h3>
                 <div class="card-body">
                     <table>
                         <thead>
                             <tr>
-                                <th>Nit</th>
+                                <td>Nit</td>
                                 <td>{{ $empresa->nit_empresa }}</td>
                             </tr>
                             <tr>
-                                <th>Razón social</th>
+                                <td>Razón social</td>
                                 <td>{{ $empresa->razon_social }}</td>
                             </tr>
                             <tr>
-                                <th>Telefono</th>
+                                <td>Telefono</td>
                                 <td>{{ $empresa->telefono1 }}</td>
                             </tr>
                             <tr>
-                                <th>Dirección</th>
+                                <td>Dirección</td>
                                 <td>{{ $empresa->direccion }}</td>
                             </tr>
                             <tr>
-                                <th>Municipio</th>
+                                <td>Municipio</td>
                                 <td>{{ $empresa->municipio }}</td>
                             </tr>
                             <tr>
-                                <th>CIIU Principal</th>
+                                <td>CIIU Principal</td>
                                 <td>{{ $empresa->ciiu_1 }}</td>
                             </tr>
                         </thead>
@@ -68,15 +76,15 @@
             <!--Resultado diagnostico global-->
             <br>
             <div class="card mb-3">
-                <div class="card-header"><i class="fas fa-poll"></i> Puntaje aplicación encuesta</div>
+                <h3>RESULTADO APLICACIÓN ENCUESTA</h3>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">
                             <tbody>
                                 <tr>
-                                    <th>COMPONENTE</th>
-                                    <th>PORCENTAJE</th>
-                                    <th>MÁXIMO</th>
+                                    <td>COMPONENTE</td>
+                                    <td>PORCENTAJE</td>
+                                    <td>MÁXIMO</td>
                                 </tr>
                                 <tr>
                                     <td>Perspectiva de crecimiento y desarrollo</td>
@@ -129,7 +137,7 @@
             <br>
             <!--Fin diagnostico global-->
             <div class="card mb-3">
-                <div class="card-header"><i class="fas fa-book-open"></i> Respuesta a la encuesta</div>
+                <h3 class="">RESUMEN ENCUESTA</h3>
                 <div class="card-body">
                     <!--Perspectiva de crecimiento y desarrollo-->
                     <!--pregunta1-->
@@ -165,27 +173,27 @@
                         <p>Respuesta:</p>
                         <table class="table">
                             <tr>
-                                <th>Ajuste de jornada laboral</th>
+                                <td>Ajuste de jornada laboral</td>
                                 <td>{{ $empresa->pre3_1_pcd }}</td>
                             </tr>
                             <tr>
-                                <th>Ajuste o reducción de la producción</th>
+                                <td>Ajuste o reducción de la producción</td>
                                 <td>{{ $empresa->pre3_2_pcd }}</td>
                             </tr>
                             <tr>
-                                <th>Implementación de ventas en línea</th>
+                                <td>Implementación de ventas en línea</td>
                                 <td>{{ $empresa->pre3_3_pcd }}</td>
                             </tr>
                             <tr>
-                                <th>Introducción de Nuevos Productos y/o servicios.</th>
+                                <td>Introducción de Nuevos Productos y/o servicios.</td>
                                 <td>{{ $empresa->pre3_4_pcd }}</td>
                             </tr>
                             <tr>
-                                <th>Cambios en la Presentación del Producto (Tamaño y Empaque)</th>
+                                <td>Cambios en la Presentación del Producto (Tamaño y Empaque)</td>
                                 <td>{{ $empresa->pre3_5_pcd }}</td>
                             </tr>
                             <tr>
-                                <th>Ajustes a procesos y procedimientos</th>
+                                <td>Ajustes a procesos y procedimientos</td>
                                 <td>{{ $empresa->pre3_6_pcd }}</td>
                             </tr>
                         </table>
@@ -202,27 +210,27 @@
                         <p>Respuesta:</p>
                         <table class="table">
                             <tr>
-                                <th>Circular 021 del 2020 (Medidas de protección al empleo)</th>
+                                <td>Circular 021 del 2020 (Medidas de protección al empleo)</td>
                                 <td>{{ $empresa->pre4_1_pcd }}</td>
                             </tr>
                             <tr>
-                                <th>Ajuste o reducción de la producción</th>
+                                <td>Ajuste o reducción de la producción</td>
                                 <td>{{ $empresa->pre4_2_pcd }}</td>
                             </tr>
                             <tr>
-                                <th>Implementación de ventas en línea</th>
+                                <td>Implementación de ventas en línea</td>
                                 <td>{{ $empresa->pre4_3_pcd }}</td>
                             </tr>
                             <tr>
-                                <th>Introducción de Nuevos Productos y/o servicios.</th>
+                                <td>Introducción de Nuevos Productos y/o servicios.</td>
                                 <td>{{ $empresa->pre4_4_pcd }}</td>
                             </tr>
                             <tr>
-                                <th>Cambios en la Presentación del Producto (Tamaño y Empaque)</th>
+                                <td>Cambios en la Presentación del Producto (Tamaño y Empaque)</td>
                                 <td>{{ $empresa->pre4_5_pcd }}</td>
                             </tr>
                             <tr>
-                                <th>Distribución de productos a domicilio</th>
+                                <td>Distribución de productos a domicilio</td>
                                 <td>{{ $empresa->pre4_6_pcd }}</td>
                             </tr>
                         </table>
@@ -265,37 +273,37 @@
                         <p>Respuesta:</p>
                         <table class="table">
                             <tr>
-                                <th>Disminución en las Ventas</th>
+                                <td>Disminución en las Ventas</td>
                                 <td>{{ $empresa->pre8_1_pcd }}</td>
                             </tr>
                             <tr>
-                                <th>Incremento de Costos operacionales</th>
+                                <td>Incremento de Costos operacionales</td>
                                 <td>{{ $empresa->pre8_2_pcd }}</td>
                             </tr>
                             <tr>
-                                <th>Endeudamiento y difícil acceso al crédito</th>
+                                <td>Endeudamiento y difícil acceso al crédito</td>
                                 <td>{{ $empresa->pre8_3_pcd }}</td>
                             </tr>
                             <tr>
-                                <th>Falta de Capital de Trabajo</th>
+                                <td>Falta de Capital de Trabajo</td>
                                 <td>{{ $empresa->pre8_4_pcd }}</td>
                             </tr>
                             <tr>
-                                <th>Altos gastos administrativos</th>
+                                <td>Altos gastos administrativos</td>
                                 <td>{{ $empresa->pre8_5_pcd }}</td>
                             </tr>
                             <tr>
-                                <th>Desconocimiento de herramientas efectivas para afrontar el
+                                <td>Desconocimiento de herramientas efectivas para afrontar el
                                     cambio
-                                </th>
+                                </td>
                                 <td>{{ $empresa->pre8_6_pcd }}</td>
                             </tr>
                             <tr>
-                                <th>Falta de adopción de nuevas tecnologías</th>
+                                <td>Falta de adopción de nuevas tecnologías</td>
                                 <td>{{ $empresa->pre8_7_pcd }}</td>
                             </tr>
                             <tr>
-                                <th>Falta de adopción de nuevos canales de distribución</th>
+                                <td>Falta de adopción de nuevos canales de distribución</td>
                                 <td>{{ $empresa->pre8_8_pcd }}</td>
                             </tr>
                         </table>
@@ -308,15 +316,15 @@
                         <p>Respuesta: No Hubo acompañamiento del gobierno.</p>
                         <table class="table">
                             <tr>
-                                <th>Gobierno Nacional</th>
+                                <td>Gobierno Nacional</td>
                                 <td>{{ $empresa->pre9_1_pcd }}</td>
                             </tr>
                             <tr>
-                                <th>Gobierno Departamental</th>
+                                <td>Gobierno Departamental</td>
                                 <td>{{ $empresa->pre9_2_pcd }}</td>
                             </tr>
                             <tr>
-                                <th>Gobierno Municipal</th>
+                                <td>Gobierno Municipal</td>
                                 <td>{{ $empresa->pre9_3_pcd }}</td>
                             </tr>
                         </table>
@@ -332,23 +340,23 @@
                             crédito </p>
                         <table class="table">
                             <tr>
-                                <th>Cámara de comercio</th>
+                                <td>Cámara de comercio</td>
                                 <td>{{ $empresa->pre10_1_pcd }}</td>
                             </tr>
                             <tr>
-                                <th>Sena</th>
+                                <td>Sena</td>
                                 <td>{{ $empresa->pre10_2_pcd }}</td>
                             </tr>
                             <tr>
-                                <th>Fundaciones</th>
+                                <td>Fundaciones</td>
                                 <td>{{ $empresa->pre10_3_pcd }}</td>
                             </tr>
                             <tr>
-                                <th>Banca comercial</th>
+                                <td>Banca comercial</td>
                                 <td>{{ $empresa->pre10_4_pcd }}</td>
                             </tr>
                             <tr>
-                                <th>Entes gremiales</th>
+                                <td>Entes gremiales</td>
                                 <td>{{ $empresa->pre10_5_pcd }}</td>
                             </tr>
                         </table>
@@ -364,19 +372,19 @@
                         <p>Respuesta:</p>
                         <table class="table">
                             <tr>
-                                <th>Pago nomina</th>
+                                <td>Pago nomina</td>
                                 <td>{{ $empresa->pre11_1_pcd }}</td>
                             </tr>
                             <tr>
-                                <th>Compra a proveedores</th>
+                                <td>Compra a proveedores</td>
                                 <td>{{ $empresa->pre11_2_pcd }}</td>
                             </tr>
                             <tr>
-                                <th>Pago de impuestos</th>
+                                <td>Pago de impuestos</td>
                                 <td>{{ $empresa->pre11_3_pcd }}</td>
                             </tr>
                             <tr>
-                                <th>Pago de obligaciones financieras</th>
+                                <td>Pago de obligaciones financieras</td>
                                 <td>{{ $empresa->pre11_4_pcd }}</td>
                             </tr>
                         </table>
@@ -422,21 +430,21 @@
                         <p>Respuesta:</p>
                         <table class="table">
                             <tr>
-                                <th>Adquirir conocimientos</th>
+                                <td>Adquirir conocimientos</td>
                                 <td>{{ $empresa->pre16_1_pcd }}</td>
                             </tr>
                             <tr>
-                                <th>Conocer y manejar herramientas efectivas que ofrece el mercado
-                                </th>
+                                <td>Conocer y manejar herramientas efectivas que ofrece el mercado
+                                </td>
                                 <td>{{ $empresa->pre16_2_pcd }}</td>
                             </tr>
                             <tr>
-                                <th>Acceso eficiente a información que oriente a su microempresa
-                                </th>
+                                <td>Acceso eficiente a información que oriente a su microempresa
+                                </td>
                                 <td>{{ $empresa->pre16_3_pcd }}</td>
                             </tr>
                             <tr>
-                                <th>Desarrollar capacidades de Innovación</th>
+                                <td>Desarrollar capacidades de Innovación</td>
                                 <td>{{ $empresa->pre16_4_pcd }}</td>
                             </tr>
                         </table>
@@ -481,19 +489,19 @@
                         <p>Respuesta:</p>
                         <table class="table">
                             <tr>
-                                <th>Cambio en su portafolio de productos</th>
+                                <td>Cambio en su portafolio de productos</td>
                                 <td>{{ $empresa->pre2_1_pc }}</td>
                             </tr>
                             <tr>
-                                <th>Servicio personalizado</th>
+                                <td>Servicio personalizado</td>
                                 <td>{{ $empresa->pre2_2_pc }}</td>
                             </tr>
                             <tr>
-                                <th>Nuevos canales de comunicación con los clientes</th>
+                                <td>Nuevos canales de comunicación con los clientes</td>
                                 <td>{{ $empresa->pre2_3_pc }}</td>
                             </tr>
                             <tr>
-                                <th>Diferentes alternativas de medios de pago</th>
+                                <td>Diferentes alternativas de medios de pago</td>
                                 <td>{{ $empresa->pre2_4_pc }}</td>
                             </tr>
                         </table>
@@ -541,27 +549,27 @@
                         <p>Respuesta:</p>
                         <table class="table">
                             <tr>
-                                <th>Atención al cliente</th>
+                                <td>Atención al cliente</td>
                                 <td>{{ $empresa->pre7_1_pc }}</td>
                             </tr>
                             <tr>
-                                <th>Servicio al cliente</th>
+                                <td>Servicio al cliente</td>
                                 <td>{{ $empresa->pre7_2_pc }}</td>
                             </tr>
                             <tr>
-                                <th>Producto</th>
+                                <td>Producto</td>
                                 <td>{{ $empresa->pre7_3_pc }}</td>
                             </tr>
                             <tr>
-                                <th>Protocolos bioseguridad</th>
+                                <td>Protocolos bioseguridad</td>
                                 <td>{{ $empresa->pre7_4_pc }}</td>
                             </tr>
                             <tr>
-                                <th>Precios</th>
+                                <td>Precios</td>
                                 <td>{{ $empresa->pre7_5_pc }}</td>
                             </tr>
                             <tr>
-                                <th>Horarios atención</th>
+                                <td>Horarios atención</td>
                                 <td>{{ $empresa->pre7_6_pc }}</td>
                             </tr>
                         </table>
@@ -625,31 +633,31 @@
                         <p>Respuesta:</p>
                         <table class="table">
                             <tr>
-                                <th>Gerenciales</th>
+                                <td>Gerenciales</td>
                                 <td>{{ $empresa->pre5_1_pi }}</td>
                             </tr>
                             <tr>
-                                <th>Administrativos</th>
+                                <td>Administrativos</td>
                                 <td>{{ $empresa->pre5_2_pi }}</td>
                             </tr>
                             <tr>
-                                <th>Operativos</th>
+                                <td>Operativos</td>
                                 <td>{{ $empresa->pre5_3_pi }}</td>
                             </tr>
                             <tr>
-                                <th>Comerciales</th>
+                                <td>Comerciales</td>
                                 <td>{{ $empresa->pre5_4_pi }}</td>
                             </tr>
                             <tr>
-                                <th>Talento humano</th>
+                                <td>Talento humano</td>
                                 <td>{{ $empresa->pre5_5_pi }}</td>
                             </tr>
                             <tr>
-                                <th>Productivos</th>
+                                <td>Productivos</td>
                                 <td>{{ $empresa->pre5_6_pi }}</td>
                             </tr>
                             <tr>
-                                <th>No tiene identificados los procesos</th>
+                                <td>No tiene identificados los procesos</td>
                                 <td>{{ $empresa->pre5_7_pi }}</td>
                             </tr>
                         </table>
