@@ -96,7 +96,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mt-2">
+                <div class="col-md-8 mt-2">
                     <div class="card">
                         <div class="card-header">Grafica 8</div>
                         <div class="card-body">

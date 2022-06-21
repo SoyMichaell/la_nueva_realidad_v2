@@ -26,7 +26,8 @@
                                             <th>Nro. documento</th>
                                             <th>Nombre (s)</th>
                                             <th>Apellido (s)</th>
-                                            <th>Correo</th>
+                                            <th>Correo (SENA)</th>
+                                            <th>Correo secundario</th>
                                             <th>Telefono</th>
                                             <th>Rol</th>
                                             <th>Estado</th>
@@ -48,6 +49,7 @@
                                                 <td>{{ Str::ucfirst($usuario->nombre) }}</td>
                                                 <td>{{ Str::ucfirst($usuario->apellido) }}</td>
                                                 <td>{{ $usuario->correo_institucional }}</td>
+                                                <td>{{ $usuario->correo_personal}}</td>
                                                 <td>{{ $usuario->telefono }}</td>
                                                 <td>
                                                     <p class="badge bg-info text-white">{{ $usuario->nombre_rol }}</p>

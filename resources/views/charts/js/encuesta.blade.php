@@ -264,27 +264,26 @@
         data: {
             labels: [<?php foreach($grafico6 as $grafico){?><?php echo "'" . $grafico->pre6_pcd . "'"; ?>, <?php } ?>],
             datasets: [{
-                    label: 'Datos',
-                    data: [<?php foreach($grafico6 as $grafico){?><?php echo $grafico->total; ?>, <?php } ?>],
-                    backgroundColor: [
-                        'rgb(51, 102, 204)',
-                        'rgb(220, 57, 18)',
-                        'rgb(255, 153, 0)',
-                        'rgb(16, 150, 24)',
-                        'rgb(153, 0, 153)',
-                        'rgb(0, 153, 198)'
-                    ],
-                    borderColor: [
-                        'rgb(51, 102, 204)',
-                        'rgb(220, 57, 18)',
-                        'rgb(255, 153, 0)',
-                        'rgb(16, 150, 24)',
-                        'rgb(153, 0, 153)',
-                        'rgb(0, 153, 198)'
-                    ],
-                    borderWidth: 1
-                },
-            ]
+                label: 'Datos',
+                data: [<?php foreach($grafico6 as $grafico){?><?php echo $grafico->total; ?>, <?php } ?>],
+                backgroundColor: [
+                    'rgb(51, 102, 204)',
+                    'rgb(220, 57, 18)',
+                    'rgb(255, 153, 0)',
+                    'rgb(16, 150, 24)',
+                    'rgb(153, 0, 153)',
+                    'rgb(0, 153, 198)'
+                ],
+                borderColor: [
+                    'rgb(51, 102, 204)',
+                    'rgb(220, 57, 18)',
+                    'rgb(255, 153, 0)',
+                    'rgb(16, 150, 24)',
+                    'rgb(153, 0, 153)',
+                    'rgb(0, 153, 198)'
+                ],
+                borderWidth: 1
+            }, ]
         },
         options: {
             responsive: true,
@@ -318,7 +317,107 @@
             responsive: true
         }
     });
-    
+    //Grafico8
+    const ctx8 = document.getElementById('charts8');
+    const myChart8 = new Chart(ctx8, {
+        type: 'bar',
+        data: {
+            labels: [<?php foreach($grafico8_1 as $grafico){?><?php echo "'" . $grafico->pre8_1_pcd . "'"; ?>, <?php } ?>],
+            datasets: [{
+                    label: 'Disminución en las Ventas',
+                    data: [<?php foreach($grafico8_1 as $grafico){?><?php echo $grafico->total; ?>, <?php } ?>],
+                    backgroundColor: [
+                        'rgb(51, 102, 204)',
+                    ],
+                    borderColor: [
+                        'rgb(51, 102, 204)',
+                    ],
+                    borderWidth: 1
+                },
+                {
+                    label: 'Incremento de costos operacionales',
+                    data: [<?php foreach($grafico8_2 as $grafico){?><?php echo $grafico->total; ?>, <?php } ?>],
+                    backgroundColor: [
+                        'rgb(220, 57, 18)',
+                    ],
+                    borderColor: [
+                        'rgb(220, 57, 18)',
+                    ],
+                    borderWidth: 1
+                },
+                {
+                    label: 'Endeudamiento y difícil acceso al crédito',
+                    data: [<?php foreach($grafico8_3 as $grafico){?><?php echo $grafico->total; ?>, <?php } ?>],
+                    backgroundColor: [
+                        'rgb(255, 153, 0)',
+                    ],
+                    borderColor: [
+                        'rgb(255, 153, 0)',
+                    ],
+                    borderWidth: 1
+                },
+                {
+                    label: 'Falta de capital de trabajo',
+                    data: [<?php foreach($grafico8_4 as $grafico){?><?php echo $grafico->total; ?>, <?php } ?>],
+                    backgroundColor: [
+                        'rgb(16, 150, 24)',
+                    ],
+                    borderColor: [
+                        'rgb(16, 150, 24)',
+                    ],
+                    borderWidth: 1
+                },
+                {
+                    label: 'Altos gastos administrativos',
+                    data: [<?php foreach($grafico8_5 as $grafico){?><?php echo $grafico->total; ?>, <?php } ?>],
+                    backgroundColor: [
+                        'rgb(153, 0, 153)',
+                    ],
+                    borderColor: [
+                        'rgb(153, 0, 153)',
+                    ],
+                    borderWidth: 1
+                },
+                {
+                    label: 'Desconocimiento de herramientas efectivas para afrontar el cambio',
+                    data: [<?php foreach($grafico8_6 as $grafico){?><?php echo $grafico->total; ?>, <?php } ?>],
+                    backgroundColor: [
+                        'rgb(0, 153, 198)'
+                    ],
+                    borderColor: [
+                        'rgb(0, 153, 198)'
+                    ],
+                    borderWidth: 1
+                },
+                {
+                    label: 'Falta de adopción de nuevas tecnologías',
+                    data: [<?php foreach($grafico8_7 as $grafico){?><?php echo $grafico->total; ?>, <?php } ?>],
+                    backgroundColor: [
+                        'rgb(138, 43, 226)',
+                    ],
+                    borderColor: [
+                        'rgb(138, 43, 226)',
+                    ],
+                    borderWidth: 1
+                },
+                {
+                    label: 'Falta de adopción de nuevos canales de distribución',
+                    data: [<?php foreach($grafico8_8 as $grafico){?><?php echo $grafico->total; ?>, <?php } ?>],
+                    backgroundColor: [
+                        'rgb(0, 0, 255)',
+                    ],
+                    borderColor: [
+                        'rgb(0, 0, 255)',
+                    ],
+                    borderWidth: 1
+                },
+            ]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
     //Descarga grafico
     //Download Chart Image
     document.getElementById("download1").addEventListener('click', function() {

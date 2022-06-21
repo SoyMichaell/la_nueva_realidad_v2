@@ -125,6 +125,40 @@ class GraficoController extends Controller
             ->groupBy('pre7_pcd')
             ->get();
 
+        //grafico8
+        $grafico8_1 = DB::table('respuestas')
+        ->select('pre8_1_pcd', DB::raw('count(*) as total'))
+        ->groupBy('pre8_1_pcd')
+        ->get();
+        $grafico8_2 = DB::table('respuestas')
+        ->select('pre8_2_pcd', DB::raw('count(*) as total'))
+        ->groupBy('pre8_2_pcd')
+        ->get();
+        $grafico8_3 = DB::table('respuestas')
+        ->select('pre8_3_pcd', DB::raw('count(*) as total'))
+        ->groupBy('pre8_3_pcd')
+        ->get();
+        $grafico8_4 = DB::table('respuestas')
+        ->select('pre8_4_pcd', DB::raw('count(*) as total'))
+        ->groupBy('pre8_4_pcd')
+        ->get();
+        $grafico8_5 = DB::table('respuestas')
+        ->select('pre8_5_pcd', DB::raw('count(*) as total'))
+        ->groupBy('pre8_5_pcd')
+        ->get();
+        $grafico8_6 = DB::table('respuestas')
+        ->select('pre8_6_pcd', DB::raw('count(*) as total'))
+        ->groupBy('pre8_6_pcd')
+        ->get();
+        $grafico8_7 = DB::table('respuestas')
+        ->select('pre8_7_pcd', DB::raw('count(*) as total'))
+        ->groupBy('pre8_7_pcd')
+        ->get();
+        $grafico8_8 = DB::table('respuestas')
+        ->select('pre8_8_pcd', DB::raw('count(*) as total'))
+        ->groupBy('pre8_8_pcd')
+        ->get();
+
         $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
         return view(
             'charts.encuesta',
@@ -147,6 +181,14 @@ class GraficoController extends Controller
                 'grafico5_1',
                 'grafico6',
                 'grafico7',
+                'grafico8_1',
+                'grafico8_2',
+                'grafico8_3',
+                'grafico8_4',
+                'grafico8_5',
+                'grafico8_6',
+                'grafico8_7',
+                'grafico8_8',
                 'permisos'
             )
         );
