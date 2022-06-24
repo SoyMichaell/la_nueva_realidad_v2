@@ -47,10 +47,12 @@ Route::put('diagnostico/{nit}/perspectivaprocesosinternos', [DiagnosticoControll
 Route::put('diagnostico/{nit}/perspectivafinanciera', [DiagnosticoController::class, 'perspectivafinanciera']);
 Route::get('diagnostico/{nit}/pdfAnalisis', [DiagnosticoController::class, 'pdfAnalisis']);
 Route::get('diagnostico/{nit}/pdfDofa', [DiagnosticoController::class, 'pdfDofa']);
+Route::get('diagnostico/{nit}/deleteDofa', [DiagnosticoController::class, 'deleteDofa']);
 
 Route::get('diagnostico/asignacion', [DiagnosticoController::class, 'asignacion']);
 Route::put('diagnostico/{nit}/storedofa', [DiagnosticoController::class, 'storedofa']);
 
+Route::put('diagnostico/{nit}/registroTablero', [DiagnosticoController::class, 'registroTablero']);
 
 Route::get('grafico/encuesta', [GraficoController::class, 'graficoEncuesta']);
 

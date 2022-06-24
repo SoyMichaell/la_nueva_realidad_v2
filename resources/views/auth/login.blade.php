@@ -3,14 +3,19 @@
 @section('content')
 <style>
     body{
-        background-image: url('image/fondo.jpg');
+        background-image: url('image/_MG_9252_COMPRESS.jpg');
         background-size: cover;
         background-repeat: no-repeat;
+        font-size: 16px;
+    }
+    .card{
+        background-color: rgba(0, 0, 100, .1);
+        color: #FFF;
     }
     .card-login{
         width: 350px;
         margin: auto;
-        margin-top: 20%;
+        margin-top: 22%;
     }
 </style>
 <div class="container">
@@ -23,12 +28,9 @@
                     <p class="text-center">Ingrese las credenciales para tener acceso a la plataforma</p>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-                        <div class="row mb-3">
-                            <label for="correo_institucional" class="col-md-12 col-form-label">{{ __('Correo electronico') }}</label>
-
+                        <div class="row mb-3 mt-2">
                             <div class="col-md-12">
-                                <input id="correo_institucional" type="email" class="form-control @error('correo_institucional') is-invalid @enderror" name="correo_institucional" value="{{ old('correo_institucional') }}" autocomplete="email" autofocus>
-
+                                <input id="correo_institucional" placeholder="Correo electronico" type="email" class="form-control @error('correo_institucional') is-invalid @enderror" name="correo_institucional" value="{{ old('correo_institucional') }}" autocomplete="email" autofocus>
                                 @error('correo_institucional')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -36,12 +38,9 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-12 col-form-label">{{ __('Contraseña') }}</label>
-
+                        <div class="row mb-3 mt-2">
                             <div class="col-md-12">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="current-password">
-
+                                <input id="password" placeholder="Contraseña" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="current-password">
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

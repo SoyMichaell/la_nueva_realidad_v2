@@ -80,7 +80,7 @@
                 Visualizar DOFA</a>
         </div>
         <div class="card mt-3">
-            <div class="card-header">Matriz DOFA</div>
+            <div class="card-header">Matriz DOFA <a class="btn btn-danger btn-sm" href="{{url("diagnostico/$empresa->nit/deleteDofa")}}"><i class="fas fa-eraser"></i> Limpiar campos</a></div>
             <div class="card-body">
                 <form action="/diagnostico/{{ $empresa->nit }}/storedofa" method="post">
                     @csrf
@@ -103,7 +103,7 @@
                                     <td>
                                         <div class="form-group mb-1">
                                             <label for="">F1.</label>
-                                            <input class="{{ $errors->has('fortaleza1') ? 'is-invalid' : '' }}"
+                                            <input class="form-control {{ $errors->has('fortaleza1') ? 'is-invalid' : '' }}"
                                                 type="text" name="fortaleza1"
                                                 value="{{ $dofa == '' ? '' : $dofa->fortaleza1 }}">
                                             @error('fortaleza1')
@@ -114,7 +114,7 @@
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">F2.</label>
-                                            <input class="{{ $errors->has('fortaleza2') ? 'is-invalid' : '' }}"
+                                            <input class="form-control {{ $errors->has('fortaleza2') ? 'is-invalid' : '' }}"
                                                 type="text" name="fortaleza2"
                                                 value="{{ $dofa == '' ? '' : $dofa->fortaleza2 }}">
                                             @error('fortaleza2')
@@ -125,7 +125,7 @@
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">F3.</label>
-                                            <input class="{{ $errors->has('fortaleza3') ? 'is-invalid' : '' }}"
+                                            <input class="form-control {{ $errors->has('fortaleza3') ? 'is-invalid' : '' }}"
                                                 type="text" name="fortaleza3"
                                                 value="{{ $dofa == '' ? '' : $dofa->fortaleza3 }}">
                                             @error('fortaleza3')
@@ -136,19 +136,19 @@
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">F4.</label>
-                                            <input class="" type="text" name="fortaleza4"
+                                            <input class="form-control" type="text" name="fortaleza4"
                                                 value="{{ $dofa == '' ? '' : $dofa->fortaleza4 }}">
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">F5.</label>
-                                            <input class="" type="text" name="fortaleza5"
+                                            <input class="form-control" type="text" name="fortaleza5"
                                                 value="{{ $dofa == '' ? '' : $dofa->fortaleza5 }}">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group mb-1">
                                             <label for="">D1.</label>
-                                            <input class="{{ $errors->has('debilidad1') ? 'is-invalid' : '' }}"
+                                            <input class="form-control {{ $errors->has('debilidad1') ? 'is-invalid' : '' }}"
                                                 type="text" name="debilidad1"
                                                 value="{{ $dofa == '' ? '' : $dofa->debilidad1 }}">
                                             @error('debilidad1')
@@ -159,7 +159,7 @@
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">D2.</label>
-                                            <input class="{{ $errors->has('debilidad2') ? 'is-invalid' : '' }}"
+                                            <input class="form-control {{ $errors->has('debilidad2') ? 'is-invalid' : '' }}"
                                                 type="text" name="debilidad2"
                                                 value="{{ $dofa == '' ? '' : $dofa->debilidad2 }}">
                                             @error('debilidad2')
@@ -170,7 +170,7 @@
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">D3.</label>
-                                            <input class="{{ $errors->has('debilidad3') ? 'is-invalid' : '' }}"
+                                            <input class="form-control {{ $errors->has('debilidad3') ? 'is-invalid' : '' }}"
                                                 type="text" name="debilidad3"
                                                 value="{{ $dofa == '' ? '' : $dofa->debilidad3 }}">
                                             @error('debilidad3')
@@ -181,12 +181,12 @@
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">D4.</label>
-                                            <input class="" type="text" name="debilidad4"
+                                            <input class="form-control" type="text" name="debilidad4"
                                                 value="{{ $dofa == '' ? '' : $dofa->debilidad4 }}">
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">D5.</label>
-                                            <input class="" type="text" name="debilidad5"
+                                            <input class="form-control" type="text" name="debilidad5"
                                                 value="{{ $dofa == '' ? '' : $dofa->debilidad5 }}">
                                         </div>
                                     </td>
@@ -204,7 +204,7 @@
                                     <td>
                                         <div class="form-group mb-1">
                                             <label for="">O1.</label>
-                                            <input class="{{ $errors->has('oportunidad1') ? 'is-invalid' : '' }}"
+                                            <input class="form-control {{ $errors->has('oportunidad1') ? 'is-invalid' : '' }}"
                                                 type="text" name="oportunidad1"
                                                 value="{{ $dofa == '' ? '' : $dofa->oportunidad1 }}">
                                             @error('oportunidad1')
@@ -215,7 +215,7 @@
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">O2.</label>
-                                            <input class="{{ $errors->has('oportunidad2') ? 'is-invalid' : '' }}"
+                                            <input class="form-control {{ $errors->has('oportunidad2') ? 'is-invalid' : '' }}"
                                                 type="text" name="oportunidad2"
                                                 value="{{ $dofa == '' ? '' : $dofa->oportunidad2 }}">
                                             @error('oportunidad2')
@@ -226,7 +226,7 @@
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">O3.</label>
-                                            <input class="{{ $errors->has('oportunidad3') ? 'is-invalid' : '' }}"
+                                            <input class="form-control {{ $errors->has('oportunidad3') ? 'is-invalid' : '' }}"
                                                 type="text" name="oportunidad3"
                                                 value="{{ $dofa == '' ? '' : $dofa->oportunidad3 }}">
                                             @error('oportunidad3')
@@ -237,19 +237,19 @@
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">O4.</label>
-                                            <input class="" type="text" name="oportunidad4"
+                                            <input class="form-control" type="text" name="oportunidad4"
                                                 value="{{ $dofa == '' ? '' : $dofa->oportunidad4 }}">
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">O5.</label>
-                                            <input class="" type="text" name="oportunidad5"
+                                            <input class="form-control" type="text" name="oportunidad5"
                                                 value="{{ $dofa == '' ? '' : $dofa->oportunidad5 }}">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group mb-1">
                                             <label for="">FO1.</label>
-                                            <input class="{{ $errors->has('estrategiafo1') ? 'is-invalid' : '' }}"
+                                            <input class="form-control {{ $errors->has('estrategiafo1') ? 'is-invalid' : '' }}"
                                                 type="text" name="estrategiafo1"
                                                 value="{{ $dofa == '' ? '' : $dofa->estrategiafo1 }}">
                                             @error('estrategiafo1')
@@ -260,7 +260,7 @@
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">FO2.</label>
-                                            <input class="{{ $errors->has('estrategiafo2') ? 'is-invalid' : '' }}"
+                                            <input class="form-control {{ $errors->has('estrategiafo2') ? 'is-invalid' : '' }}"
                                                 type="text" name="estrategiafo2"
                                                 value="{{ $dofa == '' ? '' : $dofa->estrategiafo2 }}">
                                             @error('estrategiafo2')
@@ -271,7 +271,7 @@
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">FO3.</label>
-                                            <input class="{{ $errors->has('estrategiafo3') ? 'is-invalid' : '' }}"
+                                            <input class="form-control {{ $errors->has('estrategiafo3') ? 'is-invalid' : '' }}"
                                                 type="text" name="estrategiafo3"
                                                 value="{{ $dofa == '' ? '' : $dofa->estrategiafo3 }}">
                                             @error('estrategiafo3')
@@ -282,19 +282,19 @@
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">FO4.</label>
-                                            <input class="" type="text" name="estrategiafo4"
+                                            <input class="form-control" type="text" name="estrategiafo4"
                                                 value="{{ $dofa == '' ? '' : $dofa->estrategiafo4 }}">
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">FO5.</label>
-                                            <input class="" type="text" name="estrategiafo5"
+                                            <input class="form-control" type="text" name="estrategiafo5"
                                                 value="{{ $dofa == '' ? '' : $dofa->estrategiafo5 }}">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group mb-1">
                                             <label for="">DO1.</label>
-                                            <input class="{{ $errors->has('estrategiado1') ? 'is-invalid' : '' }}"
+                                            <input class="form-control {{ $errors->has('estrategiado1') ? 'is-invalid' : '' }}"
                                                 type="text" name="estrategiado1"
                                                 value="{{ $dofa == '' ? '' : $dofa->estrategiado1 }}">
                                             @error('estrategiado1')
@@ -305,7 +305,7 @@
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">DO2.</label>
-                                            <input class="{{ $errors->has('estrategiado2') ? 'is-invalid' : '' }}"
+                                            <input class="form-control {{ $errors->has('estrategiado2') ? 'is-invalid' : '' }}"
                                                 type="text" name="estrategiado2"
                                                 value="{{ $dofa == '' ? '' : $dofa->estrategiado2 }}">
                                             @error('estrategiado2')
@@ -316,7 +316,7 @@
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">DO3.</label>
-                                            <input class="{{ $errors->has('estrategiado3') ? 'is-invalid' : '' }}"
+                                            <input class="form-control {{ $errors->has('estrategiado3') ? 'is-invalid' : '' }}"
                                                 type="text" name="estrategiado3"
                                                 value="{{ $dofa == '' ? '' : $dofa->estrategiado3 }}">
                                             @error('estrategiado3')
@@ -327,12 +327,12 @@
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">DO4.</label>
-                                            <input class="" type="text" name="estrategiado4"
+                                            <input class="form-control" type="text" name="estrategiado4"
                                                 value="{{ $dofa == '' ? '' : $dofa->estrategiado4 }}">
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">DO5.</label>
-                                            <input class="" type="text" name="estrategiado5"
+                                            <input class="form-control" type="text" name="estrategiado5"
                                                 value="{{ $dofa == '' ? '' : $dofa->estrategiado5 }}">
                                         </div>
                                     </td>
@@ -348,7 +348,7 @@
                                     <td>
                                         <div class="form-group mb-1">
                                             <label for="">A1.</label>
-                                            <input class="{{ $errors->has('amenaza1') ? 'is-invalid' : '' }}" type="text"
+                                            <input class="form-control {{ $errors->has('amenaza1') ? 'is-invalid' : '' }}" type="text"
                                                 name="amenaza1" value="{{ $dofa == '' ? '' : $dofa->amenaza1 }}">
                                             @error('amenaza1')
                                                 <span class="invalid-feedback" role="alert">
@@ -358,7 +358,7 @@
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">A2.</label>
-                                            <input class="{{ $errors->has('amenaza2') ? 'is-invalid' : '' }}" type="text"
+                                            <input class="form-control {{ $errors->has('amenaza2') ? 'is-invalid' : '' }}" type="text"
                                                 name="amenaza2" value="{{ $dofa == '' ? '' : $dofa->amenaza2 }}">
                                             @error('amenaza2')
                                                 <span class="invalid-feedback" role="alert">
@@ -368,7 +368,7 @@
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">A3.</label>
-                                            <input class="{{ $errors->has('amenaza3') ? 'is-invalid' : '' }}" type="text"
+                                            <input class="form-control {{ $errors->has('amenaza3') ? 'is-invalid' : '' }}" type="text"
                                                 name="amenaza3" value="{{ $dofa == '' ? '' : $dofa->amenaza3 }}">
                                             @error('amenaza3')
                                                 <span class="invalid-feedback" role="alert">
@@ -378,19 +378,19 @@
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">A4.</label>
-                                            <input class="" type="text" name="amenaza4"
+                                            <input class="form-control" type="text" name="amenaza4"
                                                 value="{{ $dofa == '' ? '' : $dofa->amenaza4 }}">
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">A5.</label>
-                                            <input class="" type="text" name="amenaza5"
+                                            <input class="form-control" type="text" name="amenaza5"
                                                 value="{{ $dofa == '' ? '' : $dofa->amenaza5 }}">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group mb-1">
                                             <label for="">FA1.</label>
-                                            <input class="{{ $errors->has('estrategiafa1') ? 'is-invalid' : '' }}"
+                                            <input class="form-control {{ $errors->has('estrategiafa1') ? 'is-invalid' : '' }}"
                                                 type="text" name="estrategiafa1"
                                                 value="{{ $dofa == '' ? '' : $dofa->estrategiafa1 }}">
                                             @error('estrategiafa1')
@@ -401,7 +401,7 @@
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">FA2.</label>
-                                            <input class="{{ $errors->has('estrategiafa2') ? 'is-invalid' : '' }}"
+                                            <input class="form-control {{ $errors->has('estrategiafa2') ? 'is-invalid' : '' }}"
                                                 type="text" name="estrategiafa2"
                                                 value="{{ $dofa == '' ? '' : $dofa->estrategiafa2 }}">
                                             @error('estrategiafa2')
@@ -412,7 +412,7 @@
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">FA3.</label>
-                                            <input class="{{ $errors->has('estrategiafa3') ? 'is-invalid' : '' }}"
+                                            <input class="form-control {{ $errors->has('estrategiafa3') ? 'is-invalid' : '' }}"
                                                 type="text" name="estrategiafa3"
                                                 value="{{ $dofa == '' ? '' : $dofa->estrategiafa3 }}">
                                             @error('estrategiafa3')
@@ -423,19 +423,19 @@
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">FA4.</label>
-                                            <input class="" type="text" name="estrategiafa4"
+                                            <input class="form-control" type="text" name="estrategiafa4"
                                                 value="{{ $dofa == '' ? '' : $dofa->estrategiafa4 }}">
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">FA5.</label>
-                                            <input class="" type="text" name="estrategiafa5"
+                                            <input class="form-control" type="text" name="estrategiafa5"
                                                 value="{{ $dofa == '' ? '' : $dofa->estrategiafa5 }}">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group mb-1">
                                             <label for="">DA1.</label>
-                                            <input class="{{ $errors->has('estrategiada1') ? 'is-invalid' : '' }}"
+                                            <input class="form-control {{ $errors->has('estrategiada1') ? 'is-invalid' : '' }}"
                                                 type="text" name="estrategiada1"
                                                 value="{{ $dofa == '' ? '' : $dofa->estrategiada1 }}">
                                             @error('estrategiada1')
@@ -446,7 +446,7 @@
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">DA2.</label>
-                                            <input class="{{ $errors->has('estrategiada2') ? 'is-invalid' : '' }}"
+                                            <input class="form-control {{ $errors->has('estrategiada2') ? 'is-invalid' : '' }}"
                                                 type="text" name="estrategiada2"
                                                 value="{{ $dofa == '' ? '' : $dofa->estrategiada2 }}">
                                             @error('estrategiada2')
@@ -457,7 +457,7 @@
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">DA3.</label>
-                                            <input class="{{ $errors->has('estrategiada3') ? 'is-invalid' : '' }}"
+                                            <input class="form-control {{ $errors->has('estrategiada3') ? 'is-invalid' : '' }}"
                                                 type="text" name="estrategiada3"
                                                 value="{{ $dofa == '' ? '' : $dofa->estrategiada3 }}">
                                             @error('estrategiada3')
@@ -468,12 +468,12 @@
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">DA4.</label>
-                                            <input class="" type="text" name="estrategiada4"
+                                            <input class="form-control" type="text" name="estrategiada4"
                                                 value="{{ $dofa == '' ? '' : $dofa->estrategiada4 }}">
                                         </div>
                                         <div class="form-group mb-1">
                                             <label for="">DA5.</label>
-                                            <input class="" type="text" name="estrategiada5"
+                                            <input class="form-control" type="text" name="estrategiada5"
                                                 value="{{ $dofa == '' ? '' : $dofa->estrategiada5 }}">
                                         </div>
                                     </td>
@@ -493,7 +493,9 @@
         <div class="card mt-3">
             <div class="card-header">Mapa estrategico</div>
             <div class="card-body">
-                <form action="" method="post">
+                <form action="{{url("diagnostico/{$empresa->nit}/registroTablero")}}" method="post">
+                    @csrf
+                    @method('PUT')
                     <table class="table">
                         <tbody>
                             <tr>
@@ -504,91 +506,92 @@
                                 <th>Meta</th>
                             </tr>
                             <tr>
-                                <td><input class="form-control" type="text" placeholder="" value="Crecimiento y desarrollo" readonly></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                            </tr>
-                            <tr>
-                                <td><input class="form-control" type="text" placeholder="" value="Crecimiento y desarrollo" readonly></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" name="perspectiva[]" type="text" placeholder="" value="Crecimiento y desarrollo" readonly></td>
+                                <td><input class="form-control" name="" type="text" placeholder=""></td>
                                 <td><input class="form-control" type="text" placeholder=""></td>
                                 <td><input class="form-control" type="text" placeholder=""></td>
                                 <td><input class="form-control" type="text" placeholder=""></td>
                             </tr>
                             <tr>
-                                <td><input class="form-control" type="text" placeholder="" value="Crecimiento y desarrollo" readonly></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                            </tr>
-                            <tr>
-                                <td><input class="form-control" type="text" placeholder="" value="Clientes" readonly></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" name="perspectiva[]" type="text" placeholder="" value="Crecimiento y desarrollo" readonly></td>
+                                <td><input class="form-control" name="" type="text" placeholder=""></td>
                                 <td><input class="form-control" type="text" placeholder=""></td>
                                 <td><input class="form-control" type="text" placeholder=""></td>
                                 <td><input class="form-control" type="text" placeholder=""></td>
                             </tr>
                             <tr>
-                                <td><input class="form-control" type="text" placeholder="" value="Clientes" readonly></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                            </tr>
-                            <tr>
-                                <td><input class="form-control" type="text" placeholder="" value="Clientes" readonly></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" name="perspectiva[]" type="text" placeholder="" value="Crecimiento y desarrollo" readonly></td>
+                                <td><input class="form-control" name="" type="text" placeholder=""></td>
                                 <td><input class="form-control" type="text" placeholder=""></td>
                                 <td><input class="form-control" type="text" placeholder=""></td>
                                 <td><input class="form-control" type="text" placeholder=""></td>
                             </tr>
                             <tr>
-                                <td><input class="form-control" type="text" placeholder="" value="Procesos internos" readonly></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                            </tr>
-                            <tr>
-                                <td><input class="form-control" type="text" placeholder="" value="Procesos internos" readonly></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" name="perspectiva[]" type="text" placeholder="" value="Clientes" readonly></td>
+                                <td><input class="form-control" name="" type="text" placeholder=""></td>
                                 <td><input class="form-control" type="text" placeholder=""></td>
                                 <td><input class="form-control" type="text" placeholder=""></td>
                                 <td><input class="form-control" type="text" placeholder=""></td>
                             </tr>
                             <tr>
-                                <td><input class="form-control" type="text" placeholder="" value="Procesos internos" readonly></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                            </tr>
-                            <tr>
-                                <td><input class="form-control" type="text" placeholder="" value="Financiera" readonly></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" name="perspectiva[]" type="text" placeholder="" value="Clientes" readonly></td>
+                                <td><input class="form-control" name="" type="text" placeholder=""></td>
                                 <td><input class="form-control" type="text" placeholder=""></td>
                                 <td><input class="form-control" type="text" placeholder=""></td>
                                 <td><input class="form-control" type="text" placeholder=""></td>
                             </tr>
                             <tr>
-                                <td><input class="form-control" type="text" placeholder="" value="Financiera" readonly></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" name="perspectiva[]" type="text" placeholder="" value="Clientes" readonly></td>
+                                <td><input class="form-control" name="" type="text" placeholder=""></td>
                                 <td><input class="form-control" type="text" placeholder=""></td>
                                 <td><input class="form-control" type="text" placeholder=""></td>
                                 <td><input class="form-control" type="text" placeholder=""></td>
                             </tr>
                             <tr>
-                                <td><input class="form-control" type="text" placeholder="" value="Financiera" readonly></td>
+                                <td><input class="form-control" name="perspectiva[]" type="text" placeholder="" value="Procesos internos" readonly></td>
+                                <td><input class="form-control" name="" type="text" placeholder=""></td>
                                 <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                            </tr>
+                            <tr>
+                                <td><input class="form-control" name="perspectiva[]" type="text" placeholder="" value="Procesos internos" readonly></td>
+                                <td><input class="form-control" name="" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                            </tr>
+                            <tr>
+                                <td><input class="form-control" name="perspectiva[]" type="text" placeholder="" value="Procesos internos" readonly></td>
+                                <td><input class="form-control" name="" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                            </tr>
+                            <tr>
+                                <td><input class="form-control" name="perspectiva[]" type="text" placeholder="" value="Financiera" readonly></td>
+                                <td><input class="form-control" name="" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                            </tr>
+                            <tr>
+                                <td><input class="form-control" name="perspectiva[]" type="text" placeholder="" value="Financiera" readonly></td>
+                                <td><input class="form-control" name="" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                                <td><input class="form-control" type="text" placeholder=""></td>
+                            </tr>
+                            <tr>
+                                <td><input class="form-control" name="perspectiva[]" type="text" placeholder="" value="Financiera" readonly></td>
+                                <td><input class="form-control" name="" type="text" placeholder=""></td>
                                 <td><input class="form-control" type="text" placeholder=""></td>
                                 <td><input class="form-control" type="text" placeholder=""></td>
                                 <td><input class="form-control" type="text" placeholder=""></td>
                             </tr>
                         </tbody>
                     </table>
+                    <button class="btn btn-primary" type="submit">Guardar</button>
                 </form>
             </div>
         </div>

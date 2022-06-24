@@ -300,6 +300,7 @@ class DiagnosticoController extends Controller
     {
         $personas = DB::table('users')
             ->where('rol', 7)
+            ->orWhere('rol', 8)
             ->orderBy('nombre', 'asc')
             ->get();
         $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
@@ -512,6 +513,21 @@ class DiagnosticoController extends Controller
             return back();
         }
     }
+
+    public function deleteDofa($id){
+        $dofa = DB::table('matriz_dofa')
+            ->where('nit', $id)
+            ->delete();
+
+        if($dofa == 1){
+            Alert::success("Exitoso","Los campos se limpiaron con exito");
+            return back();
+        }else{
+            Alert::warning("Advertencia","Algo fallo, intentelo de nuevo");
+            return back();
+        }
+    }
+
     //PDF
     public function pdfDofa($id)
     {
@@ -524,4 +540,10 @@ class DiagnosticoController extends Controller
         $pdf->loadHTML($view);
         return $pdf->stream('matriz_dofa.pdf');
     }
+
+    //Tablero de control
+    public function registroTablero(Request $request, $id){
+                
+    }
+
 }
