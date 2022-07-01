@@ -32,19 +32,12 @@ Auth::routes();
 
 Route::get('diagnostico/{nit}/pdf', [DiagnosticoController::class, 'pdfDiagnostico']);
 Route::get('diagnostico/fase1', [DiagnosticoController::class, 'index']);
-Route::get('diagnostico/dofa', [DiagnosticoController::class, 'mdofa']);
 Route::get('diagnostico/{nit}/crear-dofa', [DiagnosticoController::class, 'mcrear']);
 Route::get('diagnostico/{nit}/analisis', [DiagnosticoController::class, 'analisis']);
 Route::get('diagnostico/individual', [DiagnosticoController::class, 'analisis_individual']);
 
 
-Route::put('diagnostico/{nit}/mision', [DiagnosticoController::class, 'mision']);
-Route::put('diagnostico/{nit}/vision', [DiagnosticoController::class, 'vision']);
-Route::put('diagnostico/{nit}/objestrategico', [DiagnosticoController::class, 'objestrategico']);
-Route::put('diagnostico/{nit}/perspectivacrecimientodesarrollo', [DiagnosticoController::class, 'perspectivacrecimientodesarrollo']);
-Route::put('diagnostico/{nit}/perspectivacliente', [DiagnosticoController::class, 'perspectivacliente']);
-Route::put('diagnostico/{nit}/perspectivaprocesosinternos', [DiagnosticoController::class, 'perspectivaprocesosinternos']);
-Route::put('diagnostico/{nit}/perspectivafinanciera', [DiagnosticoController::class, 'perspectivafinanciera']);
+Route::put('diagnostico/{nit}/guardarAnalisis', [DiagnosticoController::class, 'guardarAnalisis']);
 Route::get('diagnostico/{nit}/pdfAnalisis', [DiagnosticoController::class, 'pdfAnalisis']);
 Route::get('diagnostico/{nit}/pdfDofa', [DiagnosticoController::class, 'pdfDofa']);
 Route::get('diagnostico/{nit}/deleteDofa', [DiagnosticoController::class, 'deleteDofa']);
@@ -52,7 +45,8 @@ Route::get('diagnostico/{nit}/deleteDofa', [DiagnosticoController::class, 'delet
 Route::get('diagnostico/asignacion', [DiagnosticoController::class, 'asignacion']);
 Route::put('diagnostico/{nit}/storedofa', [DiagnosticoController::class, 'storedofa']);
 
-Route::put('diagnostico/{nit}/registroTablero', [DiagnosticoController::class, 'registroTablero']);
+Route::get('diagnostico/tablero', [DiagnosticoController::class, 'tableroControl']);
+//Route::put('diagnostico/{nit}/registroTablero', [DiagnosticoController::class, 'registroTablero']);
 
 Route::get('grafico/encuesta', [GraficoController::class, 'graficoEncuesta']);
 

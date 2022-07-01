@@ -50,11 +50,12 @@
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
-                        <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i> Cerrar
+                        <li><a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();"><i
+                                    class="fas fa-sign-out-alt"></i> Cerrar
                                 sesión</a>
-                            <form id="logout-form" action="{{ url('/logout') }}" method="POST"
-                                class="d-none">
+                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" class="d-none">
                                 {{ csrf_field() }}
                             </form>
                         </li>
@@ -113,9 +114,10 @@
                                 @endif
                             @endforeach
                             <!--Funcionalidades-->
-                            <div class="sb-sidenav-menu-heading">Funciones</div>
+                            <div class="sb-sidenav-menu-heading">Cuadro de mando integral</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                                data-bs-target="#collapseFormats" aria-expanded="false" aria-controls="collapseFormats">
+                                data-bs-target="#collapseFormats" aria-expanded="false"
+                                aria-controls="collapseFormats">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Formatos
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -123,21 +125,16 @@
                             <div class="collapse" id="collapseFormats" aria-labelledby="headingOne"
                                 data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{ url('diagnostico/fase1') }}">Diagnostico Fase
-                                        I</a>
-                                    <a class="nav-link" href="{{ url('diagnostico/individual') }}">Análisis
-                                        microempresa</a>
-                                    <a class="nav-link" href="{{ url('diagnostico/dofa') }}">DOFA/Objetivos estrategicos</a>
-                                    <!--<a class="nav-link" href="{{ url('diagnostico/planaccion') }}">Plan de
-                                        acción
-                                        microempresa</a>-->
+                                    <a class="nav-link" href="{{ url('diagnostico/individual') }}">Implementación
+                                        estrategias</a>
                                 </nav>
                             </div>
                             <!--Fin-->
                             <!--Resultados-->
                             <div class="sb-sidenav-menu-heading">RESULTADOS GRAFICOS</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                                data-bs-target="#collapseCharts" aria-expanded="false" aria-controls="collapseCharts">
+                                data-bs-target="#collapseCharts" aria-expanded="false"
+                                aria-controls="collapseCharts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Resultados graficos
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -145,7 +142,8 @@
                             <div class="collapse" id="collapseCharts" aria-labelledby="headingOne"
                                 data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{ url('grafico/encuesta') }}">Resultados encuesta</a>
+                                    <a class="nav-link" href="{{ url('grafico/encuesta') }}">Resultados
+                                        encuesta</a>
                                 </nav>
                             </div>
                         </div>

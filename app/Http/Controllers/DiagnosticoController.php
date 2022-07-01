@@ -124,49 +124,13 @@ class DiagnosticoController extends Controller
         }
     }
 
-    public function mision(Request $request, $id)
-    {
-        $mision = DB::table('diagnostico_individual')->where('nit_empresa', $id)->update(['mision' => $request->get('mision')]);
+    public function guardarAnalisis(Request $request, $id){
 
-        if ($mision == 1) {
-            Alert::success('Exitoso', 'La información se ha guardado');
-            return back();
-        } else {
-            Alert::warning('Advertencia', 'No se pudo');
-            return back();
-        }
-    }
-
-    public function vision(Request $request, $id)
-    {
-        $vision = DB::table('diagnostico_individual')->where('nit_empresa', $id)->update(['vision' => $request->get('vision')]);
-
-        if ($vision == 1) {
-            Alert::success('Exitoso', 'La información se ha guardado');
-            return back();
-        } else {
-            Alert::warning('Advertencia', 'No se pudo');
-            return back();
-        }
-    }
-
-    public function objestrategico(Request $request, $id)
-    {
-        $objestrategico = DB::table('diagnostico_individual')->where('nit_empresa', $id)->update(['objetivo_estrategio' => $request->get('objestrategico')]);
-
-        if ($objestrategico == 1) {
-            Alert::success('Exitoso', 'La información se ha guardado');
-            return back();
-        } else {
-            Alert::warning('Advertencia', 'No se pudo');
-            return back();
-        }
-    }
-
-    public function perspectivacrecimientodesarrollo(Request $request, $id)
-    {
-        $perspectivacrecimientod = DB::table('diagnostico_individual')->where('nit_empresa', $id)
+        $analisis = DB::table('diagnostico_individual')
+            ->where('nit_empresa', $id)
             ->update([
+                'mision' => $request->get('mision'),
+                'vision' => $request->get('vision'),
                 'preguntacd1' => $request->get('preguntacd1'),
                 'preguntacd1_1' => $request->get('preguntacd1_1'),
                 'preguntacd2' => $request->get('preguntacd2'),
@@ -187,21 +151,6 @@ class DiagnosticoController extends Controller
                 'preguntacd16' => $request->get('preguntacd16'),
                 'preguntacd17' => $request->get('preguntacd17'),
                 'preguntacd17_1' => $request->get('preguntacd17_1'),
-            ]);
-
-        if ($perspectivacrecimientod == 1) {
-            Alert::success('Exitoso', 'La información se ha guardado');
-            return back();
-        } else {
-            Alert::warning('Advertencia', 'No se pudo');
-            return back();
-        }
-    }
-
-    public function perspectivacliente(Request $request, $id)
-    {
-        $perspectivacliente = DB::table('diagnostico_individual')->where('nit_empresa', $id)
-            ->update([
                 'preguntac1' => $request->get('preguntac1'),
                 'preguntac2' => $request->get('preguntac2'),
                 'preguntac3' => $request->get('preguntac3'),
@@ -212,21 +161,6 @@ class DiagnosticoController extends Controller
                 'preguntac7' => $request->get('preguntac7'),
                 'preguntac8' => $request->get('preguntac8'),
                 'preguntac9' => $request->get('preguntac9'),
-            ]);
-
-        if ($perspectivacliente == 1) {
-            Alert::success('Exitoso', 'La información se ha guardado');
-            return back();
-        } else {
-            Alert::warning('Advertencia', 'No se pudo');
-            return back();
-        }
-    }
-
-    public function perspectivaprocesosinternos(Request $request, $id)
-    {
-        $perspectivaprocesosinternos = DB::table('diagnostico_individual')->where('nit_empresa', $id)
-            ->update([
                 'preguntapi1' => $request->get('preguntapi1'),
                 'preguntapi2' => $request->get('preguntapi2'),
                 'preguntapi3' => $request->get('preguntapi3'),
@@ -238,21 +172,6 @@ class DiagnosticoController extends Controller
                 'preguntapi6_1' => $request->get('preguntapi6_1'),
                 'preguntapi7' => $request->get('preguntapi7'),
                 'preguntapi8' => $request->get('preguntapi8'),
-            ]);
-
-        if ($perspectivaprocesosinternos == 1) {
-            Alert::success('Exitoso', 'La información se ha guardado');
-            return back();
-        } else {
-            Alert::warning('Advertencia', 'No se pudo');
-            return back();
-        }
-    }
-
-    public function perspectivafinanciera(Request $request, $id)
-    {
-        $perspectivafinanciera = DB::table('diagnostico_individual')->where('nit_empresa', $id)
-            ->update([
                 'preguntapf1' => $request->get('preguntapf1'),
                 'preguntapf1_1' => $request->get('preguntapf1_1'),
                 'preguntapf2' => $request->get('preguntapf2'),
@@ -275,13 +194,14 @@ class DiagnosticoController extends Controller
                 'preguntapf15' => $request->get('preguntapf15'),
             ]);
 
-        if ($perspectivafinanciera == 1) {
-            Alert::success('Exitoso', 'La información se ha guardado');
+            if($analisis == 1){
+                Alert::success('Exitoso', 'El diagnostico se ha guardado');
             return back();
-        } else {
-            Alert::warning('Advertencia', 'No se pudo');
-            return back();
-        }
+            }else{
+                Alert::success('Advertencia', 'No se pudo');
+                return back();
+            }
+
     }
 
     public function destroy($id)
@@ -542,8 +462,9 @@ class DiagnosticoController extends Controller
     }
 
     //Tablero de control
-    public function registroTablero(Request $request, $id){
-                
-    }
+    public function tableroControl(){
+        $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
+        return view('diagnostico/faseII/tablero_control.index',compact('permisos'));        
+    }   
 
 }

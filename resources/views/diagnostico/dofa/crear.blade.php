@@ -75,12 +75,12 @@
             Amenazas, Estrategias FA, Estrategias DA. <br> <span class="text-danger">Nota: El sistemas no le permitira
                 guardar si no cumple con el requisito de las tres (3) minimo.</span></p>
         <hr>
-        <div class="d-flex">
-            <a class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Dofa"><i class="fas fa-eye"></i>
+        <div class="d-flex justify-content-end">
+            <a class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#Dofa"><i class="fas fa-eye"></i>
                 Visualizar DOFA</a>
         </div>
-        <div class="card mt-3">
-            <div class="card-header">Matriz DOFA <a class="btn btn-danger btn-sm" href="{{url("diagnostico/$empresa->nit/deleteDofa")}}"><i class="fas fa-eraser"></i> Limpiar campos</a></div>
+        <div class=" mt-3">
+            <div class="">Matriz DOFA <a class="btn btn-danger btn-sm" href="{{url("diagnostico/$empresa->nit/deleteDofa")}}"><i class="fas fa-eraser"></i> Limpiar campos</a></div>
             <div class="card-body">
                 <form action="/diagnostico/{{ $empresa->nit }}/storedofa" method="post">
                     @csrf
@@ -486,112 +486,6 @@
                             </tbody>
                         </table>
                     </div>
-                </form>
-            </div>
-        </div>
-        <br> 
-        <div class="card mt-3">
-            <div class="card-header">Mapa estrategico</div>
-            <div class="card-body">
-                <form action="{{url("diagnostico/{$empresa->nit}/registroTablero")}}" method="post">
-                    @csrf
-                    @method('PUT')
-                    <table class="table">
-                        <tbody>
-                            <tr>
-                                <th>Perspectiva</th>
-                                <th>Objetivo estrategico</th>
-                                <th>Indicador</th>
-                                <th>Resulta actual</th>
-                                <th>Meta</th>
-                            </tr>
-                            <tr>
-                                <td><input class="form-control" name="perspectiva[]" type="text" placeholder="" value="Crecimiento y desarrollo" readonly></td>
-                                <td><input class="form-control" name="" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                            </tr>
-                            <tr>
-                                <td><input class="form-control" name="perspectiva[]" type="text" placeholder="" value="Crecimiento y desarrollo" readonly></td>
-                                <td><input class="form-control" name="" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                            </tr>
-                            <tr>
-                                <td><input class="form-control" name="perspectiva[]" type="text" placeholder="" value="Crecimiento y desarrollo" readonly></td>
-                                <td><input class="form-control" name="" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                            </tr>
-                            <tr>
-                                <td><input class="form-control" name="perspectiva[]" type="text" placeholder="" value="Clientes" readonly></td>
-                                <td><input class="form-control" name="" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                            </tr>
-                            <tr>
-                                <td><input class="form-control" name="perspectiva[]" type="text" placeholder="" value="Clientes" readonly></td>
-                                <td><input class="form-control" name="" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                            </tr>
-                            <tr>
-                                <td><input class="form-control" name="perspectiva[]" type="text" placeholder="" value="Clientes" readonly></td>
-                                <td><input class="form-control" name="" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                            </tr>
-                            <tr>
-                                <td><input class="form-control" name="perspectiva[]" type="text" placeholder="" value="Procesos internos" readonly></td>
-                                <td><input class="form-control" name="" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                            </tr>
-                            <tr>
-                                <td><input class="form-control" name="perspectiva[]" type="text" placeholder="" value="Procesos internos" readonly></td>
-                                <td><input class="form-control" name="" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                            </tr>
-                            <tr>
-                                <td><input class="form-control" name="perspectiva[]" type="text" placeholder="" value="Procesos internos" readonly></td>
-                                <td><input class="form-control" name="" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                            </tr>
-                            <tr>
-                                <td><input class="form-control" name="perspectiva[]" type="text" placeholder="" value="Financiera" readonly></td>
-                                <td><input class="form-control" name="" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                            </tr>
-                            <tr>
-                                <td><input class="form-control" name="perspectiva[]" type="text" placeholder="" value="Financiera" readonly></td>
-                                <td><input class="form-control" name="" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                            </tr>
-                            <tr>
-                                <td><input class="form-control" name="perspectiva[]" type="text" placeholder="" value="Financiera" readonly></td>
-                                <td><input class="form-control" name="" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                                <td><input class="form-control" type="text" placeholder=""></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <button class="btn btn-primary" type="submit">Guardar</button>
                 </form>
             </div>
         </div>
