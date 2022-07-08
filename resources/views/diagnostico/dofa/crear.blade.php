@@ -69,7 +69,7 @@
 @endsection
 <main>
     <div class="container">
-        <h2 class="mt-4"><i class="fab fa-buromobelexperte"></i> Construcción matriz dofa...</h2>
+        <h2 class="mt-4"><i class="fab fa-buromobelexperte"></i> MATRIZ DOFA para análisis estrategico</h2>
         <p>Para dar cumplimiento al desarrollo de la matriz DOFA de la microempresa correspondiente debe ingresar minimo
             tres (3) y máximo cinco (5) Fortalezas, Debilidades, Oportunidades, Estrategias FO, Estrategias DO,
             Amenazas, Estrategias FA, Estrategias DA. <br> <span class="text-danger">Nota: El sistemas no le permitira
@@ -80,7 +80,9 @@
                 Visualizar DOFA</a>
         </div>
         <div class=" mt-3">
-            <div class="">Matriz DOFA <a class="btn btn-danger btn-sm" href="{{url("diagnostico/$empresa->nit/deleteDofa")}}"><i class="fas fa-eraser"></i> Limpiar campos</a></div>
+            <div class="">Matriz DOFA <a class="btn btn-danger btn-sm"
+                    href="{{ url("diagnostico/$empresa->nit/deleteDofa") }}"><i class="fas fa-eraser"></i> Limpiar
+                    campos</a></div>
             <div class="card-body">
                 <form action="/diagnostico/{{ $empresa->nit }}/storedofa" method="post">
                     @csrf
@@ -90,391 +92,580 @@
                             <thead>
                                 <tr>
                                     <td>DOFA</td>
-                                    <td>Fortalezas</td>
-                                    <td>Debilidades</td>
+                                    <td>Fortalezas (+)</td>
+                                    <td>Debilidades (-)</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td style="width: 35%">
-                                        <p> {{ $empresa->nit }} <br>{{ $empresa->razon_social }} <br>
+                                        <p> 
+                                            <input type="text" value="{{$empresa->nit}}" name="nit" readonly> <br>
                                             {{ $empresa->municipio }} <br> {{ $empresa->ciiu_1 }}</p>
+                                            
                                     </td>
                                     <td>
                                         <div class="form-group mb-1">
-                                            <label for="">F1.</label>
-                                            <input class="form-control {{ $errors->has('fortaleza1') ? 'is-invalid' : '' }}"
-                                                type="text" name="fortaleza1"
-                                                value="{{ $dofa == '' ? '' : $dofa->fortaleza1 }}">
-                                            @error('fortaleza1')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                            <div class="row">
+                                                <div class="col-2">F1</div>
+                                                <div class="col-10">
+                                                    <input
+                                                        class="form-control {{ $errors->has('fortaleza1') ? 'is-invalid' : '' }}"
+                                                        type="text" name="fortaleza1"
+                                                        value="{{ $dofa == '' ? '' : $dofa->fortaleza1 }}">
+                                                    @error('fortaleza1')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group mb-1">
-                                            <label for="">F2.</label>
-                                            <input class="form-control {{ $errors->has('fortaleza2') ? 'is-invalid' : '' }}"
-                                                type="text" name="fortaleza2"
-                                                value="{{ $dofa == '' ? '' : $dofa->fortaleza2 }}">
-                                            @error('fortaleza2')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                            <div class="row">
+                                                <div class="col-2">F2</div>
+                                                <div class="col-10">
+                                                    <input
+                                                        class="form-control {{ $errors->has('fortaleza2') ? 'is-invalid' : '' }}"
+                                                        type="text" name="fortaleza2"
+                                                        value="{{ $dofa == '' ? '' : $dofa->fortaleza2 }}">
+                                                    @error('fortaleza2')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group mb-1">
-                                            <label for="">F3.</label>
-                                            <input class="form-control {{ $errors->has('fortaleza3') ? 'is-invalid' : '' }}"
-                                                type="text" name="fortaleza3"
-                                                value="{{ $dofa == '' ? '' : $dofa->fortaleza3 }}">
-                                            @error('fortaleza3')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                            <div class="row">
+                                                <div class="col-2">F3</div>
+                                                <div class="col-10">
+                                                    <input
+                                                        class="form-control {{ $errors->has('fortaleza3') ? 'is-invalid' : '' }}"
+                                                        type="text" name="fortaleza3"
+                                                        value="{{ $dofa == '' ? '' : $dofa->fortaleza3 }}">
+                                                    @error('fortaleza3')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group mb-1">
-                                            <label for="">F4.</label>
-                                            <input class="form-control" type="text" name="fortaleza4"
-                                                value="{{ $dofa == '' ? '' : $dofa->fortaleza4 }}">
+                                            <div class="row">
+                                                <div class="col-2">F4</div>
+                                                <div class="col-10">
+                                                    <input class="form-control" type="text" name="fortaleza4"
+                                                        value="{{ $dofa == '' ? '' : $dofa->fortaleza4 }}">
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group mb-1">
-                                            <label for="">F5.</label>
-                                            <input class="form-control" type="text" name="fortaleza5"
-                                                value="{{ $dofa == '' ? '' : $dofa->fortaleza5 }}">
+                                            <div class="row">
+                                                <div class="col-2">F5</div>
+                                                <div class="col-10">
+                                                    <input class="form-control" type="text" name="fortaleza5"
+                                                        value="{{ $dofa == '' ? '' : $dofa->fortaleza5 }}">
+                                                </div>
+                                            </div>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group mb-1">
-                                            <label for="">D1.</label>
-                                            <input class="form-control {{ $errors->has('debilidad1') ? 'is-invalid' : '' }}"
-                                                type="text" name="debilidad1"
-                                                value="{{ $dofa == '' ? '' : $dofa->debilidad1 }}">
-                                            @error('debilidad1')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                            <div class="row">
+                                                <div class="col-2">D1</div>
+                                                <div class="col-10">
+                                                    <input
+                                                        class="form-control {{ $errors->has('debilidad1') ? 'is-invalid' : '' }}"
+                                                        type="text" name="debilidad1"
+                                                        value="{{ $dofa == '' ? '' : $dofa->debilidad1 }}">
+                                                    @error('debilidad1')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group mb-1">
-                                            <label for="">D2.</label>
-                                            <input class="form-control {{ $errors->has('debilidad2') ? 'is-invalid' : '' }}"
-                                                type="text" name="debilidad2"
-                                                value="{{ $dofa == '' ? '' : $dofa->debilidad2 }}">
-                                            @error('debilidad2')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                            <div class="row">
+                                                <div class="col-2">D2</div>
+                                                <div class="col-10">
+                                                    <input
+                                                        class="form-control {{ $errors->has('debilidad2') ? 'is-invalid' : '' }}"
+                                                        type="text" name="debilidad2"
+                                                        value="{{ $dofa == '' ? '' : $dofa->debilidad2 }}">
+                                                    @error('debilidad2')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group mb-1">
-                                            <label for="">D3.</label>
-                                            <input class="form-control {{ $errors->has('debilidad3') ? 'is-invalid' : '' }}"
-                                                type="text" name="debilidad3"
-                                                value="{{ $dofa == '' ? '' : $dofa->debilidad3 }}">
-                                            @error('debilidad3')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                            <div class="row">
+                                                <div class="col-2">D3</div>
+                                                <div class="col-10">
+                                                    <input
+                                                        class="form-control {{ $errors->has('debilidad3') ? 'is-invalid' : '' }}"
+                                                        type="text" name="debilidad3"
+                                                        value="{{ $dofa == '' ? '' : $dofa->debilidad3 }}">
+                                                    @error('debilidad3')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group mb-1">
-                                            <label for="">D4.</label>
-                                            <input class="form-control" type="text" name="debilidad4"
-                                                value="{{ $dofa == '' ? '' : $dofa->debilidad4 }}">
+                                            <div class="row">
+                                                <div class="col-2">D4</div>
+                                                <div class="col-10">
+                                                    <input class="form-control" type="text" name="debilidad4"
+                                                        value="{{ $dofa == '' ? '' : $dofa->debilidad4 }}">
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group mb-1">
-                                            <label for="">D5.</label>
-                                            <input class="form-control" type="text" name="debilidad5"
-                                                value="{{ $dofa == '' ? '' : $dofa->debilidad5 }}">
+                                            <div class="row">
+                                                <div class="col-2">D5</div>
+                                                <div class="col-10">
+                                                    <input class="form-control" type="text" name="debilidad5"
+                                                        value="{{ $dofa == '' ? '' : $dofa->debilidad5 }}">
+                                                </div>
+                                            </div>
                                         </div>
                                     </td>
                                 </tr>
                             </tbody>
                             <thead>
                                 <tr>
-                                    <td>Oportunidades</td>
-                                    <td>Estrategias FO</td>
-                                    <td>Estrategias DO</td>
+                                    <td>Oportunidades (+)</td>
+                                    <td>Estrategias (FO)</td>
+                                    <td>Estrategias (DO)</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>
                                         <div class="form-group mb-1">
-                                            <label for="">O1.</label>
-                                            <input class="form-control {{ $errors->has('oportunidad1') ? 'is-invalid' : '' }}"
-                                                type="text" name="oportunidad1"
-                                                value="{{ $dofa == '' ? '' : $dofa->oportunidad1 }}">
-                                            @error('oportunidad1')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                            <div class="row">
+                                                <div class="col-2">O1</div>
+                                                <div class="col-10">
+                                                    <input
+                                                        class="form-control {{ $errors->has('oportunidad1') ? 'is-invalid' : '' }}"
+                                                        type="text" name="oportunidad1"
+                                                        value="{{ $dofa == '' ? '' : $dofa->oportunidad1 }}">
+                                                    @error('oportunidad1')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group mb-1">
-                                            <label for="">O2.</label>
-                                            <input class="form-control {{ $errors->has('oportunidad2') ? 'is-invalid' : '' }}"
-                                                type="text" name="oportunidad2"
-                                                value="{{ $dofa == '' ? '' : $dofa->oportunidad2 }}">
-                                            @error('oportunidad2')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                            <div class="row">
+                                                <div class="col-2">O2</div>
+                                                <div class="col-10">
+                                                    <input
+                                                        class="form-control {{ $errors->has('oportunidad2') ? 'is-invalid' : '' }}"
+                                                        type="text" name="oportunidad2"
+                                                        value="{{ $dofa == '' ? '' : $dofa->oportunidad2 }}">
+                                                    @error('oportunidad2')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group mb-1">
-                                            <label for="">O3.</label>
-                                            <input class="form-control {{ $errors->has('oportunidad3') ? 'is-invalid' : '' }}"
-                                                type="text" name="oportunidad3"
-                                                value="{{ $dofa == '' ? '' : $dofa->oportunidad3 }}">
-                                            @error('oportunidad3')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                            <div class="row">
+                                                <div class="col-2">O3</div>
+                                                <div class="col-10">
+                                                    <input
+                                                        class="form-control {{ $errors->has('oportunidad3') ? 'is-invalid' : '' }}"
+                                                        type="text" name="oportunidad3"
+                                                        value="{{ $dofa == '' ? '' : $dofa->oportunidad3 }}">
+                                                    @error('oportunidad3')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group mb-1">
-                                            <label for="">O4.</label>
-                                            <input class="form-control" type="text" name="oportunidad4"
-                                                value="{{ $dofa == '' ? '' : $dofa->oportunidad4 }}">
+                                            <div class="row">
+                                                <div class="col-2">O4</div>
+                                                <div class="col-10">
+                                                    <input class="form-control" type="text" name="oportunidad4"
+                                                        value="{{ $dofa == '' ? '' : $dofa->oportunidad4 }}">
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group mb-1">
-                                            <label for="">O5.</label>
-                                            <input class="form-control" type="text" name="oportunidad5"
-                                                value="{{ $dofa == '' ? '' : $dofa->oportunidad5 }}">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="form-group mb-1">
-                                            <label for="">FO1.</label>
-                                            <input class="form-control {{ $errors->has('estrategiafo1') ? 'is-invalid' : '' }}"
-                                                type="text" name="estrategiafo1"
-                                                value="{{ $dofa == '' ? '' : $dofa->estrategiafo1 }}">
-                                            @error('estrategiafo1')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group mb-1">
-                                            <label for="">FO2.</label>
-                                            <input class="form-control {{ $errors->has('estrategiafo2') ? 'is-invalid' : '' }}"
-                                                type="text" name="estrategiafo2"
-                                                value="{{ $dofa == '' ? '' : $dofa->estrategiafo2 }}">
-                                            @error('estrategiafo2')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group mb-1">
-                                            <label for="">FO3.</label>
-                                            <input class="form-control {{ $errors->has('estrategiafo3') ? 'is-invalid' : '' }}"
-                                                type="text" name="estrategiafo3"
-                                                value="{{ $dofa == '' ? '' : $dofa->estrategiafo3 }}">
-                                            @error('estrategiafo3')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group mb-1">
-                                            <label for="">FO4.</label>
-                                            <input class="form-control" type="text" name="estrategiafo4"
-                                                value="{{ $dofa == '' ? '' : $dofa->estrategiafo4 }}">
-                                        </div>
-                                        <div class="form-group mb-1">
-                                            <label for="">FO5.</label>
-                                            <input class="form-control" type="text" name="estrategiafo5"
-                                                value="{{ $dofa == '' ? '' : $dofa->estrategiafo5 }}">
+                                            <div class="row">
+                                                <div class="col-2">O5</div>
+                                                <div class="col-10">
+                                                    <input class="form-control" type="text" name="oportunidad5"
+                                                        value="{{ $dofa == '' ? '' : $dofa->oportunidad5 }}">
+                                                </div>
+                                            </div>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group mb-1">
-                                            <label for="">DO1.</label>
-                                            <input class="form-control {{ $errors->has('estrategiado1') ? 'is-invalid' : '' }}"
-                                                type="text" name="estrategiado1"
-                                                value="{{ $dofa == '' ? '' : $dofa->estrategiado1 }}">
-                                            @error('estrategiado1')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                            <div class="row">
+                                                <div class="col-2">FO1</div>
+                                                <div class="col-10">
+                                                    <input
+                                                        class="form-control {{ $errors->has('estrategiafo1') ? 'is-invalid' : '' }}"
+                                                        type="text" name="estrategiafo1"
+                                                        value="{{ $dofa == '' ? '' : $dofa->estrategiafo1 }}">
+                                                    @error('estrategiafo1')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group mb-1">
-                                            <label for="">DO2.</label>
-                                            <input class="form-control {{ $errors->has('estrategiado2') ? 'is-invalid' : '' }}"
-                                                type="text" name="estrategiado2"
-                                                value="{{ $dofa == '' ? '' : $dofa->estrategiado2 }}">
-                                            @error('estrategiado2')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                            <div class="row">
+                                                <div class="col-2">FO2</div>
+                                                <div class="col-10">
+                                                    <input
+                                                        class="form-control {{ $errors->has('estrategiafo2') ? 'is-invalid' : '' }}"
+                                                        type="text" name="estrategiafo2"
+                                                        value="{{ $dofa == '' ? '' : $dofa->estrategiafo2 }}">
+                                                    @error('estrategiafo2')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group mb-1">
-                                            <label for="">DO3.</label>
-                                            <input class="form-control {{ $errors->has('estrategiado3') ? 'is-invalid' : '' }}"
-                                                type="text" name="estrategiado3"
-                                                value="{{ $dofa == '' ? '' : $dofa->estrategiado3 }}">
-                                            @error('estrategiado3')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                            <div class="row">
+                                                <div class="col-2">FO3</div>
+                                                <div class="col-10">
+                                                    <input
+                                                        class="form-control {{ $errors->has('estrategiafo3') ? 'is-invalid' : '' }}"
+                                                        type="text" name="estrategiafo3"
+                                                        value="{{ $dofa == '' ? '' : $dofa->estrategiafo3 }}">
+                                                    @error('estrategiafo3')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group mb-1">
-                                            <label for="">DO4.</label>
-                                            <input class="form-control" type="text" name="estrategiado4"
-                                                value="{{ $dofa == '' ? '' : $dofa->estrategiado4 }}">
+                                            <div class="row">
+                                                <div class="col-2">FO4</div>
+                                                <div class="col-10">
+                                                    <input class="form-control" type="text" name="estrategiafo4"
+                                                        value="{{ $dofa == '' ? '' : $dofa->estrategiafo4 }}">
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group mb-1">
-                                            <label for="">DO5.</label>
-                                            <input class="form-control" type="text" name="estrategiado5"
-                                                value="{{ $dofa == '' ? '' : $dofa->estrategiado5 }}">
+                                            <div class="row">
+                                                <div class="col-2">FO5</div>
+                                                <div class="col-10">
+                                                    <input class="form-control" type="text" name="estrategiafo5"
+                                                        value="{{ $dofa == '' ? '' : $dofa->estrategiafo5 }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group mb-1">
+                                            <div class="row">
+                                                <div class="col-2">DO1</div>
+                                                <div class="col-10">
+                                                    <input
+                                                        class="form-control {{ $errors->has('estrategiado1') ? 'is-invalid' : '' }}"
+                                                        type="text" name="estrategiado1"
+                                                        value="{{ $dofa == '' ? '' : $dofa->estrategiado1 }}">
+                                                    @error('estrategiado1')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-1">
+                                            <div class="row">
+                                                <div class="col-2">DO2</div>
+                                                <div class="col-10">
+                                                    <input
+                                                        class="form-control {{ $errors->has('estrategiado2') ? 'is-invalid' : '' }}"
+                                                        type="text" name="estrategiado2"
+                                                        value="{{ $dofa == '' ? '' : $dofa->estrategiado2 }}">
+                                                    @error('estrategiado2')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-1">
+                                            <div class="row">
+                                                <div class="col-2">DO3</div>
+                                                <div class="col-10">
+                                                    <input
+                                                        class="form-control {{ $errors->has('estrategiado3') ? 'is-invalid' : '' }}"
+                                                        type="text" name="estrategiado3"
+                                                        value="{{ $dofa == '' ? '' : $dofa->estrategiado3 }}">
+                                                    @error('estrategiado3')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-1">
+                                            <div class="row">
+                                                <div class="col-2">DO4</div>
+                                                <div class="col-10">
+                                                    <input class="form-control" type="text" name="estrategiado4"
+                                                        value="{{ $dofa == '' ? '' : $dofa->estrategiado4 }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-1">
+                                            <div class="row">
+                                                <div class="col-2">DO5</div>
+                                                <div class="col-10">
+                                                    <input class="form-control" type="text" name="estrategiado5"
+                                                        value="{{ $dofa == '' ? '' : $dofa->estrategiado5 }}">
+                                                </div>
+                                            </div>
                                         </div>
                                     </td>
                                 </tr>
                             </tbody>
                             <thead>
-                                <td>Amenazas</td>
-                                <td>Estrategias FA</td>
-                                <td>Estrategias DA</td>
+                                <td>Amenazas (-)</td>
+                                <td>Estrategias (FA)</td>
+                                <td>Estrategias (DA)</td>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>
                                         <div class="form-group mb-1">
-                                            <label for="">A1.</label>
-                                            <input class="form-control {{ $errors->has('amenaza1') ? 'is-invalid' : '' }}" type="text"
-                                                name="amenaza1" value="{{ $dofa == '' ? '' : $dofa->amenaza1 }}">
-                                            @error('amenaza1')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                            <div class="row">
+                                                <div class="col-2">A1</div>
+                                                <div class="col-10">
+                                                    <input
+                                                        class="form-control {{ $errors->has('amenaza1') ? 'is-invalid' : '' }}"
+                                                        type="text" name="amenaza1"
+                                                        value="{{ $dofa == '' ? '' : $dofa->amenaza1 }}">
+                                                    @error('amenaza1')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group mb-1">
-                                            <label for="">A2.</label>
-                                            <input class="form-control {{ $errors->has('amenaza2') ? 'is-invalid' : '' }}" type="text"
-                                                name="amenaza2" value="{{ $dofa == '' ? '' : $dofa->amenaza2 }}">
-                                            @error('amenaza2')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                            <div class="row">
+                                                <div class="col-2">A2</div>
+                                                <div class="col-10">
+                                                    <input
+                                                        class="form-control {{ $errors->has('amenaza2') ? 'is-invalid' : '' }}"
+                                                        type="text" name="amenaza2"
+                                                        value="{{ $dofa == '' ? '' : $dofa->amenaza2 }}">
+                                                    @error('amenaza2')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group mb-1">
-                                            <label for="">A3.</label>
-                                            <input class="form-control {{ $errors->has('amenaza3') ? 'is-invalid' : '' }}" type="text"
-                                                name="amenaza3" value="{{ $dofa == '' ? '' : $dofa->amenaza3 }}">
-                                            @error('amenaza3')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                            <div class="row">
+                                                <div class="col-2">A3</div>
+                                                <div class="col-10">
+                                                    <input
+                                                        class="form-control {{ $errors->has('amenaza3') ? 'is-invalid' : '' }}"
+                                                        type="text" name="amenaza3"
+                                                        value="{{ $dofa == '' ? '' : $dofa->amenaza3 }}">
+                                                    @error('amenaza3')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group mb-1">
-                                            <label for="">A4.</label>
-                                            <input class="form-control" type="text" name="amenaza4"
-                                                value="{{ $dofa == '' ? '' : $dofa->amenaza4 }}">
+                                            <div class="row">
+                                                <div class="col-2">A4</div>
+                                                <div class="col-10">
+                                                    <input class="form-control" type="text" name="amenaza4"
+                                                        value="{{ $dofa == '' ? '' : $dofa->amenaza4 }}">
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group mb-1">
-                                            <label for="">A5.</label>
-                                            <input class="form-control" type="text" name="amenaza5"
-                                                value="{{ $dofa == '' ? '' : $dofa->amenaza5 }}">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="form-group mb-1">
-                                            <label for="">FA1.</label>
-                                            <input class="form-control {{ $errors->has('estrategiafa1') ? 'is-invalid' : '' }}"
-                                                type="text" name="estrategiafa1"
-                                                value="{{ $dofa == '' ? '' : $dofa->estrategiafa1 }}">
-                                            @error('estrategiafa1')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group mb-1">
-                                            <label for="">FA2.</label>
-                                            <input class="form-control {{ $errors->has('estrategiafa2') ? 'is-invalid' : '' }}"
-                                                type="text" name="estrategiafa2"
-                                                value="{{ $dofa == '' ? '' : $dofa->estrategiafa2 }}">
-                                            @error('estrategiafa2')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group mb-1">
-                                            <label for="">FA3.</label>
-                                            <input class="form-control {{ $errors->has('estrategiafa3') ? 'is-invalid' : '' }}"
-                                                type="text" name="estrategiafa3"
-                                                value="{{ $dofa == '' ? '' : $dofa->estrategiafa3 }}">
-                                            @error('estrategiafa3')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group mb-1">
-                                            <label for="">FA4.</label>
-                                            <input class="form-control" type="text" name="estrategiafa4"
-                                                value="{{ $dofa == '' ? '' : $dofa->estrategiafa4 }}">
-                                        </div>
-                                        <div class="form-group mb-1">
-                                            <label for="">FA5.</label>
-                                            <input class="form-control" type="text" name="estrategiafa5"
-                                                value="{{ $dofa == '' ? '' : $dofa->estrategiafa5 }}">
+                                            <div class="row">
+                                                <div class="col-2">A5</div>
+                                                <div class="col-10">
+                                                    <input class="form-control" type="text" name="amenaza5"
+                                                        value="{{ $dofa == '' ? '' : $dofa->amenaza5 }}">
+                                                </div>
+                                            </div>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group mb-1">
-                                            <label for="">DA1.</label>
-                                            <input class="form-control {{ $errors->has('estrategiada1') ? 'is-invalid' : '' }}"
-                                                type="text" name="estrategiada1"
-                                                value="{{ $dofa == '' ? '' : $dofa->estrategiada1 }}">
-                                            @error('estrategiada1')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                            <div class="row">
+                                                <div class="col-2">FA1</div>
+                                                <div class="col-10">
+                                                    <input
+                                                        class="form-control {{ $errors->has('estrategiafa1') ? 'is-invalid' : '' }}"
+                                                        type="text" name="estrategiafa1"
+                                                        value="{{ $dofa == '' ? '' : $dofa->estrategiafa1 }}">
+                                                    @error('estrategiafa1')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group mb-1">
-                                            <label for="">DA2.</label>
-                                            <input class="form-control {{ $errors->has('estrategiada2') ? 'is-invalid' : '' }}"
-                                                type="text" name="estrategiada2"
-                                                value="{{ $dofa == '' ? '' : $dofa->estrategiada2 }}">
-                                            @error('estrategiada2')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                            <div class="row">
+                                                <div class="col-2">FA2</div>
+                                                <div class="col-10">
+                                                    <input
+                                                        class="form-control {{ $errors->has('estrategiafa2') ? 'is-invalid' : '' }}"
+                                                        type="text" name="estrategiafa2"
+                                                        value="{{ $dofa == '' ? '' : $dofa->estrategiafa2 }}">
+                                                    @error('estrategiafa2')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group mb-1">
-                                            <label for="">DA3.</label>
-                                            <input class="form-control {{ $errors->has('estrategiada3') ? 'is-invalid' : '' }}"
-                                                type="text" name="estrategiada3"
-                                                value="{{ $dofa == '' ? '' : $dofa->estrategiada3 }}">
-                                            @error('estrategiada3')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                            <div class="row">
+                                                <div class="col-2">FA3</div>
+                                                <div class="col-10">
+                                                    <input
+                                                        class="form-control {{ $errors->has('estrategiafa3') ? 'is-invalid' : '' }}"
+                                                        type="text" name="estrategiafa3"
+                                                        value="{{ $dofa == '' ? '' : $dofa->estrategiafa3 }}">
+                                                    @error('estrategiafa3')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group mb-1">
-                                            <label for="">DA4.</label>
-                                            <input class="form-control" type="text" name="estrategiada4"
-                                                value="{{ $dofa == '' ? '' : $dofa->estrategiada4 }}">
+                                            <div class="row">
+                                                <div class="col-2">FA4</div>
+                                                <div class="col-10">
+                                                    <input class="form-control" type="text" name="estrategiafa4"
+                                                        value="{{ $dofa == '' ? '' : $dofa->estrategiafa4 }}">
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group mb-1">
-                                            <label for="">DA5.</label>
-                                            <input class="form-control" type="text" name="estrategiada5"
-                                                value="{{ $dofa == '' ? '' : $dofa->estrategiada5 }}">
+                                            <div class="row">
+                                                <div class="col-2">FA5</div>
+                                                <div class="col-10">
+                                                    <input class="form-control" type="text" name="estrategiafa5"
+                                                        value="{{ $dofa == '' ? '' : $dofa->estrategiafa5 }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group mb-1">
+                                            <div class="row">
+                                                <div class="col-2">DA1</div>
+                                                <div class="col-10">
+                                                    <input
+                                                        class="form-control {{ $errors->has('estrategiada1') ? 'is-invalid' : '' }}"
+                                                        type="text" name="estrategiada1"
+                                                        value="{{ $dofa == '' ? '' : $dofa->estrategiada1 }}">
+                                                    @error('estrategiada1')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-1">
+                                            <div class="row">
+                                                <div class="col-2">DA2</div>
+                                                <div class="col-10">
+                                                    <input
+                                                        class="form-control {{ $errors->has('estrategiada2') ? 'is-invalid' : '' }}"
+                                                        type="text" name="estrategiada2"
+                                                        value="{{ $dofa == '' ? '' : $dofa->estrategiada2 }}">
+                                                    @error('estrategiada2')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-1">
+                                            <div class="row">
+                                                <div class="col-2">DA3</div>
+                                                <div class="col-10">
+                                                    <input
+                                                        class="form-control {{ $errors->has('estrategiada3') ? 'is-invalid' : '' }}"
+                                                        type="text" name="estrategiada3"
+                                                        value="{{ $dofa == '' ? '' : $dofa->estrategiada3 }}">
+                                                    @error('estrategiada3')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-1">
+                                            <div class="row">
+                                                <div class="col-2">DA4</div>
+                                                <div class="col-10">
+                                                    <input class="form-control" type="text" name="estrategiada4"
+                                                        value="{{ $dofa == '' ? '' : $dofa->estrategiada4 }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-1">
+                                            <div class="row">
+                                                <div class="col-2">DA5</div>
+                                                <div class="col-10">
+                                                    <input class="form-control" type="text" name="estrategiada5"
+                                                        value="{{ $dofa == '' ? '' : $dofa->estrategiada5 }}">
+                                                </div>
+                                            </div>
                                         </div>
                                     </td>
                                 </tr>

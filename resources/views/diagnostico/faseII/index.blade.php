@@ -1,6 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
+<head>
+    <style>
+        .btn-rounded {
+            border: 1px solid #667AEF;
+            border-radius: 100%;
+        }
+
+        .btn-rounded:hover {
+            background-color: #667AEF;
+            color: #fff;
+        }
+    </style>
+</head>
     <main>
         <div class="container-fluid px-4">
             <div class="alert alert-primary">
@@ -26,7 +39,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Nit</th>
-                                    <th style="width: ">Razón social</th>
+                                    <th>Razón social</th>
                                     <th>Municipio</th>
                                     <th>CIIU</th>
                                     <th>Instructor asignado</th>
@@ -34,7 +47,7 @@
                                     <th>Modalidad</th>
                                     @foreach ($permisos as $permiso)
                                         @if ($permiso->permiso == 'completar-analisis')
-                                            <th>----</th>
+                                            <th>Acciones</th>
                                         @endif
                                     @endforeach
                                 </tr>
@@ -62,14 +75,22 @@
                                         @foreach ($permisos as $permiso)
                                             @if ($permiso->permiso == 'completar-analisis')
                                                 <td style="width: 5%">
-                                                    <div class="btn-group">
-                                                        <a class="btn btn-primary btn-sm"
-                                                            href="/diagnostico/{{ $empresa->nit }}/analisis"
-                                                            title="Análisis microempresa"><i class="fa-solid fa-magnifying-glass-chart"></i></a>
-                                                        <a class="btn btn-primary btn-sm" href="/diagnostico/{{$empresa->nit}}/crear-dofa" title="Matriz dofa"><i
-                                                                class="fas fa-cube"></i></a>
-                                                        <a class="btn btn-primary btn-sm" href="/diagnostico/tablero" title="Tablero de control"><i
-                                                                class="fas fa-table"></i></a>
+                                                    <div class="dropdown">
+                                                        <button class="btn" type="button"
+                                                            id="dropdownMenuButton" data-toggle="dropdown">
+                                                            <i class="fas fa-ellipsis-v"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                            <a class="dropdown-item"
+                                                                href="/diagnostico/{{ $empresa->nit }}/analisis">Análisis
+                                                                individual</a>
+                                                            <a class="dropdown-item"
+                                                                href="/diagnostico/{{ $empresa->nit }}/crear-dofa">Matriz
+                                                                DOFA</a>
+                                                            <a class="dropdown-item"
+                                                                href="/diagnostico/{{ $empresa->nit }}/tablero">Tablero
+                                                                control</a>
+                                                        </div>
                                                     </div>
                                                 </td>
                                             @endif

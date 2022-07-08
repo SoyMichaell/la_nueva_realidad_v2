@@ -12,7 +12,6 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class DiagnosticoController extends Controller
 {
-
     /*Rutas fase I*/
     public function index(Request $request)
     {
@@ -24,13 +23,15 @@ class DiagnosticoController extends Controller
                 ->join('diagnostico_individual', 'empresas.nit', '=', 'diagnostico_individual.nit_empresa')
                 ->where('diagnostico_individual.id_persona', Auth::user()->id)
                 ->get();
-        } else if ($idPersona == 1) {
+        } elseif ($idPersona == 1) {
             $empresas = DB::table('resultados')
                 ->select('resultados.id', 'nit', 'razon_social', 'ciiu_1', 'municipio', 'fecha_registro_resultado', 'total')
                 ->join('empresas', 'resultados.nit_empresa', '=', 'empresas.nit')
                 ->get();
         }
-        $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
+        $permisos = DB::table('roles_permisos')
+            ->where('id_rol', Auth::user()->rol)
+            ->get();
         return view('diagnostico/faseI.index', compact('empresas', 'permisos'));
     }
 
@@ -42,7 +43,9 @@ class DiagnosticoController extends Controller
             ->join('resultados', 'empresas.nit', '=', 'resultados.nit_empresa')
             ->where('empresas.nit', $id)
             ->first();
-        $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
+        $permisos = DB::table('roles_permisos')
+            ->where('id_rol', Auth::user()->rol)
+            ->get();
         return view('diagnostico/faseI.empresa', compact('empresa', 'permisos'));
     }
 
@@ -54,7 +57,7 @@ class DiagnosticoController extends Controller
             ->where('empresas.nit', $id)
             ->first();
         $view = \view('diagnostico/faseI.pdf', compact('empresa'))->render();
-        $pdf = \App::make("dompdf.wrapper");
+        $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('diagnostico.pdf');
     }
@@ -70,8 +73,12 @@ class DiagnosticoController extends Controller
             ->where('nit', $id)
             ->first();
         $usuarios = User::all();
-        $exist_diagnostico_empresa = DB::table('diagnostico_individual')->where('nit_empresa', $id)->first();
-        $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
+        $exist_diagnostico_empresa = DB::table('diagnostico_individual')
+            ->where('nit_empresa', $id)
+            ->first();
+        $permisos = DB::table('roles_permisos')
+            ->where('id_rol', Auth::user()->rol)
+            ->get();
         return view('diagnostico/faseII.analisis', compact('empresa', 'usuarios', 'exist_diagnostico_empresa', 'permisos'));
     }
 
@@ -86,7 +93,7 @@ class DiagnosticoController extends Controller
                 ->where('estado_35', '=', 'seleccionado')
                 ->where('users.id', Auth::user()->id)
                 ->get();
-        } else if ($idPersona == 1) {
+        } elseif ($idPersona == 1) {
             $empresas = DB::table('resultados')
                 ->join('empresas', 'resultados.nit_empresa', '=', 'empresas.nit')
                 ->leftJoin('diagnostico_individual', 'resultados.nit_empresa', '=', 'diagnostico_individual.nit_empresa')
@@ -95,24 +102,28 @@ class DiagnosticoController extends Controller
                 ->get();
         }
 
-        $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
+        $permisos = DB::table('roles_permisos')
+            ->where('id_rol', Auth::user()->rol)
+            ->get();
         return view('diagnostico/faseII.index', compact('empresas', 'permisos'));
     }
 
     public function store(Request $request)
     {
-
-        $DiagnosticoIndividual = DB::table('diagnostico_individual')->where('nit_empresa', $request->get('nit_empresa'))->get();
+        $DiagnosticoIndividual = DB::table('diagnostico_individual')
+            ->where('nit_empresa', $request->get('nit_empresa'))
+            ->get();
 
         if (count($DiagnosticoIndividual) >= 1) {
-            $updateDiagnostico = DB::table('diagnostico_individual')->where('nit_empresa', $request->get('nit_empresa'))
+            $updateDiagnostico = DB::table('diagnostico_individual')
+                ->where('nit_empresa', $request->get('nit_empresa'))
                 ->update([
-                    'id_persona' => $request->get('id_persona')
+                    'id_persona' => $request->get('id_persona'),
                 ]);
         } else {
             $insertDiagnostico = DB::table('diagnostico_individual')->insert([
                 'nit_empresa' => $request->get('nit_empresa'),
-                'id_persona' => $request->get('id_persona')
+                'id_persona' => $request->get('id_persona'),
             ]);
         }
         if ($insertDiagnostico == 1 || $updateDiagnostico == 1) {
@@ -124,8 +135,8 @@ class DiagnosticoController extends Controller
         }
     }
 
-    public function guardarAnalisis(Request $request, $id){
-
+    public function guardarAnalisis(Request $request, $id)
+    {
         $analisis = DB::table('diagnostico_individual')
             ->where('nit_empresa', $id)
             ->update([
@@ -194,19 +205,20 @@ class DiagnosticoController extends Controller
                 'preguntapf15' => $request->get('preguntapf15'),
             ]);
 
-            if($analisis == 1){
-                Alert::success('Exitoso', 'El diagnostico se ha guardado');
+        if ($analisis == 1) {
+            Alert::success('Exitoso', 'El diagnostico se ha guardado');
             return back();
-            }else{
-                Alert::success('Advertencia', 'No se pudo');
-                return back();
-            }
-
+        } else {
+            Alert::success('Advertencia', 'No se pudo');
+            return back();
+        }
     }
 
     public function destroy($id)
     {
-        $DiagnosticoIndividual = DB::table('diagnostico_individual')->where('nit_empresa', $id)->delete();
+        $DiagnosticoIndividual = DB::table('diagnostico_individual')
+            ->where('nit_empresa', $id)
+            ->delete();
         if ($DiagnosticoIndividual == 1) {
             Alert::success('Exitoso', 'El diagnostico se ha eliminado');
             return back();
@@ -223,7 +235,9 @@ class DiagnosticoController extends Controller
             ->orWhere('rol', 8)
             ->orderBy('nombre', 'asc')
             ->get();
-        $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
+        $permisos = DB::table('roles_permisos')
+            ->where('id_rol', Auth::user()->rol)
+            ->get();
         return view('diagnostico/faseII.asignacion', compact('personas', 'permisos'));
     }
 
@@ -233,10 +247,12 @@ class DiagnosticoController extends Controller
             ->join('respuestas', 'empresas.nit', '=', 'respuestas.nit_empresa')
             ->where('nit', $id)
             ->first();
-        $exist_diagnostico_empresa = DB::table('diagnostico_individual')->where('nit_empresa', $id)->first();
+        $exist_diagnostico_empresa = DB::table('diagnostico_individual')
+            ->where('nit_empresa', $id)
+            ->first();
         $usuarios = User::all();
         $view = \view('diagnostico/faseII.pdf', compact('empresa', 'exist_diagnostico_empresa', 'usuarios'))->render();
-        $pdf = \App::make("dompdf.wrapper");
+        $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('diagnostico.pdf');
     }
@@ -246,21 +262,23 @@ class DiagnosticoController extends Controller
     /*Rutas DOFA*/
     public function mdofa()
     {
-        if(Auth::user()->rol == 7 || Auth::user()->rol == 8){
+        if (Auth::user()->rol == 7 || Auth::user()->rol == 8) {
             $empresas = DB::table('diagnostico_individual')
-            ->join('empresas', 'diagnostico_individual.nit_empresa', '=', 'empresas.nit')
-            ->join('users', 'diagnostico_individual.id_persona', '=', 'users.id')
-            ->where('diagnostico_individual.id_persona', Auth::user()->id)
-            ->orderBy('municipio')
-            ->get();
-        }else{
+                ->join('empresas', 'diagnostico_individual.nit_empresa', '=', 'empresas.nit')
+                ->join('users', 'diagnostico_individual.id_persona', '=', 'users.id')
+                ->where('diagnostico_individual.id_persona', Auth::user()->id)
+                ->orderBy('municipio')
+                ->get();
+        } else {
             $empresas = DB::table('diagnostico_individual')
-            ->join('empresas', 'diagnostico_individual.nit_empresa', '=', 'empresas.nit')
-            ->join('users', 'diagnostico_individual.id_persona', '=', 'users.id')
-            ->orderBy('municipio')
-            ->get();
+                ->join('empresas', 'diagnostico_individual.nit_empresa', '=', 'empresas.nit')
+                ->join('users', 'diagnostico_individual.id_persona', '=', 'users.id')
+                ->orderBy('municipio')
+                ->get();
         }
-        $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
+        $permisos = DB::table('roles_permisos')
+            ->where('id_rol', Auth::user()->rol)
+            ->get();
         return view('diagnostico/dofa.index', compact('empresas', 'permisos'));
     }
 
@@ -270,15 +288,19 @@ class DiagnosticoController extends Controller
             ->where('nit', $id)
             ->first();
         $dofa = DB::table('matriz_dofa')
-            ->where('nit', $id)->first();
-        $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
+            ->where('nit', $id)
+            ->first();
+        $permisos = DB::table('roles_permisos')
+            ->where('id_rol', Auth::user()->rol)
+            ->get();
         return view('diagnostico/dofa.crear', compact('empresa', 'permisos', 'dofa'));
     }
 
     public function storedofa(Request $request, $id)
     {
-
-        $consultaMatriz = DB::table('matriz_dofa')->where('nit', $id)->get();
+        $consultaMatriz = DB::table('matriz_dofa')
+            ->where('nit', $id)
+            ->get();
 
         if (count($consultaMatriz) > 0) {
             $matriz_dofa = DB::table('matriz_dofa')
@@ -340,89 +362,63 @@ class DiagnosticoController extends Controller
                     'estrategiada5' => $request->get('estrategiada5'),
                 ]);
         } else {
-
-            $rules = [
-                'fortaleza1' => 'required', 'fortaleza2' => 'required', 'fortaleza3' => 'required',
-                'debilidad1' => 'required', 'debilidad2' => 'required', 'debilidad3' => 'required',
-                'oportunidad1' => 'required', 'oportunidad2' => 'required', 'oportunidad3' => 'required',
-                'estrategiafo1' => 'required', 'estrategiafo2' => 'required', 'estrategiafo3' => 'required',
-                'estrategiado1' => 'required', 'estrategiado2' => 'required', 'estrategiado3' => 'required',
-                'amenaza1' => 'required', 'amenaza2' => 'required', 'amenaza3' => 'required',
-                'estrategiafa1' => 'required', 'estrategiafa2' => 'required', 'estrategiafa3' => 'required',
-                'estrategiada1' => 'required', 'estrategiada2' => 'required', 'estrategiada3' => 'required',
-            ];
-
-            $message = [
-                'fortaleza1.required' => 'El campo es requerido', 'fortaleza2.required' => 'El campo es requerido', 'fortaleza3.required' => 'El campo es requerido',
-                'debilidad1.required' => 'El campo es requerido', 'debilidad2.required' => 'El campo es requerido', 'debilidad3.required' => 'El campo es requerido',
-                'oportunidad1.required' => 'El campo es requerido', 'oportunidad2.required' => 'El campo es requerido', 'oportunidad3.required' => 'El campo es requerido',
-                'estrategiafo1.required' => 'El campo es requerido', 'estrategiafo2.required' => 'El campo es requerido', 'estrategiafo3.required' => 'El campo es requerido',
-                'estrategiado1.required' => 'El campo es requerido', 'estrategiado2.required' => 'El campo es requerido', 'estrategiado3.required' => 'El campo es requerido',
-                'amenaza1.required' => 'El campo es requerido', 'amenaza2.required' => 'El campo es requerido', 'amenaza3.required' => 'El campo es requerido',
-                'estrategiafa1.required' => 'El campo es requerido', 'estrategiafa2.required' => 'El campo es requerido', 'estrategiafa3.required' => 'El campo es requerido',
-                'estrategiada1.required' => 'El campo es requerido', 'estrategiada2.required' => 'El campo es requerido', 'estrategiada3.required' => 'El campo es requerido',
-            ];
-
-            $this->validate($request, $rules, $message);
-
-            $matriz_dofa = DB::table('matriz_dofa')
-                ->insert([
-                    'nit' => $request->get('nit'),
-                    //fortalezas
-                    'fortaleza1' => $request->get('fortaleza1'),
-                    'fortaleza2' => $request->get('fortaleza2'),
-                    'fortaleza3' => $request->get('fortaleza3'),
-                    'fortaleza4' => $request->get('fortaleza4'),
-                    'fortaleza5' => $request->get('fortaleza5'),
-                    //debilidades
-                    'debilidad1' => $request->get('debilidad1'),
-                    'debilidad2' => $request->get('debilidad2'),
-                    'debilidad3' => $request->get('debilidad3'),
-                    'debilidad4' => $request->get('debilidad4'),
-                    'debilidad5' => $request->get('debilidad5'),
-                    //oportunidades
-                    'oportunidad1' => $request->get('oportunidad1'),
-                    'oportunidad2' => $request->get('oportunidad2'),
-                    'oportunidad3' => $request->get('oportunidad3'),
-                    'oportunidad4' => $request->get('oportunidad4'),
-                    'oportunidad5' => $request->get('oportunidad5'),
-                    //estrategiasfo
-                    'estrategiafo1' => $request->get('estrategiafo1'),
-                    'estrategiafo2' => $request->get('estrategiafo2'),
-                    'estrategiafo3' => $request->get('estrategiafo3'),
-                    'estrategiafo4' => $request->get('estrategiafo4'),
-                    'estrategiafo5' => $request->get('estrategiafo5'),
-                    //estrategiasdo
-                    'estrategiado1' => $request->get('estrategiado1'),
-                    'estrategiado2' => $request->get('estrategiado2'),
-                    'estrategiado3' => $request->get('estrategiado3'),
-                    'estrategiado4' => $request->get('estrategiado4'),
-                    'estrategiado5' => $request->get('estrategiado5'),
-                    //estrategiasdo
-                    'estrategiado1' => $request->get('estrategiado1'),
-                    'estrategiado2' => $request->get('estrategiado2'),
-                    'estrategiado3' => $request->get('estrategiado3'),
-                    'estrategiado4' => $request->get('estrategiado4'),
-                    'estrategiado5' => $request->get('estrategiado5'),
-                    //amenazas
-                    'amenaza1' => $request->get('amenaza1'),
-                    'amenaza2' => $request->get('amenaza2'),
-                    'amenaza3' => $request->get('amenaza3'),
-                    'amenaza4' => $request->get('amenaza4'),
-                    'amenaza5' => $request->get('amenaza5'),
-                    //estrategiasfa
-                    'estrategiafa1' => $request->get('estrategiafa1'),
-                    'estrategiafa2' => $request->get('estrategiafa2'),
-                    'estrategiafa3' => $request->get('estrategiafa3'),
-                    'estrategiafa4' => $request->get('estrategiafa4'),
-                    'estrategiafa5' => $request->get('estrategiafa5'),
-                    //estrategiasfa
-                    'estrategiada1' => $request->get('estrategiada1'),
-                    'estrategiada2' => $request->get('estrategiada2'),
-                    'estrategiada3' => $request->get('estrategiada3'),
-                    'estrategiada4' => $request->get('estrategiada4'),
-                    'estrategiada5' => $request->get('estrategiada5'),
-                ]);
+            $matriz_dofa = DB::table('matriz_dofa')->insert([
+                'nit' => $request->get('nit'),
+                //fortalezas
+                'fortaleza1' => $request->get('fortaleza1'),
+                'fortaleza2' => $request->get('fortaleza2'),
+                'fortaleza3' => $request->get('fortaleza3'),
+                'fortaleza4' => $request->get('fortaleza4'),
+                'fortaleza5' => $request->get('fortaleza5'),
+                //debilidades
+                'debilidad1' => $request->get('debilidad1'),
+                'debilidad2' => $request->get('debilidad2'),
+                'debilidad3' => $request->get('debilidad3'),
+                'debilidad4' => $request->get('debilidad4'),
+                'debilidad5' => $request->get('debilidad5'),
+                //oportunidades
+                'oportunidad1' => $request->get('oportunidad1'),
+                'oportunidad2' => $request->get('oportunidad2'),
+                'oportunidad3' => $request->get('oportunidad3'),
+                'oportunidad4' => $request->get('oportunidad4'),
+                'oportunidad5' => $request->get('oportunidad5'),
+                //estrategiasfo
+                'estrategiafo1' => $request->get('estrategiafo1'),
+                'estrategiafo2' => $request->get('estrategiafo2'),
+                'estrategiafo3' => $request->get('estrategiafo3'),
+                'estrategiafo4' => $request->get('estrategiafo4'),
+                'estrategiafo5' => $request->get('estrategiafo5'),
+                //estrategiasdo
+                'estrategiado1' => $request->get('estrategiado1'),
+                'estrategiado2' => $request->get('estrategiado2'),
+                'estrategiado3' => $request->get('estrategiado3'),
+                'estrategiado4' => $request->get('estrategiado4'),
+                'estrategiado5' => $request->get('estrategiado5'),
+                //estrategiasdo
+                'estrategiado1' => $request->get('estrategiado1'),
+                'estrategiado2' => $request->get('estrategiado2'),
+                'estrategiado3' => $request->get('estrategiado3'),
+                'estrategiado4' => $request->get('estrategiado4'),
+                'estrategiado5' => $request->get('estrategiado5'),
+                //amenazas
+                'amenaza1' => $request->get('amenaza1'),
+                'amenaza2' => $request->get('amenaza2'),
+                'amenaza3' => $request->get('amenaza3'),
+                'amenaza4' => $request->get('amenaza4'),
+                'amenaza5' => $request->get('amenaza5'),
+                //estrategiasfa
+                'estrategiafa1' => $request->get('estrategiafa1'),
+                'estrategiafa2' => $request->get('estrategiafa2'),
+                'estrategiafa3' => $request->get('estrategiafa3'),
+                'estrategiafa4' => $request->get('estrategiafa4'),
+                'estrategiafa5' => $request->get('estrategiafa5'),
+                //estrategiasfa
+                'estrategiada1' => $request->get('estrategiada1'),
+                'estrategiada2' => $request->get('estrategiada2'),
+                'estrategiada3' => $request->get('estrategiada3'),
+                'estrategiada4' => $request->get('estrategiada4'),
+                'estrategiada5' => $request->get('estrategiada5'),
+            ]);
         }
 
         if ($matriz_dofa == 1) {
@@ -434,16 +430,17 @@ class DiagnosticoController extends Controller
         }
     }
 
-    public function deleteDofa($id){
+    public function deleteDofa($id)
+    {
         $dofa = DB::table('matriz_dofa')
             ->where('nit', $id)
             ->delete();
 
-        if($dofa == 1){
-            Alert::success("Exitoso","Los campos se limpiaron con exito");
+        if ($dofa == 1) {
+            Alert::success('Exitoso', 'Los campos se limpiaron con exito');
             return back();
-        }else{
-            Alert::warning("Advertencia","Algo fallo, intentelo de nuevo");
+        } else {
+            Alert::warning('Advertencia', 'Algo fallo, intentelo de nuevo');
             return back();
         }
     }
@@ -452,19 +449,60 @@ class DiagnosticoController extends Controller
     public function pdfDofa($id)
     {
         $dofa = DB::table('matriz_dofa')
-            ->join('empresas','matriz_dofa.nit','=','empresas.nit')
-            ->where('matriz_dofa.nit', $id)->first();
+            ->join('empresas', 'matriz_dofa.nit', '=', 'empresas.nit')
+            ->where('matriz_dofa.nit', $id)
+            ->first();
         $view = \view('diagnostico/dofa.pdf', compact('dofa'))->render();
-        $pdf = \App::make("dompdf.wrapper");
+        $pdf = \App::make('dompdf.wrapper');
         $pdf->setPaper('a4', 'landscape');
         $pdf->loadHTML($view);
         return $pdf->stream('matriz_dofa.pdf');
     }
 
     //Tablero de control
-    public function tableroControl(){
-        $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
-        return view('diagnostico/faseII/tablero_control.index',compact('permisos'));        
-    }   
+    public function tableroControl($id)
+    {
+        $empresa = DB::table('empresas')
+            ->where('nit', $id)
+            ->first();
+        $tableros = DB::table('tabla_control')
+            ->where('nit', $id)
+            ->get();
+        $permisos = DB::table('roles_permisos')
+            ->where('id_rol', Auth::user()->rol)
+            ->get();
+        return view('diagnostico/faseII/tablero_control.index', compact('permisos', 'empresa', 'tableros'));
+    }
 
+    public function registroTablero(Request $request)
+    {
+        $tablero = DB::table('tabla_control')->insert([
+            'nit' => $request->get('nit'),
+            'perspectiva' => $request->get('perspectiva'),
+            'objetivo' => $request->get('objetivo'),
+            'indicador' => $request->get('indicador'),
+            'meta' => $request->get('meta'),
+        ]);
+        if ($tablero == 1) {
+            Alert::success('Exitoso', 'Tablero de control actualizado');
+            return back();
+        } else {
+            Alert::warning('Advertencia', 'Algo fallo, intentelo de nuevo');
+            return back();
+        }
+    }
+
+    public function eliminarRegistroTablero($id)
+    {
+        $tablero = DB::table('tabla_control')
+            ->where('id', $id)
+            ->delete();
+        if ($tablero == 1) {
+            Alert::success('Exitoso', 'Tablero de control actualizado');
+            return back();
+        } else {
+            Alert::warning('Advertencia', 'Algo fallo, intentelo de nuevo');
+            return back();
+        }
+    }
 }

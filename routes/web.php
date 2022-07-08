@@ -45,8 +45,9 @@ Route::get('diagnostico/{nit}/deleteDofa', [DiagnosticoController::class, 'delet
 Route::get('diagnostico/asignacion', [DiagnosticoController::class, 'asignacion']);
 Route::put('diagnostico/{nit}/storedofa', [DiagnosticoController::class, 'storedofa']);
 
-Route::get('diagnostico/tablero', [DiagnosticoController::class, 'tableroControl']);
-//Route::put('diagnostico/{nit}/registroTablero', [DiagnosticoController::class, 'registroTablero']);
+Route::get('diagnostico/{nit}/tablero', [DiagnosticoController::class, 'tableroControl']);
+Route::put('diagnostico/{nit}/registroTablero', [DiagnosticoController::class, 'registroTablero']);
+Route::get('diagnostico/{nit}/eliminarRegistroTablero', [DiagnosticoController::class, 'eliminarRegistroTablero']);
 
 Route::get('grafico/encuesta', [GraficoController::class, 'graficoEncuesta']);
 
