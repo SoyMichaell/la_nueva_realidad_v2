@@ -11514,7 +11514,7 @@ body {
   color: #212529;
 }
 .sb-sidenav-light .sb-sidenav-menu .sb-sidenav-menu-heading {
-  color: #3A3D40;
+  color: #EA5705;
 }
 .sb-sidenav-light .sb-sidenav-menu .nav-link {
   color: #212529;
@@ -11526,7 +11526,7 @@ body {
   color: #adb5bd;
 }
 .sb-sidenav-light .sb-sidenav-menu .nav-link:hover {
-  color: #6777EF;
+  color: #EA5705;
 }
 .sb-sidenav-light .sb-sidenav-menu .nav-link.active {
   color: #6777EF;
@@ -11534,6 +11534,10 @@ body {
 .sb-sidenav-light .sb-sidenav-menu .nav-link.active .sb-nav-link-icon {
   color: #3A3D40;
 }
+.sb-sidenav-light .sb-sidenav-footer {
+  background-color: #e9ecef;
+}
+
 .sb-sidenav-light .sb-sidenav-footer {
   background-color: #e9ecef;
 }

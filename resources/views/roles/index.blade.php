@@ -9,7 +9,7 @@
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i> Tabla de roles y permisos
                     @foreach ($permisos as $permiso)
-                        @if ($permiso->permiso == 'crear-rol')
+                        @if ($permiso->permiso == 'rol-crear')
                             <a class=" btn btn-primary btn-sm" href="{{ url('rol/create') }}"><i
                                     class="fas fa-plus-circle"></i> Nuevo</a>
                         @endif
@@ -31,7 +31,7 @@
                                         <td>{{ $rol->id }}</td>
                                         <td>{{ $rol->nombre_rol }}</td>
                                         @foreach ($permisos as $permiso)
-                                            @if ($permiso->permiso == 'editar-rol')
+                                            @if ($permiso->permiso == 'rol-editar')
                                                 <td>
                                                     <form action="{{ route('rol.destroy', $rol->id) }}" method="post">
                                                         <a class="btn btn-info btn-sm text-white"
@@ -39,7 +39,7 @@
                                                                 class="fas fa-edit"></i>
                                                             Editar</a>
                                             @endif
-                                            @if ($permiso->permiso == 'eliminar-rol')
+                                            @if ($permiso->permiso == 'rol-eliminar')
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger btn-sm" type="submit"><i

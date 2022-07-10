@@ -7,3 +7,9 @@
                         'rgb(16, 150, 24)',
                         'rgb(153, 0, 153)',
                         'rgb(0, 153, 198)'
+
+
+
+                        color primario: FF6712
+                        color primario hover: EA5705
+                        color gris : F3F3F3

@@ -46,7 +46,7 @@
                                     <th>Puntaje</th>
                                     <th>Modalidad</th>
                                     @foreach ($permisos as $permiso)
-                                        @if ($permiso->permiso == 'completar-analisis')
+                                        @if ($permiso->permiso == 'implementacion')
                                             <th>Acciones</th>
                                         @endif
                                     @endforeach
@@ -73,7 +73,7 @@
                                         </td>
                                         <td class="badge bg-light text-dark">{{ Str::ucfirst($empresa->modalidad) }}</td>
                                         @foreach ($permisos as $permiso)
-                                            @if ($permiso->permiso == 'completar-analisis')
+                                            @if ($permiso->permiso == 'implementacion')
                                                 <td style="width: 5%">
                                                     <div class="dropdown">
                                                         <button class="btn" type="button"

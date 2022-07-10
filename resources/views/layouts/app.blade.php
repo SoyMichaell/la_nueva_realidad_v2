@@ -8,13 +8,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>La Nueva Realidad | SENA Casanare</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="shortcut icon" href="{{asset('image/favicon.png')}}" type="image/x-icon">
 
     <!-- Styles -->
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
@@ -30,11 +31,11 @@
 <body class="sb-nav-fixed" style="background-color: #fff;">
     @include('sweetalert::alert')
     @if (Auth::check())
-        <nav class="sb-topnav navbar navbar-expand navbar-light bg-light shadow-sm">
+        <nav class="sb-topnav navbar navbar-expand navbar-light bg-orange shadow-sm">
             <!-- Navbar Brand-->
             <a class="navbar-brand ps-3" href="{{ url('/home') }}">La Nueva Realidad</a>
             <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 text-white" id="sidebarToggle" href="#!"><i
                     class="fas fa-bars"></i></button>
             <!-- Navbar-->
             <ul class="navbar-nav d-flex justify-content-end w-100 ms-auto ms-md-0 me-3 me-lg-4">
@@ -66,7 +67,7 @@
 
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-light shadow-sm" id="sidenavAccordion">
+                <nav class="sb-sidenav accordion sb-sidenav-light shadow" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Principal</div>

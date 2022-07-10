@@ -10,7 +10,7 @@
                     <div class="card">
                         <div class="card-header"><i class="fas fa-table"></i> Tabla de usuarios en plataforma
                             @foreach ($permisos as $permiso)
-                                @if ($permiso->permiso == 'crear-usuario')
+                                @if ($permiso->permiso == 'usuario-crear')
                                     <a class="btn btn-primary btn-sm" href="{{ url('usuario/create') }}"><i
                                             class="fas fa-plus-circle"></i> Nuevo</a>
                                 @endif
@@ -31,7 +31,7 @@
                                             <th>Telefono</th>
                                             <th>Rol</th>
                                             <th>Estado</th>
-                                            <th>--</th>
+                                            <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -60,7 +60,7 @@
                                                         {{ $usuario->estado }}</p>
                                                 </td>
                                                 @foreach ($permisos as $permiso)
-                                                    @if ($permiso->permiso == 'editar-usuario')
+                                                    @if ($permiso->permiso == 'usuario-editar')
                                                         <td>
                                                             <form action="{{ url("usuario/{$usuario->idUser}") }}"
                                                                 method="POST">
@@ -69,11 +69,11 @@
                                                                     href="{{ route('usuario.edit', Str::lower($usuario->slug)) }}"><i
                                                                         class="fas fa-edit"></i> Editar</a>
                                                     @endif
-                                                    @if ($permiso->permiso == 'eliminar-usuario')
+                                                    @if ($permiso->permiso == 'usuario-eliminar')
                                                         @csrf
                                                         @method('DELETE')
                                                         <button class="btn btn-danger btn-sm" type="submit">
-                                                            <i class="fas fa-trash"></i> Borrar
+                                                            <i class="fas fa-eraser"></i> Borrar
                                                         </button>
                                                         </form>
                                                         </td>
