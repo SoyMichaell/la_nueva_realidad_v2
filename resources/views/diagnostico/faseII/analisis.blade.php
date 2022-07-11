@@ -12,27 +12,34 @@
             }
 
             .btn-rounded {
-                border: 1px solid #667AEF;
+                border: 1px solid #FF6712;
                 border-radius: 100%;
             }
 
             .btn-rounded:hover {
-                background-color: #667AEF;
+                background-color: #FF6712;
                 color: #fff;
             }
         </style>
     </head>
     <main>
-        <div class="w-75 mx-auto">
-            <h1 class="mt-4">Formato de Diagnóstico Empresarial</h1>
-            <p>Realizar el diagnóstico de la empresa analizando cada una de las perspectivas desarrolladas desde el proyecto
-                La Nueva Realidad.</p>
+        <div class="container">
+            <div class="content shadow-sm p-3">
+                <h1 class="mt-4">Formato de Diagnóstico Empresarial</h1>
+                <p>Realizar el diagnóstico de la empresa analizando cada una de las perspectivas desarrolladas desde el
+                    proyecto
+                    La Nueva Realidad.</p>
+            </div>
             <hr>
+            <div class="d-flex justify-content-end">
+                <a class="btn btn-primary btn-sm shadow-sm rounded-0" href="/diagnostico/individual"><i class="fas fa-arrow-left"></i>
+                    Volver</a>
+            </div>
             <!--Información empresa-->
             <div class="card mb-3 mt-3">
                 <div class="card-header">
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-8 align-items-center">
                             <i class="fas fa-info-circle"></i> Información empresa
                         </div>
                         @foreach ($permisos as $permiso)
@@ -40,7 +47,8 @@
                                 <div class="col-md-4">
                                     @if ($exist_diagnostico_empresa)
                                         <div class="d-flex justify-content-end">
-                                            <button class="btn btn-rounded" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-eraser"></i></button>
+                                            <button class="btn btn-rounded" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal"><i class="fas fa-eraser"></i></button>
                                             <a class="btn btn-rounded"
                                                 href="{{ url("diagnostico/{$empresa->nit}/pdfAnalisis") }}"
                                                 title="Descargar información" target="_blank"><i

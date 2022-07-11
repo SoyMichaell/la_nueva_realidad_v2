@@ -65,44 +65,63 @@
             width: 33.3%;
             height: 200px !important;
         }
+
+        .btn-rounded {
+            border-radius: 100%;
+            margin-left: 5px;
+        }
+
+        .static {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            z-index: 99;
+        }
     </style>
 @endsection
 <main>
-    <div class="container">
-        <h2 class="mt-4"><i class="fab fa-buromobelexperte"></i> MATRIZ DOFA para análisis estrategico</h2>
-        <p>Para dar cumplimiento al desarrollo de la matriz DOFA de la microempresa correspondiente debe ingresar minimo
-            tres (3) y máximo cinco (5) Fortalezas, Debilidades, Oportunidades, Estrategias FO, Estrategias DO,
-            Amenazas, Estrategias FA, Estrategias DA. <br> <span class="text-danger">Nota: El sistemas no le permitira
-                guardar si no cumple con el requisito de las tres (3) minimo.</span></p>
-        <hr>
-        <div class="d-flex justify-content-end">
-            <a class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#Dofa"><i class="fas fa-eye"></i>
-                Visualizar DOFA</a>
+    <div class="container-fluid">
+        <div class="content shadow-sm p-3">
+            <h2 class="mt-4"><i class="fab fa-buromobelexperte"></i> MATRIZ DOFA para análisis estrategico</h2>
+            <p>Para dar cumplimiento al desarrollo de la matriz DOFA de la microempresa correspondiente debe ingresar
+                minimo
+                tres (3) y máximo cinco (5) Fortalezas, Debilidades, Oportunidades, Estrategias FO, Estrategias DO,
+                Amenazas, Estrategias FA, Estrategias DA. <br> <span class="text-danger">Nota: El sistemas no le
+                    permitira
+                    guardar si no cumple con el requisito de las tres (3) minimo.</span></p>
         </div>
-        <div class=" mt-3">
-            <div class="">Matriz DOFA <a class="btn btn-danger btn-sm"
-                    href="{{ url("diagnostico/$empresa->nit/deleteDofa") }}"><i class="fas fa-eraser"></i> Limpiar
-                    campos</a></div>
-            <div class="card-body">
+        <div class="container-fluid mt-3">
+            <div class="row shadow-sm p-3">
+                <div class="col-4"><h5>Matriz DOFA</h5></div>
+                <div class="col-8 d-flex justify-content-end">
+                    <a class="btn btn-rounded btn-primary" href="/diagnostico/individual"
+                        title="Volver ventana anterior"><i class="fas fa-arrow-left"></i></a>
+                    <a class="btn btn-rounded btn-danger" href="{{ url("diagnostico/$empresa->nit/deleteDofa") }}"
+                        title="Limpiar campos Matriz DOFA"><i class="fas fa-eraser"></i></a>
+                    <a class="btn btn-rounded btn-secondary" data-bs-toggle="modal" data-bs-target="#Dofa"
+                        title="Ver Matriz DOFA"><i class="fas fa-eye"></i></a>
+                </div>
                 <form action="/diagnostico/{{ $empresa->nit }}/storedofa" method="post">
                     @csrf
                     @method('PUT')
                     <div class="row">
                         <table class="table">
-                            <thead>
+                            <tbody>
                                 <tr>
                                     <td>DOFA</td>
                                     <td>Fortalezas (+)</td>
                                     <td>Debilidades (-)</td>
                                 </tr>
-                            </thead>
+                            </tbody>
                             <tbody>
                                 <tr>
                                     <td style="width: 35%">
-                                        <p> 
-                                            <input type="text" value="{{$empresa->nit}}" name="nit" readonly> <br>
-                                            {{ $empresa->municipio }} <br> {{ $empresa->ciiu_1 }}</p>
-                                            
+                                        <p>
+                                            <input type="text" value="{{ $empresa->nit }}" name="nit" readonly>
+                                            <br>
+                                            {{ $empresa->municipio }} <br> {{ $empresa->ciiu_1 }}
+                                        </p>
+
                                     </td>
                                     <td>
                                         <div class="form-group mb-1">
@@ -242,13 +261,13 @@
                                     </td>
                                 </tr>
                             </tbody>
-                            <thead>
+                            <tbody>
                                 <tr>
                                     <td>Oportunidades (+)</td>
                                     <td>Estrategias (FO)</td>
                                     <td>Estrategias (DO)</td>
                                 </tr>
-                            </thead>
+                            </tbody>
                             <tbody>
                                 <tr>
                                     <td>
@@ -457,11 +476,11 @@
                                     </td>
                                 </tr>
                             </tbody>
-                            <thead>
+                            <tbody>
                                 <td>Amenazas (-)</td>
                                 <td>Estrategias (FA)</td>
                                 <td>Estrategias (DA)</td>
-                            </thead>
+                            </tbody>
                             <tbody>
                                 <tr>
                                     <td>
@@ -669,16 +688,16 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td colspan="3">
-                                        <button class="btn btn-primary btn-sm" type="submit">Guardar</button>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
+                    <div class="static">
+                        <button class="btn btn-primary btn-sm" type="submit">Guardar</button>
+                    </div>
                 </form>
             </div>
+
+
         </div>
     </div>
     <br>

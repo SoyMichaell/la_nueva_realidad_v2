@@ -3,8 +3,10 @@
 @section('content')
     <main>
         <div class="container">
-            <h1 class="mt-4">Asignación de empresas por municipio</h1>
-            <p>Listado de instructores con su asignación correspondiente</p>
+            <div class="content shadow-sm p-3">
+                <h1 class="mt-4">Asignación de empresas por municipio</h1>
+                <p>Listado de instructores con su asignación correspondiente</p>
+            </div>
             <hr>
             <div class="row">
                 @foreach ($personas as $persona)

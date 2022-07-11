@@ -1,21 +1,46 @@
 @extends('layouts.app')
 
 @section('content')
+
+    <head>
+        <style>
+            input {
+                border: none;
+            }
+
+            .btn-rounded {
+                border-radius: 100%;
+                margin-left: 5px;
+            }
+        </style>
+    </head>
     <main>
-        <div class="w-75 mx-auto">
-            <h1 class="mt-4">Tablero de control</h1>
-            <p>Plantear objetivos estrategicos de acuerdo a los hallazgos identificado para cada perspectiva realizada al
-                microempresario, máximo/minimo tres (3) objetivos con su indicador, resultado actual de la empresa, meta o
-                proyección.</p>
-            <hr>
-            <div class="card mt-3">
-                <div class="card-header">Objetivos e indicadores claves</div>
+        <div class="container-fluid">
+            <div class="content shadow-sm p-3">
+                <h1 class="mt-4"><i class="fas fa-dice-d6"></i> Tablero de control</h1>
+                <p>Plantear objetivos estrategicos de acuerdo a los hallazgos identificado para cada perspectiva realizada
+                    al
+                    microempresario, máximo/minimo tres (3) objetivos con su indicador, resultado actual de la empresa, meta
+                    o
+                    proyección.</p>
+            </div>
+            <div class="card mt-3 shadow-sm p-3">
+                <div class="row">
+                    <div class="col-4">
+                        <h5>Objetivos e indicadores claves</h5>
+                    </div>
+                    <div class="col-8 d-flex justify-content-end">
+                        <a class="btn btn-rounded btn-primary" href="/diagnostico/individual"><i
+                                class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
                 <div class="card-body">
                     <form action="{{ url("diagnostico/{$empresa->nit}/registroTablero") }}" method="post">
                         @csrf
                         @method('PUT')
                         <table class="table">
-                            <input class="form-control" name="nit" value="{{ $empresa->nit }}" type="hidden" readonly>
+                            <input class="form-control" name="nit" value="{{ $empresa->nit }}" type="hidden"
+                                readonly>
                             <div class="row mt-2">
                                 <div class="col">
                                     <label for="">Perspectiva</label>

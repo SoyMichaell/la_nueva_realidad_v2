@@ -4,19 +4,19 @@
 <head>
     <style>
         .btn-rounded {
-            border: 1px solid #667AEF;
+            border: 1px solid #FF6712;
             border-radius: 100%;
         }
 
         .btn-rounded:hover {
-            background-color: #667AEF;
+            background-color: #FF6712;
             color: #fff;
         }
     </style>
 </head>
     <main>
         <div class="container-fluid px-4">
-            <div class="alert alert-primary">
+            <div class="shadow-sm p-3">
                 <h1 class="mt-4">Implementación estrategias</h1>
                 <p>Listado de empresas seleccionadas para la implementación del diseño metodologico</p>
             </div>

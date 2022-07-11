@@ -15,7 +15,7 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link rel="shortcut icon" href="{{asset('image/favicon.png')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('image/favicon.png') }}" type="image/x-icon">
 
     <!-- Styles -->
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
@@ -35,8 +35,8 @@
             <!-- Navbar Brand-->
             <a class="navbar-brand ps-3" href="{{ url('/home') }}">La Nueva Realidad</a>
             <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 text-white" id="sidebarToggle" href="#!"><i
-                    class="fas fa-bars"></i></button>
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 text-white" id="sidebarToggle"
+                href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar-->
             <ul class="navbar-nav d-flex justify-content-end w-100 ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
@@ -192,7 +192,9 @@
     </script>
 
     <script src="{{ asset('js/scripts.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     @yield('js')
     <script src="{{ asset('js/charts.js') }}"></script>
