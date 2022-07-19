@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,800;0,900;1,700&display=swap');
 /*!
  * Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
@@ -7828,7 +7828,7 @@ readers do not read off random characters that represent icons */
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 33, 37, 41;
   --bs-body-bg-rgb: 248, 250, 252;
-  --bs-font-sans-serif: 'Josefin Sans', sans-serif;;
+  --bs-font-sans-serif: 'Poppins', sans-serif;;
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
   --bs-body-font-family: var(--bs-font-sans-serif);
@@ -7836,7 +7836,7 @@ readers do not read off random characters that represent icons */
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.6;
   --bs-body-color: #212529;
-  --bs-body-bg: #f8fafc;
+  --bs-body-bg: #f8f8fb;
 }
 
 *,
@@ -7859,7 +7859,7 @@ body {
   line-height: var(--bs-body-line-height);
   color: var(--bs-body-color);
   text-align: var(--bs-body-text-align);
-  background-color: var(--bs-body-bg);
+  background-color: #f8f8fb !important;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -11828,7 +11828,7 @@ textarea.form-control-lg {
   font-size: 1.125rem;
   text-decoration: none;
   white-space: nowrap;
-  color: #fff;
+  color: #000;
 }
 .navbar-nav {
   display: flex;
@@ -12212,19 +12212,19 @@ textarea.form-control-lg {
 }
 
 .navbar-light .navbar-brand {
-  color: #fff;
+  color: #000;
 }
 .navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus {
-  color: #fff;
+  color: #000;
 }
 .navbar-light .navbar-nav .nav-link {
-  color: #fff;
+  color: #000;
 }
 .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
-  color: #fff;
+  color: #000;
 }
 .navbar-light .navbar-nav .nav-link.disabled {
-  color: #fff;
+  color: #000;
 }
 .navbar-light .navbar-nav .show > .nav-link,
 .navbar-light .navbar-nav .nav-link.active {
@@ -15619,9 +15619,9 @@ textarea.form-control-lg {
 }
 
 .bg-orange {
-  color: #fff;
+  color: #000;
   --bs-bg-opacity: 1;
-  background-color: #EA5705 !important;
+  background-color: #fff !important;
 }
 
 .bg-dark {

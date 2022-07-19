@@ -17,8 +17,6 @@ class HomeController extends Controller
     {
         if (Auth::check()) {
             $users = DB::table('users')->get();
-
-
             $empresas = DB::table('empresas')->get();
             $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
             //Consulta grafico usuarios
@@ -45,8 +43,9 @@ class HomeController extends Controller
                 ->where('empresas.estado_35', "seleccionado")
                 ->groupBy('municipio')
                 ->get();
-
-            return view('home', compact('permisos', 'users', 'empresas', 'usuarios', 'empresasCharts', 'empresasCharts374', 'empresasChartsPuntaje'));
+            $cuentaInstructor = DB::table('users')->where('rol', 7)->get();
+            $cuentaAprendiz = DB::table('users')->where('rol', 9)->get();
+            return view('home', compact('permisos', 'users', 'empresas', 'usuarios', 'empresasCharts', 'empresasCharts374', 'empresasChartsPuntaje','cuentaInstructor','cuentaAprendiz'));
         } else {
             $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
             return view('/', compact('permisos'));

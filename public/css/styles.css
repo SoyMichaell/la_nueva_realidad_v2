@@ -11324,11 +11324,11 @@ body {
   display: flex;
 }
 #layoutSidenav #layoutSidenav_nav {
-  flex-basis: 225px;
+  flex-basis: 250px;
   flex-shrink: 0;
   transition: transform 0.15s ease-in-out;
   z-index: 1038;
-  transform: translateX(-225px);
+  transform: translateX(-250px);
 }
 #layoutSidenav #layoutSidenav_content {
   position: relative;
@@ -11338,7 +11338,7 @@ body {
   min-width: 0;
   flex-grow: 1;
   min-height: calc(100vh - 56px);
-  margin-left: -225px;
+  margin-left: -250px;
 }
 
 .sb-sidenav-toggled #layoutSidenav #layoutSidenav_nav {
@@ -11368,10 +11368,10 @@ body {
   }
 
   .sb-sidenav-toggled #layoutSidenav #layoutSidenav_nav {
-    transform: translateX(-225px);
+    transform: translateX(-250px);
   }
   .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content {
-    margin-left: -225px;
+    margin-left: -250px;
   }
   .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content:before {
     display: none;
@@ -11392,7 +11392,7 @@ body {
   overflow-y: auto;
 }
 .sb-nav-fixed #layoutSidenav #layoutSidenav_content {
-  padding-left: 225px;
+  padding-left: 250px;
   top: 56px;
 }
 
@@ -11424,7 +11424,7 @@ body {
   z-index: 1039;
 }
 .sb-topnav .navbar-brand {
-  width: 225px;
+  width: 250px;
   margin: 0;
 }
 .sb-topnav.navbar-dark #sidebarToggle {
@@ -11435,10 +11435,12 @@ body {
 }
 
 .sb-sidenav {
+  width: 250px;
   display: flex;
   flex-direction: column;
   height: 100%;
   flex-wrap: nowrap;
+  box-shadow: 0 -10px 10px -10px #333;
 }
 .sb-sidenav .sb-sidenav-menu {
   flex-grow: 1;
@@ -11514,13 +11516,13 @@ body {
   color: #212529;
 }
 .sb-sidenav-light .sb-sidenav-menu .sb-sidenav-menu-heading {
-  color: #EA5705;
+  color: #212529;
 }
 .sb-sidenav-light .sb-sidenav-menu .nav-link {
   color: #212529;
 }
 .sb-sidenav-light .sb-sidenav-menu .nav-link .sb-nav-link-icon {
-  color: #3A3D40;
+  color: #212529;
 }
 .sb-sidenav-light .sb-sidenav-menu .nav-link .sb-sidenav-collapse-arrow {
   color: #adb5bd;
