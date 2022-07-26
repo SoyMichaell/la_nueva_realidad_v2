@@ -16,7 +16,7 @@
 </head>
     <main>
         <div class="container-fluid px-4">
-            <div class="shadow-sm p-3">
+            <div class="bg-white shadow-sm p-3">
                 <h1 class="mt-4">Implementación estrategias</h1>
                 <p>Listado de empresas seleccionadas para la implementación del diseño metodologico</p>
             </div>
@@ -30,7 +30,7 @@
                     @endif
                 @endforeach
             </div>
-            <div class="">
+            <div class="card">
                 <!--<div class="card-header"><i class="fas fa-table"></i> Tabla microempresarios</div>-->
                 <div class="card-body">
                     <div class="table-responsive">
@@ -71,7 +71,7 @@
                                                 class="@if ($empresa->total >= 0 and $empresa->total <= 40) badge bg-danger text-white @elseif($empresa->total > 40 and $empresa->total <= 70) badge bg-warning text-white @elseif($empresa->total > 70 and $empresa->total <= 100) badge bg-success text-white @endif">
                                                 {{ $empresa->total }}</p>
                                         </td>
-                                        <td class="badge bg-light text-dark">{{ Str::ucfirst($empresa->modalidad) }}</td>
+                                        <td><span class="badge bg-light text-dark">{{ Str::ucfirst($empresa->modalidad) }}</span></td>
                                         @foreach ($permisos as $permiso)
                                             @if ($permiso->permiso == 'implementacion')
                                                 <td style="width: 5%">

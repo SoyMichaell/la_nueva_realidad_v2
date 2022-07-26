@@ -11,6 +11,7 @@
     <title>La Nueva Realidad | SENA Casanare</title>
 
     <!-- Scripts -->
+
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
@@ -23,7 +24,6 @@
 
     <!--Datatables-->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css" />
-
     @yield('css')
 
 </head>
@@ -190,12 +190,10 @@
             });
         });
     </script>
-
     <script src="{{ asset('js/scripts.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     @yield('js')
     <script src="{{ asset('js/charts.js') }}"></script>
 
