@@ -7,7 +7,7 @@
             <hr>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="card">
+                    <div class="">
                         <div class="card-header"><i class="fas fa-table"></i> Tabla de usuarios en plataforma
                             @foreach ($permisos as $permiso)
                                 @if ($permiso->permiso == 'usuario-crear')
@@ -18,7 +18,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-striped" id="SimpleTable">
+                                <table class="" id="SimpleTable">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -27,7 +27,7 @@
                                             <th>Nombre (s)</th>
                                             <th>Apellido (s)</th>
                                             <th>Correo (SENA)</th>
-                                            <th>Correo secundario</th>
+                                            <th>Correo personal</th>
                                             <th>Telefono</th>
                                             <th>Rol</th>
                                             <th>Estado</th>

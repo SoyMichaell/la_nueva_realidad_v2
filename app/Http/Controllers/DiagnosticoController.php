@@ -505,4 +505,12 @@ class DiagnosticoController extends Controller
             return back();
         }
     }
+
+    public function imagenCorporativa($nit){
+        $permisos = DB::table('roles_permisos')
+            ->where('id_rol', Auth::user()->rol)
+            ->get();
+        return view('diagnostico/faseII/marketing.index', compact('permisos'));
+    }
+
 }

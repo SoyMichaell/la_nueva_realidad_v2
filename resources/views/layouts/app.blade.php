@@ -132,7 +132,7 @@
                             </div>
                             <!--Fin-->
                             <!--Resultados-->
-                            <div class="sb-sidenav-menu-heading">RESULTADOS GRAFICOS</div>
+                            <!--<div class="sb-sidenav-menu-heading">RESULTADOS GRAFICOS</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
                                 data-bs-target="#collapseCharts" aria-expanded="false"
                                 aria-controls="collapseCharts">
@@ -146,7 +146,7 @@
                                     <a class="nav-link" href="{{ url('grafico/encuesta') }}">Resultados
                                         encuesta</a>
                                 </nav>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">

@@ -54,6 +54,9 @@ Route::get('grafico/encuesta', [GraficoController::class, 'graficoEncuesta']);
 Route::get('usuario/{slug}/perfil', [UsuarioController::class, 'perfil']);
 Route::put('usuario/{slug}/actualizar', [UsuarioController::class, 'actualizar']);
 
+
+Route::get('diagnostico/{nit}/imagenCorporativa' , [DiagnosticoController::class, 'imagenCorporativa']);
+
 Route::resource('rol', RolController::class);
 Route::resource('usuario', UsuarioController::class);
 Route::resource('empresa', EmpresaController::class);

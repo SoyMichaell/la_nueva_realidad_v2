@@ -1,19 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-<head>
-    <style>
-        .btn-rounded {
-            border: 1px solid #FF6712;
-            border-radius: 100%;
-        }
 
-        .btn-rounded:hover {
-            background-color: #FF6712;
-            color: #fff;
-        }
-    </style>
-</head>
+    <head>
+        <style>
+            .btn-rounded {
+                border: 1px solid #FF6712;
+                border-radius: 100%;
+            }
+
+            .btn-rounded:hover {
+                background-color: #FF6712;
+                color: #fff;
+            }
+        </style>
+    </head>
     <main>
         <div class="container-fluid px-4">
             <div class="bg-white shadow-sm p-3">
@@ -24,8 +25,7 @@
             <div class="d-flex justify-content-start mb-3">
                 @foreach ($permisos as $permiso)
                     @if ($permiso->permiso == 'ver-asignacion')
-                        <a href="{{ url('diagnostico/asignacion') }}" style="text-decoration: none"><i
-                                class="fas fa-eye"></i>
+                        <a href="{{ url('diagnostico/asignacion') }}" style="text-decoration: none"><i class="fas fa-eye"></i>
                             Distribución empresas x instructor</a>
                     @endif
                 @endforeach
@@ -71,19 +71,23 @@
                                                 class="@if ($empresa->total >= 0 and $empresa->total <= 40) badge bg-danger text-white @elseif($empresa->total > 40 and $empresa->total <= 70) badge bg-warning text-white @elseif($empresa->total > 70 and $empresa->total <= 100) badge bg-success text-white @endif">
                                                 {{ $empresa->total }}</p>
                                         </td>
-                                        <td><span class="badge bg-light text-dark">{{ Str::ucfirst($empresa->modalidad) }}</span></td>
+                                        <td><span
+                                                class="badge bg-light text-dark">{{ Str::ucfirst($empresa->modalidad) }}</span>
+                                        </td>
                                         @foreach ($permisos as $permiso)
                                             @if ($permiso->permiso == 'implementacion')
                                                 <td style="width: 5%">
                                                     <div class="dropdown">
-                                                        <button class="btn" type="button"
-                                                            id="dropdownMenuButton" data-toggle="dropdown">
+                                                        <button class="btn" type="button" id="dropdownMenuButton"
+                                                            data-toggle="dropdown">
                                                             <i class="fas fa-ellipsis-v"></i>
                                                         </button>
                                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                             <a class="dropdown-item"
                                                                 href="/diagnostico/{{ $empresa->nit }}/analisis">Análisis
                                                                 individual</a>
+                                                            <a class="dropdown-item"
+                                                                href="/diagnostico/{{ $empresa->nit }}/imagenCorporativa">Imagen corporativa</a>
                                                             <a class="dropdown-item"
                                                                 href="/diagnostico/{{ $empresa->nit }}/crear-dofa">Matriz
                                                                 DOFA</a>
