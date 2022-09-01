@@ -7832,7 +7832,7 @@ readers do not read off random characters that represent icons */
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
   --bs-body-font-family: var(--bs-font-sans-serif);
-  --bs-body-font-size: 0.9rem;
+  --bs-body-font-size: 13px;
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.6;
   --bs-body-color: #212529;
@@ -11538,16 +11538,16 @@ textarea.form-control-lg {
   padding: 0.25rem 1rem;
   clear: both;
   font-weight: 400;
-  color: #212529;
+  color: rgb(46, 71, 101);
   text-align: inherit;
   text-decoration: none;
   white-space: nowrap;
   background-color: transparent;
   border: 0;
+  font-size: 12px;
 }
 .dropdown-item:hover, .dropdown-item:focus {
-  color: #1e2125;
-  background-color: #e9ecef;
+  color: rgb(45, 170, 184);
 }
 .dropdown-item.active, .dropdown-item:active {
   color: #fff;

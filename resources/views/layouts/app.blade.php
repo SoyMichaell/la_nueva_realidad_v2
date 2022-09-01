@@ -28,7 +28,7 @@
 
 </head>
 
-<body class="sb-nav-fixed" style="background-color: #fff;">
+<body class="sb-nav-fixed">
     @include('sweetalert::alert')
     @if (Auth::check())
         <nav class="sb-topnav navbar navbar-expand navbar-light bg-orange">
@@ -67,18 +67,18 @@
 
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
+                <nav class="sb-sidenav accordion sb-sidenav-light shadow-sm" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Principal</div>
+                            <div class="sb-sidenav-menu-heading">Dashboard</div>
                             <a class="nav-link" href="{{ url('/home') }}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Principal
+                                <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
+                                Home
                             </a>
+                            <div class="sb-sidenav-menu-heading">Configuración</div>
                             <!--Menu configuración-->
                             @foreach ($permisos as $permiso)
                                 @if ($permiso->permiso == 'configuracion')
-                                    <div class="sb-sidenav-menu-heading">Configuración</div>
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
                                         data-bs-target="#collapseSettings" aria-expanded="false"
                                         aria-controls="collapseSettings">
@@ -95,58 +95,29 @@
                                 @endif
                             @endforeach
                             <!--Menu registros-->
+                            <div class="sb-sidenav-menu-heading">Registros</div>
                             @foreach ($permisos as $permiso)
                                 @if ($permiso->permiso == 'usuario')
-                                    <div class="sb-sidenav-menu-heading">Registros</div>
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseLayouts" aria-expanded="false"
-                                        aria-controls="collapseLayouts">
-                                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                        Módulo de registros
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    <a class="nav-link" href="{{ url('usuario') }}">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                                        Registro de usuarios
                                     </a>
-                                    <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
-                                        data-bs-parent="#sidenavAccordion">
-                                        <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="{{ url('usuario') }}">Usuarios</a>
-                                            <a class="nav-link" href="{{ url('empresa') }}">Empresas</a>
-                                        </nav>
-                                    </div>
+                                    <a class="nav-link" href="{{ url('empresa') }}">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-business-time"></i></div>
+                                        Registro de empresas
+                                    </a>
                                 @endif
                             @endforeach
+                            <div class="sb-sidenav-menu-heading">Componentes</div>
                             <!--Funcionalidades-->
-                            <div class="sb-sidenav-menu-heading">Cuadro de mando integral</div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                                data-bs-target="#collapseFormats" aria-expanded="false"
-                                aria-controls="collapseFormats">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Formatos
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            <a class="nav-link" href="{{ url('diagnostico/individual') }}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-project-diagram"></i></div>
+                                Cuadro de mando integral
                             </a>
-                            <div class="collapse" id="collapseFormats" aria-labelledby="headingOne"
-                                data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{ url('diagnostico/individual') }}">Implementación
-                                        estrategias</a>
-                                </nav>
-                            </div>
-                            <!--Fin-->
-                            <!--Resultados-->
-                            <!--<div class="sb-sidenav-menu-heading">RESULTADOS GRAFICOS</div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                                data-bs-target="#collapseCharts" aria-expanded="false"
-                                aria-controls="collapseCharts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Resultados graficos
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            <a class="nav-link" href="{{ url('reporte') }}">
+                                <div class="sb-nav-link-icon"><i class="far fa-file-alt"></i></div>
+                                Reportes
                             </a>
-                            <div class="collapse" id="collapseCharts" aria-labelledby="headingOne"
-                                data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{ url('grafico/encuesta') }}">Resultados
-                                        encuesta</a>
-                                </nav>
-                            </div>-->
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
@@ -161,43 +132,10 @@
         @yield('content')
     </div>
     </div>
-
     <script src="{{ asset('js/jquery-1.12.0.min.js') }}"></script>
-
-    <script>
-        $(document).ready(function() {
-            $('#SimpleTable').DataTable({
-                language: {
-                    "decimal": "",
-                    "emptyTable": "No hay información",
-                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-                    "infoPostFix": "",
-                    "thousands": ",",
-                    "lengthMenu": "Mostrar _MENU_ Entradas",
-                    "loadingRecords": "Cargando...",
-                    "processing": "Procesando...",
-                    "search": "Buscar:",
-                    "zeroRecords": "Sin resultados encontrados",
-                    "paginate": {
-                        "first": "Primero",
-                        "last": "Ultimo",
-                        "next": "Siguiente",
-                        "previous": "Anterior"
-                    }
-                },
-            });
-        });
-    </script>
     <script src="{{ asset('js/scripts.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
-    </script>
     @yield('js')
     <script src="{{ asset('js/charts.js') }}"></script>
-
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.js"></script>
 
 
 

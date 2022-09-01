@@ -3,6 +3,7 @@
 use App\Http\Controllers\DiagnosticoController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\GraficoController;
+use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
 use App\Models\Rol;
@@ -38,6 +39,9 @@ Route::get('diagnostico/individual', [DiagnosticoController::class, 'analisis_in
 
 
 Route::put('diagnostico/{nit}/guardarAnalisis', [DiagnosticoController::class, 'guardarAnalisis']);
+Route::put('diagnostico/{nit}/validarAnalisis', [DiagnosticoController::class, 'validarAnalisis']);
+Route::put('diagnostico/{nit}/validarDofa', [DiagnosticoController::class, 'validarDofa']);
+Route::put('diagnostico/{nit}/validarTablero', [DiagnosticoController::class, 'validarTablero']);
 Route::get('diagnostico/{nit}/pdfAnalisis', [DiagnosticoController::class, 'pdfAnalisis']);
 Route::get('diagnostico/{nit}/pdfDofa', [DiagnosticoController::class, 'pdfDofa']);
 Route::get('diagnostico/{nit}/deleteDofa', [DiagnosticoController::class, 'deleteDofa']);
@@ -57,9 +61,12 @@ Route::put('usuario/{slug}/actualizar', [UsuarioController::class, 'actualizar']
 
 Route::get('diagnostico/{nit}/imagenCorporativa' , [DiagnosticoController::class, 'imagenCorporativa']);
 
+Route::get('reporte/pdfEmpresas', [ReporteController::class, 'pdfEmpresas']);
+
 Route::resource('rol', RolController::class);
 Route::resource('usuario', UsuarioController::class);
 Route::resource('empresa', EmpresaController::class);
 Route::resource('diagnostico', DiagnosticoController::class);
 Route::resource('grafico', GraficoController::class);
+Route::resource('reporte', ReporteController::class);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

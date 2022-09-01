@@ -18,7 +18,20 @@ class HomeController extends Controller
         if (Auth::check()) {
             $users = DB::table('users')->get();
             $empresas = DB::table('empresas')->get();
+            //Consulta avance actividades implementación
+            /*$validacionInstrumento = DB::table('validacion_instrumentos')
+                ->select('validacion_instrumentos.nit_empresa','razon_social','nombre','apellido',DB::raw('SUM(analisis) as suma1'),DB::raw('SUM(dofa) as suma2'), DB::raw('SUM(imagen) as suma3'), DB::raw('SUM(tablero) as suma4'))
+                ->join('diagnostico_individual', 'diagnostico_individual.nit_empresa','=','validacion_instrumentos.nit_empresa')
+                ->join('users','diagnostico_individual.id_persona','=','users.id')
+                ->join('empresas', 'empresas.nit','=','validacion_instrumentos.nit_empresa')
+                ->orderBy('empresas.nit_empresa','desc')
+                ->get();*/
             $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
+            //consulta grafico diagnostico
+            $diagnosticos = DB::table('resultados')
+                ->join('empresas','resultados.nit_empresa','=','empresas.nit')    
+                ->where('estado_35', 'seleccionado')
+                ->get();
             //Consulta grafico usuarios
             $usuarios = DB::table('users')
                 ->select('nombre_rol', DB::raw('count(*) as total'))
@@ -31,9 +44,10 @@ class HomeController extends Controller
                 ->where('estado_35', 'seleccionado')
                 ->groupBy('municipio')
                 ->get();
+            $cuentaInvestigador = DB::table('users')->where('rol', 8)->get();
             $cuentaInstructor = DB::table('users')->where('rol', 7)->get();
             $cuentaAprendiz = DB::table('users')->where('rol', 9)->get();
-            return view('home', compact('permisos', 'users', 'empresas', 'usuarios', 'empresasCharts','cuentaInstructor','cuentaAprendiz'));
+            return view('home', compact('permisos', 'users', 'empresas', 'usuarios', 'empresasCharts','cuentaInstructor','cuentaAprendiz','cuentaInvestigador','diagnosticos'));
         } else {
             $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
             return view('/', compact('permisos'));

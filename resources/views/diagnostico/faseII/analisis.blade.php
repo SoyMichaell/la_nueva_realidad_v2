@@ -11,9 +11,17 @@
                 z-index: 99;
             }
 
+            .static_y {
+                position: fixed;
+                bottom: 40px;
+                right: 120px;
+                z-index: 99;
+            }
+
             .btn-rounded {
                 border: 1px solid #FF6712;
                 border-radius: 100%;
+                margin-left: 5px;
             }
 
             .btn-rounded:hover {
@@ -23,18 +31,14 @@
         </style>
     </head>
     <main>
-        <div class="container">
-            <div class="content shadow-sm p-3">
-                <h1 class="mt-4">Formato de Diagnóstico Empresarial</h1>
+        <div class="container-fluid">
+            <div class="content mt-2 p-3 bg-white">
+                <h1 class="mt-4">Ánalisis microempresa</h1>
                 <p>Realizar el diagnóstico de la empresa analizando cada una de las perspectivas desarrolladas desde el
                     proyecto
                     La Nueva Realidad.</p>
             </div>
             <hr>
-            <div class="d-flex justify-content-end">
-                <a class="btn btn-primary btn-sm shadow-sm rounded-0" href="/diagnostico/individual"><i class="fas fa-arrow-left"></i>
-                    Volver</a>
-            </div>
             <!--Información empresa-->
             <div class="card mb-3 mt-3">
                 <div class="card-header">
@@ -53,6 +57,8 @@
                                                 href="{{ url("diagnostico/{$empresa->nit}/pdfAnalisis") }}"
                                                 title="Descargar información" target="_blank"><i
                                                     class="fas fa-file-download"></i></a>
+                                            <a class="btn btn-rounded" href="/diagnostico/individual"><i
+                                                    class="fas fa-arrow-left"></i></a>
                                         </div>
                                     @endif
                                 </div>
@@ -897,6 +903,18 @@
                     </div>
                     <br>
                     <!--Fin-->
+                </form>
+                <form action="{{ url("diagnostico/{$empresa->nit}/validarAnalisis") }}" method="post">
+                    @csrf
+                    @method('PUT')
+                    <!--Empresa-->
+                    <div class="static_y">
+                        @foreach ($permisos as $permiso)
+                            @if ($permiso->permiso == 'validar-analisis')
+                                <button class="btn btn-info btn-sm mt-2 mb-2" type="submit">Validar diligenciamiento</button>
+                            @endif
+                        @endforeach
+                    </div>
                 </form>
             @endif
         </div>

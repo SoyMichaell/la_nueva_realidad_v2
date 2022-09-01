@@ -17,96 +17,83 @@
     </head>
     <main>
         <div class="container-fluid px-4">
-            <div class="bg-white shadow-sm p-3">
-                <h1 class="mt-4">Implementación estrategias</h1>
-                <p>Listado de empresas seleccionadas para la implementación del diseño metodologico</p>
-            </div>
-            <hr>
-            <div class="d-flex justify-content-start mb-3">
-                @foreach ($permisos as $permiso)
-                    @if ($permiso->permiso == 'ver-asignacion')
-                        <a href="{{ url('diagnostico/asignacion') }}" style="text-decoration: none"><i class="fas fa-eye"></i>
-                            Distribución empresas x instructor</a>
-                    @endif
-                @endforeach
-            </div>
-            <div class="card">
-                <!--<div class="card-header"><i class="fas fa-table"></i> Tabla microempresarios</div>-->
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="p-1" id="SimpleTable">
-                            <thead>
+            <div class="card card-custom-content mt-2 border-0">
+                <div class="card-content">
+                    <h2>Implementación de estrategias</h2>
+                </div>
+                <div class="table-responsive">
+                    <table class="table-custom">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nit</th>
+                                <th>Razón social</th>
+                                <th>Municipio</th>
+                                <th>CIIU</th>
+                                <th style="width: 20%">Instructor</th>
+                                <th>Puntaje</th>
+                                <th>Modalidad</th>
+                                @foreach ($permisos as $permiso)
+                                    @if ($permiso->permiso == 'implementacion')
+                                        <th>Acciones</th>
+                                    @endif
+                                @endforeach
+                            </tr>
+                        </thead>
+                        <tbody> <?php $i = 1; ?>
+                            @foreach ($empresas as $empresa)
                                 <tr>
-                                    <th>#</th>
-                                    <th>Nit</th>
-                                    <th>Razón social</th>
-                                    <th>Municipio</th>
-                                    <th>CIIU</th>
-                                    <th>Instructor asignado</th>
-                                    <th>Puntaje</th>
-                                    <th>Modalidad</th>
+                                    <td>{{ $i++ }}</td>
+                                    <td>{{ $empresa->nit }}</td>
+                                    <td>{{ $empresa->razon_social }}</td>
+                                    <td>{{ $empresa->municipio }}</td>
+                                    <td>{{ $empresa->ciiu_1 }}</td>
+                                    <td class="mt-2">
+                                        <p
+                                            class="{{ $empresa->nombre == '' ? 'badge bg-warning' : 'badge bg-light text-dark' }}">
+                                            {{ $empresa->nombre == '' ? 'Sin asignar' : $empresa->nombre . ' ' . $empresa->apellido }}
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p
+                                            class="@if ($empresa->total >= 0 and $empresa->total <= 40) badge bg-danger text-white @elseif($empresa->total > 40 and $empresa->total <= 70) badge bg-warning text-white @elseif($empresa->total > 70 and $empresa->total <= 100) badge bg-success text-white @endif">
+                                            {{ $empresa->total }}</p>
+                                    </td>
+                                    <td><span class="badge bg-light text-dark">{{ Str::ucfirst($empresa->modalidad) }}</span>
+                                    </td>
                                     @foreach ($permisos as $permiso)
                                         @if ($permiso->permiso == 'implementacion')
-                                            <th>Acciones</th>
+                                            <td style="width: 5%">
+                                                <div class="dropdown">
+                                                    <button class="btn" data-bs-toggle="dropdown"
+                                                        aria-expanded="false">
+                                                        <i class="fas fa-ellipsis-v"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item"
+                                                                href="/diagnostico/{{ $empresa->nit }}/analisis">Análisis
+                                                                individual</a></li>
+                                                        <li><a class="dropdown-item"
+                                                                href="/diagnostico/{{ $empresa->nit }}/imagenCorporativa">Imagen
+                                                                corporativa</a></li>
+                                                        <li><a class="dropdown-item"
+                                                                href="/diagnostico/{{ $empresa->nit }}/crear-dofa">Matriz
+                                                                DOFA</a></li>
+                                                        <li><a class="dropdown-item"
+                                                                href="/diagnostico/{{ $empresa->nit }}/tablero">Tablero
+                                                                control</a></li>
+
+                                                    </ul>
+                                                </div>
+                                            </td>
                                         @endif
                                     @endforeach
                                 </tr>
-                            </thead>
-                            <tbody> <?php $i = 1; ?>
-                                @foreach ($empresas as $empresa)
-                                    <tr>
-                                        <td>{{ $i++ }}</td>
-                                        <td>{{ $empresa->nit }}</td>
-                                        <td>{{ $empresa->razon_social }}</td>
-                                        <td>{{ $empresa->municipio }}</td>
-                                        <td>{{ $empresa->ciiu_1 }}</td>
-                                        <td class="mt-2">
-                                            <p
-                                                class="{{ $empresa->nombre == '' ? 'badge bg-warning' : 'badge bg-light text-dark' }}">
-                                                {{ $empresa->nombre == '' ? 'Sin asignar' : $empresa->nombre . ' ' . $empresa->apellido }}
-                                            </p>
-                                        </td>
-                                        <td>
-                                            <p
-                                                class="@if ($empresa->total >= 0 and $empresa->total <= 40) badge bg-danger text-white @elseif($empresa->total > 40 and $empresa->total <= 70) badge bg-warning text-white @elseif($empresa->total > 70 and $empresa->total <= 100) badge bg-success text-white @endif">
-                                                {{ $empresa->total }}</p>
-                                        </td>
-                                        <td><span
-                                                class="badge bg-light text-dark">{{ Str::ucfirst($empresa->modalidad) }}</span>
-                                        </td>
-                                        @foreach ($permisos as $permiso)
-                                            @if ($permiso->permiso == 'implementacion')
-                                                <td style="width: 5%">
-                                                    <div class="dropdown">
-                                                        <button class="btn" type="button" id="dropdownMenuButton"
-                                                            data-toggle="dropdown">
-                                                            <i class="fas fa-ellipsis-v"></i>
-                                                        </button>
-                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                            <a class="dropdown-item"
-                                                                href="/diagnostico/{{ $empresa->nit }}/analisis">Análisis
-                                                                individual</a>
-                                                            <a class="dropdown-item"
-                                                                href="/diagnostico/{{ $empresa->nit }}/imagenCorporativa">Imagen corporativa</a>
-                                                            <a class="dropdown-item"
-                                                                href="/diagnostico/{{ $empresa->nit }}/crear-dofa">Matriz
-                                                                DOFA</a>
-                                                            <a class="dropdown-item"
-                                                                href="/diagnostico/{{ $empresa->nit }}/tablero">Tablero
-                                                                control</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            @endif
-                                        @endforeach
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            <br>
         </div>
     </main>
 @endsection

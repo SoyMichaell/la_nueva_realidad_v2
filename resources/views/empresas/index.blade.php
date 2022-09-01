@@ -3,21 +3,23 @@
 @section('content')
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Microempresa | Departamento de Casanare</h1>
-            <p>Base de datos suministrada por la camara de comercion de Casanare, empresas registradas en el año 2020.</p>
-            <hr>
+            <div class="contenido__head bg-white p-3">
+                <h1 class="mt-4">Microempresas | Departamento de Casanare</h1>
+                <p>Base de datos suministrada por la camara de comercion de Casanare, empresas registradas en el año 2020.
+                </p>
+            </div>
             <div class="card">
-                <div class="card-header"><i class="fas fa-table"></i> Tabla de microempresas <a
-                    class="btn btn-primary btn-sm" href="{{ url('empresa/create') }}"><i class="fas fa-plus-circle"></i> Nuevo</a></div> 
+                <div class="card-header"><i class="fas fa-table"></i> Tabla de microempresas departamento de casanare 2020 <a class="btn btn-primary btn-sm"
+                        href="{{ url('empresa/create') }}"><i class="fas fa-plus-circle"></i> Nuevo</a></div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table" id="SimpleTable">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Nit o Num Id</th>
-                                    <th>Razón social o Nombre</th>
-                                    <th>Correo electronico</th>
+                                    <th>Nit</th>
+                                    <th style="width: 25%">Razón social o Nombre</th>
+                                    <th style="width: 20%">Correo electronico</th>
                                     <th>Telefono</th>
                                     <th>Dirección</th>
                                     <th>Municipio</th>

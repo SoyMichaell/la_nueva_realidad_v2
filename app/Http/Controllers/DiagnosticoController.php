@@ -214,6 +214,102 @@ class DiagnosticoController extends Controller
         }
     }
 
+    public function validarAnalisis($nit){
+        
+        $valorCampo = DB::table('validacion_instrumentos')
+            ->where('nit_empresa', $nit)
+            ->first();
+
+        if($valorCampo == ""){
+            DB::table('validacion_instrumentos')
+            ->insert([
+                'nit_empresa' => $nit,
+                'analisis' => 1
+            ]);
+        }else{
+            if($valorCampo->analisis == 0){
+                DB::table('validacion_instrumentos')
+                ->where('nit_empresa', $nit)
+                ->update([
+                    'analisis' => 1
+                ]);
+            }else{
+                DB::table('validacion_instrumentos')
+                ->where('nit_empresa', $nit)
+                ->update([
+                    'analisis' => 0
+                ]);
+            }
+        }
+
+        Alert::success('Exitoso', 'Validación realizada');
+        return back();
+    }
+
+    public function validarDofa($nit){
+        
+        $valorCampo = DB::table('validacion_instrumentos')
+            ->where('nit_empresa', $nit)
+            ->first();
+
+        if($valorCampo == ""){
+            DB::table('validacion_instrumentos')
+            ->insert([
+                'nit_empresa' => $nit,
+                'dofa' => 1
+            ]);
+        }else{
+            if($valorCampo->dofa == 0){
+                DB::table('validacion_instrumentos')
+                ->where('nit_empresa', $nit)
+                ->update([
+                    'dofa' => 1
+                ]);
+            }else{
+                DB::table('validacion_instrumentos')
+                ->where('nit_empresa', $nit)
+                ->update([
+                    'dofa' => 0
+                ]);
+            }
+        }
+
+        Alert::success('Exitoso', 'Validación realizada');
+        return back();
+    }
+
+    public function validarTablero($nit){
+        
+        $valorCampo = DB::table('validacion_instrumentos')
+            ->where('nit_empresa', $nit)
+            ->first();
+
+        if($valorCampo == ""){
+            DB::table('validacion_instrumentos')
+            ->insert([
+                'nit_empresa' => $nit,
+                'tablero' => 1
+            ]);
+        }else{
+            if($valorCampo->tablero == 0){
+                DB::table('validacion_instrumentos')
+                ->where('nit_empresa', $nit)
+                ->update([
+                    'tablero' => 1
+                ]);
+            }else{
+                DB::table('validacion_instrumentos')
+                ->where('nit_empresa', $nit)
+                ->update([
+                    'tablero' => 0
+                ]);
+            }
+        }
+
+        Alert::success('Exitoso', 'Validación realizada');
+        return back();
+    }
+
     public function destroy($id)
     {
         $DiagnosticoIndividual = DB::table('diagnostico_individual')
@@ -498,7 +594,6 @@ class DiagnosticoController extends Controller
             ->where('id', $id)
             ->delete();
         if ($tablero == 1) {
-            Alert::success('Exitoso', 'Tablero de control actualizado');
             return back();
         } else {
             Alert::warning('Advertencia', 'Algo fallo, intentelo de nuevo');
