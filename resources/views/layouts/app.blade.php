@@ -23,7 +23,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!--Datatables-->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
     @yield('css')
 
 </head>
@@ -132,13 +132,12 @@
         @yield('content')
     </div>
     </div>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
     <script src="{{ asset('js/jquery-1.12.0.min.js') }}"></script>
+    
     <script src="{{ asset('js/scripts.js') }}"></script>
     @yield('js')
     <script src="{{ asset('js/charts.js') }}"></script>
-
-
-
 </body>
 
 </html>

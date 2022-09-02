@@ -82,30 +82,26 @@ class DiagnosticoController extends Controller
         return view('diagnostico/faseII.analisis', compact('empresa', 'usuarios', 'exist_diagnostico_empresa', 'permisos'));
     }
 
-    public function analisis_individual()
+    public function analisis_individual(Request $request)
     {
         $idPersona = Auth::user()->rol;
-        if ($idPersona == 7 || $idPersona == 8) {
+        if ($idPersona == 1 || $idPersona == 7 || $idPersona == 8) {
+            $texto = trim($request->get('buscar'));
             $empresas = DB::table('resultados')
                 ->join('empresas', 'resultados.nit_empresa', '=', 'empresas.nit')
                 ->join('diagnostico_individual', 'resultados.nit_empresa', '=', 'diagnostico_individual.nit_empresa')
                 ->join('users', 'diagnostico_individual.id_persona', '=', 'users.id')
                 ->where('estado_35', '=', 'seleccionado')
-                ->where('users.id', Auth::user()->id)
+                ->where('razon_social','LIKE','%'.$texto.'%')
+                ->orWhere('municipio','LIKE','%'.$texto.'%')
+                ->orWhere('users.nombre','LIKE','%'.$texto.'%')
+                ->orWhere('users.apellido','LIKE','%'.$texto.'%')
                 ->get();
-        } elseif ($idPersona == 1) {
-            $empresas = DB::table('resultados')
-                ->join('empresas', 'resultados.nit_empresa', '=', 'empresas.nit')
-                ->leftJoin('diagnostico_individual', 'resultados.nit_empresa', '=', 'diagnostico_individual.nit_empresa')
-                ->leftJoin('users', 'diagnostico_individual.id_persona', '=', 'users.id')
-                ->where('estado_35', '=', 'seleccionado')
-                ->get();
-        }
-
+        } 
         $permisos = DB::table('roles_permisos')
             ->where('id_rol', Auth::user()->rol)
             ->get();
-        return view('diagnostico/faseII.index', compact('empresas', 'permisos'));
+        return view('diagnostico/faseII.index', compact('empresas', 'permisos','texto'));
     }
 
     public function store(Request $request)

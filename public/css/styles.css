@@ -11845,13 +11845,13 @@ span i{
 
 .table-custom th{
   border-radius: 5px;
-  padding: 20px;
+  padding: 10px;
   font-family: var(--bs-body-font-nav);
   font-size: 18px;
 }
 
 .table-custom td{
-  padding: 20px;
+  padding: 10px;
   color: rgb(117, 120, 143);
   font-family: var(--bs-body-font-family);
   font-size: 14px;
