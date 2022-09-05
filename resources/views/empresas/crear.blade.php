@@ -3,10 +3,10 @@
 @section('content')
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Crear Microempresa</h1>
-            <hr>
+            <h1 class="title-card mt-4">Microempresa</h1>
+            <p>Algunos items pueden ser requeridos, para el registro correcto completar la información solicitada</p>
             <div class="card">
-                <div class="card-header">
+                <div class="card-header subtitle-card">
                     <i class="fas fa-cube"></i> Registro empresa
                 </div>
                 <div class="card-body">
@@ -263,8 +263,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="numero_persona">Tamaño:</label><span class="text-danger"></span>
-                                    <select class="form-control" name="tamano" id="tamano">
-                                        <option value="">---- SELECCIONE ----</option>
+                                    <select class="form-select" name="tamano" id="tamano">
+                                        <option value="">---- Seleccione ----</option>
                                         <option value="microempresa">Microempresa</option>
                                         <option value="pequeña">Pequeña</option>
                                         <option value="mediana">Mediana</option>
@@ -293,8 +293,8 @@
                                 <div class="form-group">
                                     <label for="autorizacion">Autorización de datos:</label><span
                                         class="text-danger"></span>
-                                    <select class="form-control" name="autorizacion" id="autorizacion">
-                                        <option value="">---- SELECCIONE ----</option>
+                                    <select class="form-select" name="autorizacion" id="autorizacion">
+                                        <option value="">---- Seleccione ----</option>
                                         <option value="si">Si</option>
                                         <option value="no">No</option>
                                     </select>
@@ -319,9 +319,9 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="estado">Estado muestra 375:</label><span class="text-danger">*</span>
-                                    <select class="form-control {{ $errors->has('estado') ? ' is-invalid' : '' }}"
+                                    <select class="form-select {{ $errors->has('estado') ? ' is-invalid' : '' }}"
                                         name="estado" id="estado">
-                                        <option value="">---- SELECCIONE ----</option>
+                                        <option value="">---- Seleccione ----</option>
                                         <option value="seleccionado">Seleccionado</option>
                                         <option value="no-seleccionado">No seleccionado</option>
                                     </select>
@@ -333,9 +333,9 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="estado_35">Estado muestra 35:</label><span class="text-danger"></span>
-                                    <select class="form-control {{ $errors->has('estado_35') ? ' is-invalid' : '' }}"
+                                    <select class="form-select {{ $errors->has('estado_35') ? ' is-invalid' : '' }}"
                                         name="estado_35" id="estado_35">
-                                        <option value="">---- SELECCIONE ----</option>
+                                        <option value="">---- Seleccione ----</option>
                                         <option value="seleccionado">Seleccionado</option>
                                         <option value="no-seleccionado">No seleccionado</option>
                                     </select>

@@ -20,10 +20,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    <!--Datatables-->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+    
     @yield('css')
 
 </head>
@@ -132,11 +129,13 @@
         @yield('content')
     </div>
     </div>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+
+    <!--Plugin Jquery-->
     <script src="{{ asset('js/jquery-1.12.0.min.js') }}"></script>
-    
+    <!--JS Sidebar toogle-->
     <script src="{{ asset('js/scripts.js') }}"></script>
     @yield('js')
+    <!--JS Canvas charts-->
     <script src="{{ asset('js/charts.js') }}"></script>
 </body>
 

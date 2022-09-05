@@ -26,15 +26,14 @@
                                         @if ($permiso->permiso == 'rol-editar')
                                             <td>
                                                 <form action="{{ route('rol.destroy', $rol->id) }}" method="post">
-                                                    <a class="btn btn-info btn-sm text-white"
-                                                        href="/rol/{{ $rol->id }}/edit"><i class="fas fa-edit"></i>
-                                                        Editar</a>
+                                                    <a class="btn btn-primary btn-sm text-white"
+                                                        href="/rol/{{ $rol->id }}/edit" title="Editar"><i class="fas fa-edit"></i></a>
                                         @endif
                                         @if ($permiso->permiso == 'rol-eliminar')
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-danger btn-sm" type="submit"><i
-                                                    class="fas fa-trash"></i> Eliminar</button>
+                                                    class="fas fa-eraser"></i></button>
                                             </form>
                                             </td>
                                         @endif

@@ -3,10 +3,10 @@
 @section('content')
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Actualizar microempresa</h1>
+            <h1 class="title-card mt-4">Actualizar microempresa</h1>
             <p>Módulo de actualización de información de la microempresa</p>
-            <hr>
             <div class="card">
+                <div class="card-header subtitle-card"><i class="fas fa-edit"></i> Editar datos empresa</div>
                 <div class="card-body">
                     <form action="/empresa/{{ $empresa->id }}" method="post">
                         <div class="alert alert-info">
@@ -326,7 +326,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="estado">Estado muestra 375:</label><span class="text-danger">*</span>
-                                    <select class="form-control {{ $errors->has('estado') ? ' is-invalid' : '' }}"
+                                    <select class="form-select {{ $errors->has('estado') ? ' is-invalid' : '' }}"
                                         name="estado" id="estado">
                                         <option value="">---- SELECCIONE ----</option>
                                         <option value="seleccionado"
@@ -344,7 +344,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="estado_35">Estado muestra 35:</label><span class="text-danger"></span>
-                                    <select class="form-control {{ $errors->has('estado_35') ? ' is-invalid' : '' }}"
+                                    <select class="form-select {{ $errors->has('estado_35') ? ' is-invalid' : '' }}"
                                         name="estado_35" id="estado_35">
                                         <option value="">---- SELECCIONE ----</option>
                                         <option value="seleccionado"

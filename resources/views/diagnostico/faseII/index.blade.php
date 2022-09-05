@@ -32,8 +32,8 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="row">
-                                <div class="col-md-3 d-flex justify-content-center align-items-center">Ver</div>
-                                <div class="col-md-6">
+                                <div class="col-md-1 d-flex justify-content-start align-items-center">Ver</div>
+                                <div class="col-md-6 d-flex justify-content-start">
                                     <select class="form-select" name="item" id="item">
                                         <option value="">10</option>
                                         <option value="">25</option>
@@ -41,7 +41,7 @@
                                         <option value="">100</option>
                                     </select>
                                 </div>
-                                <div class="col-md-3 d-flex justify-content-center align-items-center">Registros</div>
+                                <div class="col-md-2 d-flex justify-content-center align-items-center">Registros</div>
                             </div>
                         </div>
                         <div class="d-flex justify-content-end col-md-9">
@@ -59,13 +59,13 @@
                 <div class="table-responsive mt-3">
                     <table class="table-custom" id="SimpleTable">
                         <thead>
-                            <tr>
+                            <tr class="text-center">
                                 <th>#</th>
                                 <th>Nit</th>
-                                <th>Razón social</th>
+                                <th style="width: 20%">Razón social</th>
                                 <th>Municipio</th>
-                                <th>CIIU</th>
-                                <th style="width: 20%">Instructor</th>
+                                <th style="width: 20%">CIIU</th>
+                                <th style="width: 15%;">Instructor</th>
                                 <th>Puntaje</th>
                                 <th>Modalidad</th>
                                 @foreach ($permisos as $permiso)
@@ -79,7 +79,7 @@
                             @if($empresas->count()>0)
                             <?php $i = 1; ?>
                             @foreach ($empresas as $empresa)
-                                <tr>
+                                <tr class="text-center">
                                     <td>{{ $i++ }}</td>
                                     <td>{{ $empresa->nit }}</td>
                                     <td>{{ $empresa->razon_social }}</td>

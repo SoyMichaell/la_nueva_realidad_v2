@@ -3,20 +3,24 @@
 @section('content')
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Módulo usuarios</h1>
-            @foreach ($permisos as $permiso)
-                @if ($permiso->permiso == 'usuario-crear')
-                    <a class="btn btn-primary" style="width: 150px;" href="{{ url('usuario/create') }}"><i
-                            class="fas fa-plus"></i>
-                        Nuevo</a>
-                @endif
-            @endforeach
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="title-card mt-4 d-flex align-items-center">Módulo usuarios</h1>
+                    @foreach ($permisos as $permiso)
+                        @if ($permiso->permiso == 'usuario-crear')
+                            <a class="btn btn-primary btn-sm" href="{{ url('usuario/create') }}"><i
+                                    class="fas fa-plus-circle"></i>
+                                Nuevo usuario</a>
+                        @endif
+                    @endforeach
+                </div>
+            </div>
             <hr>
             <div class="card">
-                <div class="card-header"><i class="fas fa-table"></i> Tabla de usuarios en plataforma</div>
+                <div class="card-header subtitle-card"><i class="fas fa-table"></i> Tabla de usuarios en plataforma</div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-striped">
+                        <table class="table-custom">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -60,15 +64,15 @@
                                                 <td>
                                                     <form action="{{ url("usuario/{$usuario->idUser}") }}" method="POST">
 
-                                                        <a class="btn btn-info btn-sm"
-                                                            href="{{ route('usuario.edit', Str::lower($usuario->slug)) }}"><i
-                                                                class="fas fa-edit"></i> Editar</a>
+                                                        <a class="btn btn-primary btn-sm"
+                                                            href="{{ route('usuario.edit', Str::lower($usuario->slug)) }}"
+                                                            title="Editar"><i class="fas fa-edit"></i></a>
                                             @endif
                                             @if ($permiso->permiso == 'usuario-eliminar')
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger btn-sm" type="submit">
-                                                    <i class="fas fa-eraser"></i> Borrar
+                                                    <i class="fas fa-eraser"></i>
                                                 </button>
                                                 </form>
                                                 </td>

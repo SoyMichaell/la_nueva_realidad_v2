@@ -1,15 +1,7 @@
 
+colors 
 
-
-    'rgb(51, 102, 204)',
-                        'rgb(220, 57, 18)',
-                        'rgb(255, 153, 0)',
-                        'rgb(16, 150, 24)',
-                        'rgb(153, 0, 153)',
-                        'rgb(0, 153, 198)'
-
-
-
-                        color primario: FF6712
-                        color primario hover: EA5705
-                        color gris : F3F3F3
+verde primario: #2DAAB8
+amarillo secundario: #FCAD73
+rojo tercer: #ED7171
+verder activo: #71ED71

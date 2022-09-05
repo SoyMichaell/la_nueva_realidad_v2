@@ -19,46 +19,46 @@
             }
 
             .btn-rounded {
-                border: 1px solid #FF6712;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 border-radius: 100%;
-                margin-left: 5px;
+
             }
 
             .btn-rounded:hover {
-                background-color: #FF6712;
+                background-color: #2DAAB8;
                 color: #fff;
             }
         </style>
     </head>
     <main>
         <div class="container-fluid">
-            <div class="content mt-2 p-3 bg-white">
-                <h1 class="mt-4">Ánalisis microempresa</h1>
-                <p>Realizar el diagnóstico de la empresa analizando cada una de las perspectivas desarrolladas desde el
-                    proyecto
-                    La Nueva Realidad.</p>
-            </div>
-            <hr>
-            <!--Información empresa-->
-            <div class="card mb-3 mt-3">
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col-md-8 align-items-center">
-                            <i class="fas fa-info-circle"></i> Información empresa
-                        </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <h1 class="title-card mt-4">Diagnóstico individual microempresa.</h1>
+                    <p>Realizar el diagnóstico de la empresa, analizando cada una de las perspectivas desarrolladas desde el
+                        proyecto
+                        La Nueva Realidad.</p>
+                </div>
+                <div class="col-md-4 d-flex align-items-center">
+                    <div class="acciones">
                         @foreach ($permisos as $permiso)
                             @if ($permiso->permiso == 'eliminar-asignacion')
-                                <div class="col-md-4">
+                                <div class="contenido-acciones col-md-12">
                                     @if ($exist_diagnostico_empresa)
                                         <div class="d-flex justify-content-end">
+                                            <a class="btn btn-rounded" href="/diagnostico/individual" title="Regresar"><i
+                                                    class="fas fa-arrow-left"></i></a>
                                             <button class="btn btn-rounded" data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal"><i class="fas fa-eraser"></i></button>
                                             <a class="btn btn-rounded"
                                                 href="{{ url("diagnostico/{$empresa->nit}/pdfAnalisis") }}"
                                                 title="Descargar información" target="_blank"><i
                                                     class="fas fa-file-download"></i></a>
-                                            <a class="btn btn-rounded" href="/diagnostico/individual"><i
-                                                    class="fas fa-arrow-left"></i></a>
+
                                         </div>
                                     @endif
                                 </div>
@@ -66,6 +66,10 @@
                         @endforeach
                     </div>
                 </div>
+            </div>
+            <!--Información empresa-->
+            <div class="card mb-3 mt-3">
+                <div class="card-header subtitle-card"><i class="fas fa-info-circle"></i> Información empresa</div>
                 <div class="card-body">
                     <table class="table">
                         <thead>
@@ -102,7 +106,7 @@
                                 value="{{ $empresa->nit }}" readonly>
                             <div class="col-md-10">
                                 <select class="form-select" name="id_persona" id="id_persona">
-                                    <option value="">---- SELECCIONE ----</option>
+                                    <option value="">---- Seleccione ----</option>
                                     @if ($exist_diagnostico_empresa)
                                         @foreach ($usuarios as $usuario)
                                             <option value="{{ $usuario->id }}"
@@ -143,7 +147,7 @@
                         @endforeach
                     </div>
                     <div class="card mb-3">
-                        <div class="card-header">Empresa</div>
+                        <div class="card-header subtitle-card">Empresa</div>
                         <div class="card-body">
                             <label for="">Misión</label>
                             <textarea class="form-control mt-3 mb-3" name="mision" id="mision">{{ $exist_diagnostico_empresa->mision }}</textarea>
@@ -152,8 +156,8 @@
                         </div>
                     </div>
                     <!--Fin a todos-->
-                    <div class="card card-primary">
-                        <div class="card-header">Preguntas diagnostico / análisis microempresa</div>
+                    <div class="card">
+                        <div class="card-header subtitle-card">Preguntas diagnostico / análisis microempresa</div>
                         <div class="card-body">
                             <p>El presente instrumento fué diseñado y estructurado por SENNOVA como parte del proyecto La
                                 Nueva
@@ -161,7 +165,7 @@
                                 estará
                                 orientada a la Comunidad Académica SENA.</p>
                             <!--Perspectiva de crecimiento y desarrollo-->
-                            <div class="alert alert-info">PERSPECTIVA DE CRECIMIENTO Y DESARROLLO <br> <strong>Realizar
+                            <div class="alert alert-light">Perspectiva de crecimiento y desarrollo<br> <strong>Realizar
                                     observación por cada pregunta.</strong></div>
                             <!--pregunta1-->
                             <div class="alert alert-light">
@@ -515,7 +519,7 @@
                             <hr>
                             <!--Fin-->
                             <!--Perspectiva clientes-->
-                            <div class="alert alert-info">PERSPECTIVA DE CLIENTES <br> <strong>Realizar
+                            <div class="alert alert-light">Perspectiva de clientes <br> <strong>Realizar
                                     observación por cada pregunta.</strong></div>
                             <!--preguntapc1-->
                             <div class="alert alert-light">
@@ -645,7 +649,7 @@
                             <hr>
                             <!--Fin-->
                             <!--Perspectiva procesos internos-->
-                            <div class="alert alert-info">PERSPECTIVA DE PROCESOS INTERNOS <br> <strong>Realizar
+                            <div class="alert alert-light">Perspectiva de procesos internos <br> <strong>Realizar
                                     observación por cada pregunta.</strong></div>
                             <!--preguntappi1-->
                             <div class="alert alert-light">
@@ -760,7 +764,7 @@
                             <hr>
                             <!--Fin-->
                             <!--Perspectiva financiera-->
-                            <div class="alert alert-info">PERSPECTIVA FINANCIERA <br> <strong>Realizar
+                            <div class="alert alert-light">Perspectiva finaciera <br> <strong>Realizar
                                     observación por cada pregunta.</strong></div>
                             <!--preguntapf1-->
                             <div class="alert alert-light">
@@ -911,7 +915,8 @@
                     <div class="static_y">
                         @foreach ($permisos as $permiso)
                             @if ($permiso->permiso == 'validar-analisis')
-                                <button class="btn btn-info btn-sm mt-2 mb-2" type="submit">Validar diligenciamiento</button>
+                                <button class="btn btn-secondary btn-sm mt-2 mb-2" type="submit">Validar
+                                    diligenciamiento</button>
                             @endif
                         @endforeach
                     </div>
