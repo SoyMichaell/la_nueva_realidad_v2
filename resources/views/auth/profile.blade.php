@@ -1,13 +1,17 @@
 @extends('layouts.app')
 @section('content')
     <main>
-        <div class="container px-4">
-            <h1 class="mt-4">Perfil usuario</h1>
+        <div class="container bg-white p-3 mt-4">
+            <h1 class="title-card mt-2">Perfil usuario</h1>
             <p>Actualiza datos personales</p>
-            <hr>
+            <div class="contenido-acciones">
+                Acciones:
+                <a class="btn btn-primary" title="Actualizar información basica" data-bs-toggle="modal" data-bs-target="#datosBasicos"><i class="fas fa-info-circle"></i></a>
+                <a class="btn btn-primary" title="Actualizar contraseña" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-key"></i></a>
+            </div>
             <div class="row">
-                <div class="col-md-10">
-                    <table class="table">
+                <div class="col-md-12">
+                    <table class="table-custom">
                         <tbody>
                             <tr>
                                 <th>Tipo documento</th>
@@ -45,14 +49,6 @@
                     </table>
 
                 </div>
-                <div class="col-md-2">
-                    <ul>
-                        <li><a class="d-block" href="" data-bs-toggle="modal"
-                                data-bs-target="#datosBasicos">Actualizar datos</a></li>
-                        <li><a class="d-block" href="" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal">Actualizar contraseña</a></li>
-                    </ul>
-                </div>
             </div>
         </div>
     </main>
@@ -61,7 +57,8 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-book"></i> <strong>Datos basicos</strong> </h5>
+                    <h5 class="title-card" id="exampleModalLabel"><i class="fas fa-cube"></i> <strong>Datos
+                            basicos</strong> </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -69,11 +66,11 @@
                         @csrf
                         @method('PUT')
                         <div class="row mb-3">
-                            <label for="" class="col-sm-2 col-form-label">Tipo de documento</label>
-                            <div class="col-md-10">
+                            <label for="tipo_documento">Tipo de documento</label>
+                            <div class="col-sm-12">
                                 <select class="form-select {{ $errors->has('tipo_documento') ? 'is-invalid' : '' }}"
                                     name="tipo_documento" id="tipo_documento" autofocus>
-                                    <option value="">---- SELECCIONE ----</option>
+                                    <option value="">---- Seleccione ----</option>
                                     <option value="T.I" {{ Auth::user()->tipo_documento == 'T.I' ? 'selected' : '' }}>
                                         Tarjeta de identidad</option>
                                     <option value="C.C" {{ Auth::user()->tipo_documento == 'C.C' ? 'selected' : '' }}>
@@ -86,46 +83,46 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="" class="col-sm-2 col-form-label">Número de documento</label>
-                            <div class="col-sm-10">
+                            <label for="numero_documento">Número de documento</label>
+                            <div class="col-sm-12">
                                 <input class="form-control" type="number" name="numero_documento" id="numero_documento"
                                     value="{{ Auth::user()->numero_documento }}">
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="" class="col-sm-2 col-form-label">Nombre (s)</label>
-                            <div class="col-sm-10">
+                            <label for="nombre">Nombre (s)</label>
+                            <div class="col-sm-12">
                                 <input class="form-control" type="text" name="nombre" id="nombre"
                                     value="{{ Auth::user()->nombre }}">
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="" class="col-sm-2 col-form-label">Apellido (s)</label>
-                            <div class="col-sm-10">
+                            <label for="apellido">Apellido (s)</label>
+                            <div class="col-sm-12">
                                 <input class="form-control" type="text" name="apellido" id="apellido"
                                     value="{{ Auth::user()->apellido }}">
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="" class="col-sm-2 col-form-label">Correo electronico personal</label>
-                            <div class="col-sm-10">
+                            <label for="correo_personal">Correo electronico personal</label>
+                            <div class="col-sm-12">
                                 <input class="form-control" type="email" name="correo_personal" id="correo_personal"
                                     value="{{ Auth::user()->correo_personal }}">
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="" class="col-sm-2 col-form-label">Telefono</label>
-                            <div class="col-sm-10">
+                            <label for="telefono">Telefono</label>
+                            <div class="col-sm-12">
                                 <input class="form-control" type="number" name="telefono" id="telefono"
                                     value="{{ Auth::user()->telefono }}">
                             </div>
                         </div>
                         <div class="row mb-3 mt-4">
-                            <label for="" class="col-sm-2 col-form-label">Nivel de programa</label>
-                            <div class="col-md-10">
+                            <label for="nivel_programa">Nivel de programa</label>
+                            <div class="col-md-12">
                                 <select class="form-select {{ $errors->has('nivel_programa') ? 'is-invalid' : '' }}"
                                     name="nivel_programa" id="nivel_programa" autofocus>
-                                    <option value="">---- SELECCIONE ----</option>
+                                    <option value="">---- Seleccione ----</option>
                                     <option value="técnico"
                                         {{ Auth::user()->nivel_programa == 'técnico' ? 'selected' : '' }}>Técnico
                                     </option>
@@ -136,8 +133,8 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="" class="col-sm-2 col-form-label">Programa de formación</label>
-                            <div class="col-sm-10">
+                            <label for="programa">Programa de formación</label>
+                            <div class="col-sm-12">
                                 <input class="form-control" type="text" name="programa" id="programa"
                                     value="{{ Auth::user()->programa }}">
                             </div>
@@ -157,7 +154,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-lock"></i> <strong>Cambiar
+                    <h5 class="title-card" id="exampleModalLabel"><i class="fas fa-lock"></i> <strong>Cambiar
                             contraseña</strong> </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>

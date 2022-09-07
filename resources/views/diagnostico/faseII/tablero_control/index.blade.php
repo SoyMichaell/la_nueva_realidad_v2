@@ -32,17 +32,15 @@
     </head>
     <main>
         <div class="container-fluid">
-            <header class="mt-2">
-                <div class="alert alert-primary fw-bold" role="alert">
-                    Registro de objetivos estratégicos
-                </div>
+            <header class="mt-4">
+                <div class="title-card">Objetivos estratégicos</div>
             </header>
             <div class="row mt-2">
                 <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header">Datos microempresa</div>
+                    <div class="card border-0">
+                        <div class="card-header subtitle-card">Datos microempresa</div>
                         <div class="card-body">
-                            <ul class="list-group">
+                            <ul class="list-group border-0">
                                 <li class="list-group-item rounded-0">Nit: {{ $empresa->nit }}</li>
                                 <li class="list-group-item rounded-0">Razón social: {{ $empresa->razon_social }}</li>
                                 <li class="list-group-item rounded-0">Dirección: {{ $empresa->direccion }}</li>

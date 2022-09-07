@@ -59,12 +59,43 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12 mt-2">
+                        <div class="col-md-4 mt-2">
+                            <div class="card border-0">
+                                <div class="title-grafico">
+                                    <h4>Seguimiento etapas (Implementación)</h4>
+                                    <table class="table-custom">
+                                        <thead>
+                                            <tr>
+                                                <th>Nit empresa</th>
+                                                <th>% Avance</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($validacionInstrumento as $item)
+                                                <?php $prom = $item->suma1 + $item->suma2 + $item->suma3 + $item->suma4; ?>
+                                                <tr>
+                                                    <td>{{ $item->nit_empresa }}</td>
+                                                    <td>
+                                                        <div class="progress">
+                                                            <div class="progress-bar" role="progressbar"
+                                                                aria-label="Example with label" style="width: {{$prom}}%;"
+                                                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{$prom}} %
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8 mt-2">
                             <div class="card border-0">
                                 <div class="title-grafico">
                                     <h4>Diagnostico global | Muestra Fase II <span class="fw-bold">(35)</span></h4>
                                 </div>
-                                <div  id="graficoDiagnostico" style="height: 400px; padding: 10px"></div>
+                                <div id="graficoDiagnostico" style="height: 400px; padding: 10px"></div>
                             </div>
                         </div>
                         <div class="col-md-12 mt-2">

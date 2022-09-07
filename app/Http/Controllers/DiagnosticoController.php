@@ -220,14 +220,14 @@ class DiagnosticoController extends Controller
             DB::table('validacion_instrumentos')
             ->insert([
                 'nit_empresa' => $nit,
-                'analisis' => 1
+                'analisis' => 25
             ]);
         }else{
             if($valorCampo->analisis == 0){
                 DB::table('validacion_instrumentos')
                 ->where('nit_empresa', $nit)
                 ->update([
-                    'analisis' => 1
+                    'analisis' => 25
                 ]);
             }else{
                 DB::table('validacion_instrumentos')
@@ -252,14 +252,14 @@ class DiagnosticoController extends Controller
             DB::table('validacion_instrumentos')
             ->insert([
                 'nit_empresa' => $nit,
-                'dofa' => 1
+                'dofa' => 25
             ]);
         }else{
             if($valorCampo->dofa == 0){
                 DB::table('validacion_instrumentos')
                 ->where('nit_empresa', $nit)
                 ->update([
-                    'dofa' => 1
+                    'dofa' => 25
                 ]);
             }else{
                 DB::table('validacion_instrumentos')
@@ -284,14 +284,14 @@ class DiagnosticoController extends Controller
             DB::table('validacion_instrumentos')
             ->insert([
                 'nit_empresa' => $nit,
-                'tablero' => 1
+                'tablero' => 25
             ]);
         }else{
             if($valorCampo->tablero == 0){
                 DB::table('validacion_instrumentos')
                 ->where('nit_empresa', $nit)
                 ->update([
-                    'tablero' => 1
+                    'tablero' => 25
                 ]);
             }else{
                 DB::table('validacion_instrumentos')

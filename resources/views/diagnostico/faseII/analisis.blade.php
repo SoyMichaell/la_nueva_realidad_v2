@@ -17,25 +17,10 @@
                 right: 120px;
                 z-index: 99;
             }
-
-            .btn-rounded {
-                width: 40px;
-                height: 40px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border-radius: 100%;
-
-            }
-
-            .btn-rounded:hover {
-                background-color: #2DAAB8;
-                color: #fff;
-            }
         </style>
     </head>
     <main>
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <div class="col-md-8">
                     <h1 class="title-card mt-4">Diagnóstico individual microempresa.</h1>
