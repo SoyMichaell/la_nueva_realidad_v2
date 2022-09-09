@@ -43,10 +43,14 @@ class HomeController extends Controller
                 ->where('estado_35', 'seleccionado')
                 ->groupBy('municipio')
                 ->get();
-            $cuentaInvestigador = DB::table('users')->where('rol', 8)->get();
-            $cuentaInstructor = DB::table('users')->where('rol', 7)->get();
-            $cuentaAprendiz = DB::table('users')->where('rol', 9)->get();
-            return view('home', compact('permisos', 'users', 'empresas', 'usuarios', 'empresasCharts','cuentaInstructor','cuentaAprendiz','cuentaInvestigador','diagnosticos','validacionInstrumento'));
+            $coloresRand = array(
+                            "#2DAAB8","#FCAD73","#ED7171","#D98880",
+                            "#F1948A","#C39BD3","#7FB3D5","#76D7C4",
+                            "#7DCEA0","#82E0AA","#F7DC6F","#F8C471",
+                            "#F0B27A","#F4F6F7","#D7DBDD","#B2BABB",
+                            "#85929E"
+                            );
+            return view('home', compact('permisos', 'users', 'empresas', 'usuarios', 'empresasCharts','diagnosticos','validacionInstrumento','coloresRand'));
         } else {
             $permisos = DB::table('roles_permisos')->where('id_rol', Auth::user()->rol)->get();
             return view('/', compact('permisos'));

@@ -26,6 +26,7 @@
         data.addRows([<?php foreach($usuarios as $usuario){ echo "['".$usuario->nombre_rol."',".$usuario->total."],"; }?>]);
         var options = {
             'title': '',
+            'colors': ['#2DAAB8','#FCAD73','#ED7171']
         };
         var chartUsuario = new google.visualization.PieChart(document.getElementById('graficoUsuario'));
         chartUsuario.draw(data, options);
